@@ -11,7 +11,7 @@ const copy = {
   en: {
     hide: "Hide focus ring",
     hideDesc: "What happens when a designer writes outline: none",
-    title: "Join the ThaiUX newsletter",
+    title: "Join the UXLab newsletter",
     name: "Name",
     email: "Email",
     weekly: "Send me one email a week",
@@ -24,7 +24,7 @@ const copy = {
   th: {
     hide: "ซ่อนกรอบโฟกัส",
     hideDesc: "สิ่งที่เกิดขึ้นเมื่อนักออกแบบเขียน outline: none",
-    title: "สมัครรับจดหมายข่าว ThaiUX",
+    title: "สมัครรับจดหมายข่าว UXLab",
     name: "ชื่อ",
     email: "อีเมล",
     weekly: "ส่งอีเมลให้ฉันสัปดาห์ละครั้ง",
@@ -37,7 +37,7 @@ const copy = {
   zh: {
     hide: "隐藏焦点框",
     hideDesc: "设计师写下 outline: none 时会发生什么",
-    title: "订阅 ThaiUX 通讯",
+    title: "订阅 UXLab 通讯",
     name: "姓名",
     email: "邮箱",
     weekly: "每周给我发一封邮件",
@@ -50,7 +50,7 @@ const copy = {
   ja: {
     hide: "フォーカス枠を隠す",
     hideDesc: "デザイナーが outline: none と書くと何が起きるか",
-    title: "ThaiUX ニュースレターに登録",
+    title: "UXLab ニュースレターに登録",
     name: "お名前",
     email: "メールアドレス",
     weekly: "週に 1 回メールを受け取る",

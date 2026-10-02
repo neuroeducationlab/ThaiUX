@@ -2,7 +2,7 @@ import type { Localized } from "@/i18n/localized";
 
 /** About page copy (story, principles, process, privacy, sources policy). */
 export const about = {
-  title: { th: "ทำไมถึงมี ThaiUX", en: "Why ThaiUX exists", zh: "为什么会有 ThaiUX", ja: "ThaiUX が生まれた理由" },
+  title: { th: "ทำไมถึงมี UXLab", en: "Why UXLab exists", zh: "为什么会有 UXLab", ja: "UXLab が生まれた理由" },
   lead: {
     th: "UX ไม่ใช่เรื่องของความสวย แต่เป็นเรื่องของการตัดสินใจที่ทำให้ชีวิตคนง่ายขึ้น เว็บนี้สอนเรื่องนั้นด้วยวิธีที่ได้ผลที่สุด: ให้คุณได้ลองเอง",
     en: "UX isn’t about making things pretty. It’s about decisions that make people’s lives easier. This site teaches that in the way that works best: by letting you try it yourself.",
@@ -14,22 +14,22 @@ export const about = {
     title: { th: "เรื่องราว", en: "The story", zh: "背后的故事", ja: "ストーリー" },
     body: {
       th: [
-        "ThaiUX เริ่มจากคำถามง่าย ๆ ของ Molly: ถ้า UX คือเรื่องของประสบการณ์ ทำไมการเรียน UX ถึงมีแต่การอ่าน?",
+        "UXLab เริ่มจากคำถามง่าย ๆ ของ Molly: ถ้า UX คือเรื่องของประสบการณ์ ทำไมการเรียน UX ถึงมีแต่การอ่าน?",
         "แหล่งเรียนรู้ที่ดีส่วนใหญ่เป็นภาษาอังกฤษ และอธิบายคำอย่าง Affordance หรือ Feedback ด้วยตัวหนังสือล้วน ๆ สำหรับผู้เริ่มต้นชาวไทย นั่นคือกำแพงสองชั้น คือภาษา และความเป็นนามธรรม",
         "ที่นี่จึงกลับลำดับการเรียน: ลองก่อน แล้วค่อยรู้ชื่อ ทุกแนวคิดมีตัวอย่างให้กด ลาก หรือเลื่อน และทุกบทเรียนเริ่มจากปัญหาจริงที่คุณเคยเจอในชีวิตประจำวัน",
       ],
       en: [
-        "ThaiUX started with a simple question from Molly: if UX is about experience, why is learning it all reading?",
+        "UXLab started with a simple question from Molly: if UX is about experience, why is learning it all reading?",
         "Most good resources are in English, and they explain words like Affordance or Feedback with text alone. For a beginner in Thailand that’s two walls at once — the language, and the abstraction.",
         "So this site flips the order: try it first, then learn its name. Every concept has something to press, drag or scroll, and every lesson starts from a real problem you’ve already met in everyday life.",
       ],
       zh: [
-        "ThaiUX 源于 Molly 的一个简单问题：如果 UX 讲的是体验，为什么学习 UX 却只能靠阅读？",
+        "UXLab 源于 Molly 的一个简单问题：如果 UX 讲的是体验，为什么学习 UX 却只能靠阅读？",
         "大多数优质资源都是英文的，而且只用文字解释 Affordance、Feedback 这样的概念。对泰国的初学者来说，这是两堵墙：语言，以及抽象。",
         "所以这里把顺序反过来：先体验，再认识它的名字。每个概念都有可以按、拖或滚动的示例，每一课都从你在日常生活中遇到过的真实问题开始。",
       ],
       ja: [
-        "ThaiUX は、Molly のシンプルな疑問から始まりました。UX が「体験」のことなら、なぜ UX の学びは読むことばかりなのだろう？",
+        "UXLab は、Molly のシンプルな疑問から始まりました。UX が「体験」のことなら、なぜ UX の学びは読むことばかりなのだろう？",
         "良い教材の多くは英語で、Affordance や Feedback といった言葉を文字だけで説明します。タイの初学者にとっては、言語と抽象という二重の壁です。",
         "だからこのサイトは順番を逆にしました。まず試し、それから名前を知る。どの概念にも押したり、ドラッグしたり、スクロールしたりできる例があり、どのレッスンも日常で出会ったことのある本当の問題から始まります。",
       ],
@@ -140,23 +140,23 @@ export const about = {
     title: { th: "แหล่งอ้างอิงและลิขสิทธิ์", en: "Sources & copyright", zh: "来源与版权", ja: "出典と著作権" },
     body: {
       th: [
-        "เนื้อหาบทเรียน ตัวอย่างแบบโต้ตอบ และโค้ดทั้งหมดใน ThaiUX เป็นผลงานต้นฉบับ เมื่อแนวคิดใดมาจากงานวิจัย มาตรฐาน หรือแนวปฏิบัติด้านการออกแบบที่เผยแพร่แล้ว เราจะอธิบายด้วยคำพูดของเราเอง และลิงก์ไปยังต้นฉบับ",
-        "เราไม่คัดลอกเนื้อหาคอร์ส ภาพประกอบ หรือข้อความยาว ๆ ชื่อองค์กรและผลิตภัณฑ์เป็นของเจ้าของ และใช้เพื่อให้เครดิตเท่านั้น การลิงก์ไปยังแหล่งใดไม่ได้หมายความว่าแหล่งนั้นรับรอง ThaiUX",
+        "เนื้อหาบทเรียน ตัวอย่างแบบโต้ตอบ และโค้ดทั้งหมดใน UXLab เป็นผลงานต้นฉบับ เมื่อแนวคิดใดมาจากงานวิจัย มาตรฐาน หรือแนวปฏิบัติด้านการออกแบบที่เผยแพร่แล้ว เราจะอธิบายด้วยคำพูดของเราเอง และลิงก์ไปยังต้นฉบับ",
+        "เราไม่คัดลอกเนื้อหาคอร์ส ภาพประกอบ หรือข้อความยาว ๆ ชื่อองค์กรและผลิตภัณฑ์เป็นของเจ้าของ และใช้เพื่อให้เครดิตเท่านั้น การลิงก์ไปยังแหล่งใดไม่ได้หมายความว่าแหล่งนั้นรับรอง UXLab",
         "หากพบข้อผิดพลาดหรือเครดิตที่ตกหล่น เปิด Issue บน GitHub ได้เลย เรายินดีแก้ไขเสมอ",
       ],
       en: [
-        "All lesson text, interactive examples and code on ThaiUX are original work. When an idea comes from published research, standards or design guidelines, we explain it in our own words and link to the original.",
-        "We don’t copy course material, illustrations or long quotations. Names of organisations and products belong to their owners and are used only to give credit; linking to a source doesn’t mean it endorses ThaiUX.",
+        "All lesson text, interactive examples and code on UXLab are original work. When an idea comes from published research, standards or design guidelines, we explain it in our own words and link to the original.",
+        "We don’t copy course material, illustrations or long quotations. Names of organisations and products belong to their owners and are used only to give credit; linking to a source doesn’t mean it endorses UXLab.",
         "Spotted a mistake or a missing credit? Please open an issue on GitHub — corrections are always welcome.",
       ],
       zh: [
-        "ThaiUX 上的所有课程文字、互动示例和代码都是原创。当某个观点来自已发表的研究、标准或设计指南时，我们会用自己的话解释，并链接到原文。",
-        "我们不复制课程资料、插图或大段引文。组织和产品名称归其所有者所有，仅用于注明出处；链接到某个来源并不代表该来源为 ThaiUX 背书。",
+        "UXLab 上的所有课程文字、互动示例和代码都是原创。当某个观点来自已发表的研究、标准或设计指南时，我们会用自己的话解释，并链接到原文。",
+        "我们不复制课程资料、插图或大段引文。组织和产品名称归其所有者所有，仅用于注明出处；链接到某个来源并不代表该来源为 UXLab 背书。",
         "发现错误或遗漏的出处？欢迎在 GitHub 上提交 Issue——我们随时欢迎更正。",
       ],
       ja: [
-        "ThaiUX のレッスン本文、インタラクティブな例、コードはすべてオリジナルです。公開された研究、規格、デザインガイドラインに由来する考え方は、自分たちの言葉で説明し、原典にリンクしています。",
-        "講座の教材、イラスト、長い引用はコピーしません。組織名や製品名はそれぞれの所有者に帰属し、出典を示す目的でのみ使用しています。リンク先が ThaiUX を推奨しているという意味ではありません。",
+        "UXLab のレッスン本文、インタラクティブな例、コードはすべてオリジナルです。公開された研究、規格、デザインガイドラインに由来する考え方は、自分たちの言葉で説明し、原典にリンクしています。",
+        "講座の教材、イラスト、長い引用はコピーしません。組織名や製品名はそれぞれの所有者に帰属し、出典を示す目的でのみ使用しています。リンク先が UXLab を推奨しているという意味ではありません。",
         "誤りや出典の漏れに気づいたら、GitHub で Issue を作成してください。訂正はいつでも歓迎です。",
       ],
     } as Localized<string[]>,

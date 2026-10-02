@@ -1,5 +1,5 @@
 export const site = {
-  name: "ThaiUX",
+  name: "UXLab",
   /** Canonical origin. Set NEXT_PUBLIC_SITE_URL in production; Vercel's URL is the fallback. */
   url:
     process.env.NEXT_PUBLIC_SITE_URL ??

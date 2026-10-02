@@ -106,7 +106,7 @@ export default function LoadingStateDemo() {
 
       <div className="w-full overflow-hidden rounded-[var(--radius-lg)] border border-line-strong bg-surface" aria-busy={phase === "loading"}>
         <div className="flex h-11 items-center justify-between border-b border-line px-4 text-sm font-semibold text-ink">
-          <span>ThaiUX News</span>
+          <span>UXLab News</span>
           {phase === "loading" && mode !== "blank" ? <span className="sr-only">{t.loading}</span> : null}
         </div>
         <div className="relative min-h-60 p-4">

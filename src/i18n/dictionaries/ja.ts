@@ -2,8 +2,8 @@ import type { Dictionary } from "./en";
 
 const ja: Dictionary = {
   meta: {
-    siteName: "ThaiUX",
-    defaultTitle: "ThaiUX — 体験して学ぶ UX",
+    siteName: "UXLab",
+    defaultTitle: "UXLab — 体験して学ぶ UX",
     description:
       "初心者のためのインタラクティブな UX/UI スクール。すべての概念を実際に試し、Lab で手を動かし、デザイナーのように考える力を身につけましょう。タイ語・英語・中国語・日本語に対応。",
   },
@@ -16,7 +16,7 @@ const ja: Dictionary = {
     currentLanguage: "言語：{language}",
     newTab: "（新しいタブで開きます）",
     close: "閉じる",
-    homeLink: "ThaiUX ホーム",
+    homeLink: "UXLab ホーム",
   },
   nav: {
     home: "ホーム",
@@ -27,7 +27,7 @@ const ja: Dictionary = {
   },
   search: {
     button: "検索",
-    label: "ThaiUX を検索",
+    label: "UXLab を検索",
     placeholder: "用語・レッスン・実験を検索…",
     emptyTitle: "「{query}」に一致する結果はありません",
     emptyHint: "「hover」のような英語の用語か、日本語で検索してみてください。",
@@ -56,7 +56,7 @@ const ja: Dictionary = {
     designSystem: "デザインシステム",
     sources: "参考文献と著作権",
     sourceCode: "ソースコード",
-    rights: "オリジナルの文章とコード © {year} ThaiUX。リンク先の資料は各権利者に帰属します。",
+    rights: "オリジナルの文章とコード © {year} UXLab。リンク先の資料は各権利者に帰属します。",
   },
   common: {
     minutes: "{n} 分",
@@ -142,7 +142,7 @@ const ja: Dictionary = {
     takeaway: "大切なポイント",
     related: "関連する用語",
     sources: "さらに学ぶ",
-    synthesis: "ThaiUX が独自にまとめた要約です。詳しくは下の参考文献をご覧ください。",
+    synthesis: "UXLab が独自にまとめた要約です。詳しくは下の参考文献をご覧ください。",
     pronunciation: "発音（英国式）",
     localName: "日本語",
     backToGlossary: "すべての用語",
@@ -179,7 +179,7 @@ const ja: Dictionary = {
     concepts: "体験できる用語",
     practice: "Lab で練習する",
     sources: "さらに学ぶ",
-    synthesis: "このノートは、下記の参考文献に繰り返し登場する考え方を ThaiUX が独自にまとめたもので、特定の講座の複製ではありません。",
+    synthesis: "このノートは、下記の参考文献に繰り返し登場する考え方を UXLab が独自にまとめたもので、特定の講座の複製ではありません。",
     prevModule: "前のレッスン",
     nextModule: "次のレッスン",
     allModules: "すべてのレッスン",

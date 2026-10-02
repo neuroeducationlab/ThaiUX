@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { cn } from "@/lib/cn";
 
-/** ThaiUX mark: a rounded "button" with a pointer — learning by touching. */
+/** UXLab mark: a rounded "button" with a pointer — learning by touching. */
 export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 32 32" className={cn("size-7", className)} aria-hidden>
@@ -27,7 +27,7 @@ export function Logo({ href, label }: { href: string; label: string }) {
     >
       <LogoMark className="transition-transform duration-300 ease-out-soft group-hover:-rotate-6 group-active:scale-95" />
       <span lang="en" className="text-[1.1875rem] font-semibold tracking-[-0.02em] text-ink">
-        Thai<span className="type-serif-accent text-[1.3rem] text-accent-ink">UX</span>
+        UX<span className="type-serif-accent text-[1.3rem] text-accent-ink">Lab</span>
       </span>
     </Link>
   );

@@ -2,8 +2,8 @@ import type { Dictionary } from "./en";
 
 const zh: Dictionary = {
   meta: {
-    siteName: "ThaiUX",
-    defaultTitle: "ThaiUX — 在体验中学习 UX",
+    siteName: "UXLab",
+    defaultTitle: "UXLab — 在体验中学习 UX",
     description:
       "面向初学者的互动式 UX/UI 学校。亲手尝试每一个概念，在实验室里动手练习，学会像设计师一样思考。支持泰语、英语、中文和日语。",
   },
@@ -16,7 +16,7 @@ const zh: Dictionary = {
     currentLanguage: "语言：{language}",
     newTab: "（在新标签页中打开）",
     close: "关闭",
-    homeLink: "ThaiUX 首页",
+    homeLink: "UXLab 首页",
   },
   nav: {
     home: "首页",
@@ -27,7 +27,7 @@ const zh: Dictionary = {
   },
   search: {
     button: "搜索",
-    label: "搜索 ThaiUX",
+    label: "搜索 UXLab",
     placeholder: "搜索概念、课程、实验…",
     emptyTitle: "没有找到“{query}”的结果",
     emptyHint: "试试英文术语，例如 “hover”，或直接用中文搜索。",
@@ -56,7 +56,7 @@ const zh: Dictionary = {
     designSystem: "设计系统",
     sources: "参考来源与版权",
     sourceCode: "源代码",
-    rights: "原创文字与代码 © {year} ThaiUX。链接的参考资料归各自所有者所有。",
+    rights: "原创文字与代码 © {year} UXLab。链接的参考资料归各自所有者所有。",
   },
   common: {
     minutes: "{n} 分钟",
@@ -142,7 +142,7 @@ const zh: Dictionary = {
     takeaway: "核心要点",
     related: "相关概念",
     sources: "延伸阅读",
-    synthesis: "由 ThaiUX 原创整理的摘要。如需深入了解，请阅读下方的参考来源。",
+    synthesis: "由 UXLab 原创整理的摘要。如需深入了解，请阅读下方的参考来源。",
     pronunciation: "发音（英式）",
     localName: "中文",
     backToGlossary: "全部概念",
@@ -179,7 +179,7 @@ const zh: Dictionary = {
     concepts: "可以体验的概念",
     practice: "去实验室练习",
     sources: "延伸阅读",
-    synthesis: "这些笔记是 ThaiUX 对下方参考来源中反复出现的核心观点所做的原创整理，并非复制任何课程内容。",
+    synthesis: "这些笔记是 UXLab 对下方参考来源中反复出现的核心观点所做的原创整理，并非复制任何课程内容。",
     prevModule: "上一课",
     nextModule: "下一课",
     allModules: "全部课程",

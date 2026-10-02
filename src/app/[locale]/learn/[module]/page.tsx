@@ -93,7 +93,7 @@ export default async function ModulePage({ params }: PageProps<"/[locale]/learn/
 
           <section id="what" aria-labelledby="what-h" className="measure-wide scroll-mt-24">
             <h2 id="what-h" className="type-h2 mb-5">{dict.learn.what}</h2>
-            <div className="prose-thaiux text-[1.0625rem] text-ink-2">
+            <div className="prose-uxlab text-[1.0625rem] text-ink-2">
               {pick(m.what, locale).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -102,7 +102,7 @@ export default async function ModulePage({ params }: PageProps<"/[locale]/learn/
 
           <section id="why" aria-labelledby="why-h" className="measure-wide scroll-mt-24">
             <h2 id="why-h" className="type-h2 mb-5">{dict.learn.why}</h2>
-            <div className="prose-thaiux text-[1.0625rem] text-ink-2">
+            <div className="prose-uxlab text-[1.0625rem] text-ink-2">
               {pick(m.why, locale).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}

@@ -4,7 +4,7 @@
 
 ## The brief in one sentence
 
-Build **ThaiUX** — a premium, interactive UX/UI school for beginners, Thai first, where every concept is *experienced* rather than only read, and which doubles as a portfolio piece for Molly and her social audience (Thailand, China, Japan, India).
+Build **UXLab** — a premium, interactive UX/UI school for beginners, Thai first, where every concept is *experienced* rather than only read, and which doubles as a portfolio piece for Molly and her social audience (Thailand, China, Japan, India).
 
 ## Problem
 
@@ -47,7 +47,7 @@ Proto-personas (assumptions to validate — see [07](./07-review-and-testing.md)
 | --- | --- | --- |
 | Which language for the Indian audience? | English only · Hindi · English + Hindi | **English only** |
 | Which Chinese script? | Simplified (Recommended) · Traditional · Both | **Simplified 简体** |
-| Brand name? | ThaiUX (Recommended) · UX in Thai · others | **ThaiUX** (Lab stays “Molly’s UX Lab”) |
+| Brand name? | ThaiUX (Recommended) · UX in Thai · others | **ThaiUX** (Lab stays “Molly’s UX Lab”) — *later renamed **UXLab**, see UXDR-19 in [08](./08-decision-log.md)* |
 
 Everything else followed the brief or a recorded default — see the decision log in [08](./08-decision-log.md).
 

@@ -5,8 +5,8 @@
  */
 const en = {
   meta: {
-    siteName: "ThaiUX",
-    defaultTitle: "ThaiUX — Learn UX by experiencing it",
+    siteName: "UXLab",
+    defaultTitle: "UXLab — Learn UX by experiencing it",
     description:
       "An interactive UX/UI school for beginners. Try every concept, play in the Lab, and learn to think like a designer — in Thai, English, Chinese and Japanese.",
   },
@@ -19,7 +19,7 @@ const en = {
     currentLanguage: "Language: {language}",
     newTab: "(opens in a new tab)",
     close: "Close",
-    homeLink: "ThaiUX home",
+    homeLink: "UXLab home",
   },
   nav: {
     home: "Home",
@@ -30,7 +30,7 @@ const en = {
   },
   search: {
     button: "Search",
-    label: "Search ThaiUX",
+    label: "Search UXLab",
     placeholder: "Search concepts, modules, experiments…",
     emptyTitle: "No results for “{query}”",
     emptyHint: "Try an English term like “hover”, or a word in your own language.",
@@ -59,7 +59,7 @@ const en = {
     designSystem: "Design system",
     sources: "Sources & copyright",
     sourceCode: "Source code",
-    rights: "Original writing and code © {year} ThaiUX. Linked sources belong to their respective owners.",
+    rights: "Original writing and code © {year} UXLab. Linked sources belong to their respective owners.",
   },
   common: {
     minutes: "{n} min",
@@ -145,7 +145,7 @@ const en = {
     takeaway: "Key takeaway",
     related: "Related concepts",
     sources: "Explore further",
-    synthesis: "Original summary written by ThaiUX. For depth and nuance, read the sources below.",
+    synthesis: "Original summary written by UXLab. For depth and nuance, read the sources below.",
     pronunciation: "Pronunciation (UK)",
     localName: "Also called",
     backToGlossary: "All concepts",
@@ -182,7 +182,7 @@ const en = {
     concepts: "Concepts to experience",
     practice: "Practise in the Lab",
     sources: "Explore further",
-    synthesis: "These notes are ThaiUX’s own synthesis of recurring ideas across the sources below — not a copy of any course.",
+    synthesis: "These notes are UXLab’s own synthesis of recurring ideas across the sources below — not a copy of any course.",
     prevModule: "Previous module",
     nextModule: "Next module",
     allModules: "All modules",

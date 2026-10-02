@@ -8,7 +8,7 @@ type Block = { id: string; title: Localized; body: Localized<string[]> };
 
 export const caseStudy = {
   eyebrow: { th: "Case study", en: "Case study" } as Localized,
-  title: { th: "ออกแบบ ThaiUX: เรียน UX ด้วยการลงมือ", en: "Designing ThaiUX: learning UX by doing it" } as Localized,
+  title: { th: "ออกแบบ UXLab: เรียน UX ด้วยการลงมือ", en: "Designing UXLab: learning UX by doing it" } as Localized,
   question: {
     th: "เราจะช่วยให้ผู้เริ่มต้นชาวไทยเข้าใจแนวคิด UX/UI ด้วยการลองเอง ในภาษาของตัวเอง ภายในเวลาประมาณหนึ่งนาทีต่อหนึ่งแนวคิด ได้อย่างไร?",
     en: "How might we help Thai beginners understand UX/UI concepts by experiencing them — in their own language, in about a minute per idea?",

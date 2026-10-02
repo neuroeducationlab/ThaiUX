@@ -1,10 +1,10 @@
-# ThaiUX — Learn UX by experiencing it
+# UXLab — Learn UX by experiencing it
 
 **เรียน UX/UI ผ่านการลอง ไม่ใช่แค่อ่าน** · An interactive UX/UI school for beginners, in Thai, English, 简体中文 and 日本語.
 
-ThaiUX เป็นโปรเจกต์การเรียนรู้ของ Molly ทุกแนวคิดมีตัวอย่างให้ลองจริง อธิบายให้เข้าใจได้ในประมาณหนึ่งนาที และเว็บไซต์นี้เองก็ออกแบบตามหลักการที่สอนทุกข้อ
+UXLab เป็นโปรเจกต์การเรียนรู้ของ Molly ทุกแนวคิดมีตัวอย่างให้ลองจริง อธิบายให้เข้าใจได้ในประมาณหนึ่งนาที และเว็บไซต์นี้เองก็ออกแบบตามหลักการที่สอนทุกข้อ
 
-Every concept on ThaiUX is something you can touch: you try it first, then learn its name — *“You just experienced Hover.”*
+Every concept on UXLab is something you can touch: you try it first, then learn its name — *“You just experienced Hover.”*
 
 ## What’s inside
 
@@ -86,7 +86,7 @@ Thai and English are required for every piece of content; Chinese and Japanese f
 ## Deploying (Vercel)
 
 1. Import the GitHub repository in Vercel (framework preset: Next.js; no extra settings needed).
-2. Set `NEXT_PUBLIC_SITE_URL` to the production origin (e.g. `https://thaiux.example`) so canonical URLs, the sitemap and share images use it. Without it, Vercel’s production URL is used.
+2. Set `NEXT_PUBLIC_SITE_URL` to the production origin (e.g. `https://uxlab.example`) so canonical URLs, the sitemap and share images use it. Without it, Vercel’s production URL is used.
 3. After changing hero copy, re-render share images: `node scripts/generate-og.mjs`.
 
 ## Process documents
@@ -95,4 +95,4 @@ Thai and English are required for every piece of content; Chinese and Japanese f
 
 ## Credits and copyright
 
-All lesson text, demos and code are original work by ThaiUX. Ideas drawn from published research and guidelines are summarised in our own words and linked to their sources (see `/about#sources`). Organisation and product names belong to their owners. A licence for reuse has not been chosen yet — until then, all rights are reserved.
+All lesson text, demos and code are original work by UXLab. Ideas drawn from published research and guidelines are summarised in our own words and linked to their sources (see `/about#sources`). Organisation and product names belong to their owners. A licence for reuse has not been chosen yet — until then, all rights are reserved.

@@ -118,7 +118,7 @@ export default async function ConceptPage({ params }: PageProps<"/[locale]/gloss
           </section>
           <section>
             <h3 className="type-label mb-3">{dict.glossary.how}</h3>
-            <div className="prose-thaiux text-ink-2">
+            <div className="prose-uxlab text-ink-2">
               {pick(c.how, locale).map((p, i) => (
                 <p key={i}>{p}</p>
               ))}
@@ -126,7 +126,7 @@ export default async function ConceptPage({ params }: PageProps<"/[locale]/gloss
           </section>
           <section>
             <h3 className="type-label mb-3">{dict.glossary.inPractice}</h3>
-            <ul className="prose-thaiux text-ink-2">
+            <ul className="prose-uxlab text-ink-2">
               {pick(c.inPractice, locale).map((p, i) => (
                 <li key={i}>{p}</li>
               ))}

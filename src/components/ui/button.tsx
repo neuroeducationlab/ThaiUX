@@ -3,7 +3,7 @@ import { forwardRef } from "react";
 import { cn } from "@/lib/cn";
 
 /**
- * Button — the most used interactive element on ThaiUX.
+ * Button — the most used interactive element on UXLab.
  * Every variant has all five states designed: default, hover, active
  * (pressed), focus-visible and disabled; `loading` adds a sixth.
  * Minimum height is 44px for md/lg (Apple HIG / WCAG 2.5.8 friendly).

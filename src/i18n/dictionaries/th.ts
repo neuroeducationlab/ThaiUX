@@ -2,8 +2,8 @@ import type { Dictionary } from "./en";
 
 const th: Dictionary = {
   meta: {
-    siteName: "ThaiUX",
-    defaultTitle: "ThaiUX — เรียน UX ด้วยการลงมือสัมผัส",
+    siteName: "UXLab",
+    defaultTitle: "UXLab — เรียน UX ด้วยการลงมือสัมผัส",
     description:
       "โรงเรียน UX/UI แบบอินเทอร์แอคทีฟสำหรับมือใหม่ ลองทุกแนวคิดด้วยตัวเอง เล่นใน Lab และฝึกคิดแบบนักออกแบบ มีทั้งภาษาไทย อังกฤษ จีน และญี่ปุ่น",
   },
@@ -16,7 +16,7 @@ const th: Dictionary = {
     currentLanguage: "ภาษา: {language}",
     newTab: "(เปิดในแท็บใหม่)",
     close: "ปิด",
-    homeLink: "หน้าแรก ThaiUX",
+    homeLink: "หน้าแรก UXLab",
   },
   nav: {
     home: "หน้าแรก",
@@ -27,7 +27,7 @@ const th: Dictionary = {
   },
   search: {
     button: "ค้นหา",
-    label: "ค้นหาใน ThaiUX",
+    label: "ค้นหาใน UXLab",
     placeholder: "ค้นหาศัพท์ บทเรียน หรือการทดลอง…",
     emptyTitle: "ไม่พบผลลัพธ์สำหรับ “{query}”",
     emptyHint: "ลองพิมพ์ศัพท์ภาษาอังกฤษ เช่น “hover” หรือพิมพ์เป็นภาษาไทย",
@@ -56,7 +56,7 @@ const th: Dictionary = {
     designSystem: "Design system",
     sources: "แหล่งอ้างอิงและลิขสิทธิ์",
     sourceCode: "ซอร์สโค้ด",
-    rights: "งานเขียนและโค้ดต้นฉบับ © {year} ThaiUX · แหล่งอ้างอิงที่ลิงก์ไว้เป็นลิขสิทธิ์ของเจ้าของแต่ละราย",
+    rights: "งานเขียนและโค้ดต้นฉบับ © {year} UXLab · แหล่งอ้างอิงที่ลิงก์ไว้เป็นลิขสิทธิ์ของเจ้าของแต่ละราย",
   },
   common: {
     minutes: "{n} นาที",
@@ -142,7 +142,7 @@ const th: Dictionary = {
     takeaway: "ข้อคิดสำคัญ",
     related: "ศัพท์ที่เกี่ยวข้อง",
     sources: "อ่านเพิ่มเติม",
-    synthesis: "สรุปและเรียบเรียงใหม่โดย ThaiUX หากต้องการรายละเอียดเชิงลึก อ่านต่อได้จากแหล่งอ้างอิงด้านล่าง",
+    synthesis: "สรุปและเรียบเรียงใหม่โดย UXLab หากต้องการรายละเอียดเชิงลึก อ่านต่อได้จากแหล่งอ้างอิงด้านล่าง",
     pronunciation: "การออกเสียง (UK)",
     localName: "ภาษาไทย",
     backToGlossary: "ศัพท์ทั้งหมด",
@@ -179,7 +179,7 @@ const th: Dictionary = {
     concepts: "ศัพท์ที่ควรลอง",
     practice: "ฝึกต่อใน Lab",
     sources: "อ่านเพิ่มเติม",
-    synthesis: "บันทึกนี้เป็นการสังเคราะห์และเรียบเรียงใหม่โดย ThaiUX จากแนวคิดที่พบซ้ำในแหล่งอ้างอิงด้านล่าง ไม่ได้คัดลอกมาจากคอร์สใด",
+    synthesis: "บันทึกนี้เป็นการสังเคราะห์และเรียบเรียงใหม่โดย UXLab จากแนวคิดที่พบซ้ำในแหล่งอ้างอิงด้านล่าง ไม่ได้คัดลอกมาจากคอร์สใด",
     prevModule: "บทก่อนหน้า",
     nextModule: "บทถัดไป",
     allModules: "บทเรียนทั้งหมด",

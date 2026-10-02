@@ -35,7 +35,7 @@ Ratios are truncated, never rounded up (4.48 must not read as 4.5). Rules:
 | --- | --- | --- |
 | Latin | **Inter** (variable, `opsz` axis) | Neutral, highly legible UI face; optical sizes keep headlines tight. |
 | Thai | **Noto Sans Thai** | Chosen after rendering real comparisons (see below): a loopless, modern Thai that matches Inter’s proportions, with complete tone-mark coverage. |
-| Accent / headwords | **Instrument Serif** (+ italic) | Editorial contrast for English UX terms (“*Affordance*”) and the brand “Thai*UX*”. |
+| Accent / headwords | **Instrument Serif** (+ italic) | Editorial contrast for English UX terms (“*Affordance*”) and the brand wordmark (“UX*Lab*”). |
 | Chinese, Japanese | System fonts (PingFang/Hiragino/Noto CJK/Yu Gothic…) via `:lang()` stacks | High quality everywhere, and avoids multi-megabyte web-font downloads (UXDR-09). |
 
 ![Font comparison rendered in the browser](./assets/font-comparison.png)

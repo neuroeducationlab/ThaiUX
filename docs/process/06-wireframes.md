@@ -6,7 +6,7 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│ ▣ ThaiUX        Learn  Glossary  Lab  About        [Search ⌘K] [TH] │
+│ ▣ UXLab         Learn  Glossary  Lab  About        [Search ⌘K] [TH] │
 ├──────────────────────────────────────────────────────────────────────┤
 │ (• hands-on UX/UI school · 4 languages)      ┌ This button is a lesson ┐
 │ เรียน UX/UI ผ่านการลอง                        │   ·  ·  [ Press me ]  ·  │
@@ -39,7 +39,7 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 
 ```
 ┌──────────────────────────┐
-│ ▣ ThaiUX        🔍  TH   │
+│ ▣ UXLab         🔍  TH   │
 │ Home › Glossary › States │
 │ [State] ●●○  3 of 22 [Save]
 │ Hover            (serif) │

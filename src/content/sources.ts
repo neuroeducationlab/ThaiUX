@@ -1,7 +1,7 @@
 /**
- * Source registry — every reference cited anywhere on ThaiUX.
+ * Source registry — every reference cited anywhere on UXLab.
  *
- * ThaiUX text is an original synthesis; these links point readers to the
+ * UXLab text is an original synthesis; these links point readers to the
  * originals for depth. URLs were checked against each publisher's index
  * on 2 Oct 2026 (see docs/process/05-content-plan.md).
  */

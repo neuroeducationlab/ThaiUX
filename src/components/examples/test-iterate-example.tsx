@@ -213,7 +213,7 @@ export default function TestIterateExample() {
                   <p className="type-label mb-2 flex items-center gap-1.5">
                     <Wrench className="size-3.5" aria-hidden /> {t.log}
                   </p>
-                  <ul className="prose-thaiux text-[0.875rem] text-ink-2">
+                  <ul className="prose-uxlab text-[0.875rem] text-ink-2">
                     {t.changes.map((c) => (
                       <li key={c}>{c}</li>
                     ))}

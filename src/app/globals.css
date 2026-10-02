@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /*
- * ThaiUX design tokens
+ * UXLab design tokens
  * ------------------------------------------------------------
  * Raw values live on :root as CSS variables so light/dark themes
  * can swap them at runtime. Tailwind reads them through
@@ -363,11 +363,11 @@
   .measure { max-width: 40rem; }
   .measure-wide { max-width: 46rem; }
 
-  .prose-thaiux p + p { margin-top: 1em; }
-  .prose-thaiux ul { list-style: none; padding: 0; }
-  .prose-thaiux li { position: relative; padding-left: 1.25em; }
-  .prose-thaiux li + li { margin-top: 0.5em; }
-  .prose-thaiux li::before {
+  .prose-uxlab p + p { margin-top: 1em; }
+  .prose-uxlab ul { list-style: none; padding: 0; }
+  .prose-uxlab li { position: relative; padding-left: 1.25em; }
+  .prose-uxlab li + li { margin-top: 0.5em; }
+  .prose-uxlab li::before {
     content: "";
     position: absolute;
     left: 0.15em;

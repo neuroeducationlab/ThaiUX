@@ -13,7 +13,7 @@
 ## Writing rules
 
 1. **Problem → Decision → Interaction → Result.** Every concept and module is understandable in about a minute; depth comes after.
-2. **Original synthesis.** Lessons are written in ThaiUX’s own words from recurring ideas across several sources. No course text, illustrations or long quotes are copied. The difference is stated on every page (“Original summary written by ThaiUX…”).
+2. **Original synthesis.** Lessons are written in UXLab’s own words from recurring ideas across several sources. No course text, illustrations or long quotes are copied. The difference is stated on every page (“Original summary written by UXLab…”).
 3. **Always cite, always link out.** Each concept and module ends with “Explore further” (title, publisher, author) linking to the original.
 4. **English headwords, local names.** The term stays in English (what learners hear at work), with IPA and a local name: *Hover* · โฮเวอร์ · 悬停 · ホバー.
 5. **Thai first, natural Thai.** Thai copy is written, not machine-translated word-for-word; technical words stay English where Thai designers use them (Feedback, Contrast, Focus).

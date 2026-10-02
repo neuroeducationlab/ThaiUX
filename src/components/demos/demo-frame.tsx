@@ -8,7 +8,7 @@ import { cn } from "@/lib/cn";
 import { progress, useProgress } from "@/components/progress/store";
 
 /**
- * DemoFrame — the core teaching pattern of ThaiUX.
+ * DemoFrame — the core teaching pattern of UXLab.
  *   1. Tell people what to try (instruction).
  *   2. Let them interact (the demo).
  *   3. Name what they just felt: “You just experienced ‘Hover’.”

@@ -6,7 +6,7 @@ Each record: the decision, the options considered, why, and the trade-off we acc
 | --- | --- | --- | --- | --- | --- |
 | UXDR-01 | Languages: **TH, EN, 简体中文, 日本語** | + Hindi; Traditional Chinese | Matches Molly’s audiences; India reads English | 4 languages to maintain | Asked |
 | UXDR-02 | Chinese script: **Simplified** | Traditional; both | Largest Chinese-reading audience | Taiwan/HK readers get Simplified | Asked |
-| UXDR-03 | Brand: **ThaiUX**; Lab keeps “Molly’s UX Lab” | “UX in Thai”, others | Short, memorable, says what and for whom | “Thai” may read as Thai-only — mitigated by 4 languages | Asked |
+| UXDR-03 | ~~Brand: **ThaiUX**; Lab keeps “Molly’s UX Lab”~~ — *superseded by UXDR-19* | “UX in Thai”, others | Short, memorable, says what and for whom | “Thai” may read as Thai-only — mitigated by 4 languages | Asked |
 | UXDR-04 | **Thai is the default**; unsupported browser languages → English | Always English; always Thai | Thai learners first; everyone else gets the lingua franca | Detection relies on `Accept-Language` | Default |
 | UXDR-05 | **Language in every URL** (`/th/…`), remembered only when chosen | Cookie/IP-only switching | Shareable, cacheable, SEO-friendly (hreflang) | Slightly longer URLs | Default |
 | UXDR-06 | **English headwords + local names** | Fully translated terms | Learners need the words used at work | Harder for absolute beginners at first | Default |
@@ -22,3 +22,4 @@ Each record: the decision, the options considered, why, and the trade-off we acc
 | UXDR-16 | **Pinned previews / inline callouts on phones** | Desktop-like stacked layout | Feedback must stay visible where you act (heuristic #1) | Pinned area uses ~35% of the screen while tuning | Iteration (07) |
 | UXDR-17 | **Pre-rendered share images** per language | Generated at request time (Satori) | Real Thai/CJK shaping, zero runtime cost | Re-run `scripts/generate-og.mjs` when copy changes | Default |
 | UXDR-18 | **Static generation** for every page | Server rendering | Fast, cheap, resilient on Vercel | Content changes need a redeploy | Default |
+| UXDR-19 | Rename the brand **ThaiUX → UXLab** (Oct 2026) | Keep ThaiUX; other names | Molly’s call, made after the first deploy. Drops “Thai” so the name suits all four audiences; the product is still Thai-first | Collides with the section name “Molly’s UX Lab” (kept for now); generic name — check existing use of the domain and social handles. Storage keys (`thaiux:*`) and the GitHub repo name were left unchanged so no learner loses saved progress | Asked |
