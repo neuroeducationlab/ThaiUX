@@ -34,8 +34,8 @@ function Detective() {
         <Bar w="40%" />
         <div className="h-4 rounded-md bg-surface-3" />
       </Screen>
-      <div className="absolute top-[22%] right-[16%] flex size-16 items-center justify-center rounded-full border-[3px] border-accent bg-accent-soft/60">
-        <Search className="size-6 text-accent-ink" />
+      <div className="absolute top-[22%] right-[10%] flex size-11 items-center justify-center rounded-full border-[3px] border-accent bg-accent-soft/60 sm:right-[16%] sm:size-16">
+        <Search className="size-4 text-accent-ink sm:size-6" />
       </div>
     </>
   );
@@ -91,7 +91,7 @@ function Choose() {
 
 function ButtonStates() {
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center gap-2.5">
+    <div className="absolute inset-0 flex scale-[0.68] flex-col items-center justify-center gap-2.5 sm:scale-100">
       <div className="relative flex h-8 w-32 items-center justify-center rounded-full bg-accent text-[0.6875rem] font-semibold text-on-accent">
         Default
         <MousePointer2 className="absolute -right-4 -bottom-3 size-5 fill-ink text-bg" />
