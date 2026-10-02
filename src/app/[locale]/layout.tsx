@@ -10,6 +10,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { MobileTabBar } from "@/components/layout/mobile-tab-bar";
 import { themeScript } from "@/components/layout/theme-script";
+import { InlineScript } from "@/components/layout/inline-script";
 import { SearchPalette } from "@/components/search/search-palette";
 import { Toaster } from "@/components/ui/toast";
 import { buildSearchIndex, popularSearchIds } from "@/content/search-index";
@@ -85,7 +86,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<"/[
       suppressHydrationWarning
     >
       <head>
-        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <InlineScript html={themeScript} />
       </head>
       <body className="flex min-h-dvh flex-col pb-[calc(4.25rem+env(safe-area-inset-bottom))] md:pb-0">
         <a href="#main" className="skip-link">

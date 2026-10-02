@@ -74,7 +74,7 @@ export default function InputFieldDemo() {
             onBlur={() => setBlurred((s) => ({ ...s, a: true }))}
             className="h-11 w-full rounded-[var(--radius-sm)] border border-line-input bg-surface px-3 text-[0.9375rem] text-ink outline-none placeholder:text-ink-2 focus:border-accent focus:ring-2 focus:ring-accent/25"
           />
-          <p className={cn("mt-2 min-h-5 text-[0.8125rem] text-ink-3", done && "text-warning")} aria-hidden>
+          <p className={cn("mt-2 min-h-5 text-[0.8125rem] text-ink-2", done && "text-warning")} aria-hidden>
             {done ? "?" : ""}
           </p>
         </div>

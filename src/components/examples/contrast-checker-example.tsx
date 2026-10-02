@@ -196,7 +196,12 @@ export default function ContrastCheckerExample() {
                   }}
                   className="inline-flex h-9 items-center gap-2 rounded-full border border-line-strong bg-surface pr-3 pl-1.5 text-[0.75rem] font-medium text-ink hover:border-ink/30"
                 >
-                  <span className="flex size-6 items-center justify-center rounded-full border border-line text-[0.6875rem] font-bold" style={{ background: p.bg, color: p.fg }} aria-hidden>
+                  <span
+                    className="flex size-6 items-center justify-center rounded-full border border-line text-[0.6875rem] font-bold"
+                    style={{ background: p.bg, color: p.fg }}
+                    aria-hidden
+                    data-intentionally-flawed
+                  >
                     Aa
                   </span>
                   {t.presetNames[i]}

@@ -126,7 +126,7 @@ export default function DragDropDemo() {
               >
                 <GripVertical className="size-5" aria-hidden />
               </span>
-              <span className="tabular w-5 text-center text-[0.8125rem] text-ink-3">{i + 1}</span>
+              <span className="tabular w-5 text-center text-[0.8125rem] text-ink-2">{i + 1}</span>
               <span className="flex-1 font-medium text-ink">{t.steps[id]}</span>
               <button
                 type="button"

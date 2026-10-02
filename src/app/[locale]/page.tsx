@@ -175,7 +175,7 @@ export default async function Home() {
                       <span key={c.id}>
                         <span className="whitespace-nowrap">
                           {c.term}
-                          {i < all.length - 1 ? <span className="text-ink-3"> ·</span> : null}
+                          {i < all.length - 1 ? <span className="text-ink-2"> ·</span> : null}
                         </span>{" "}
                       </span>
                     ))}

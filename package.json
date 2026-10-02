@@ -6,7 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test:e2e": "playwright test",
+    "check": "npm run lint && npm run typecheck && npm run check:content",
+    "check:content": "node scripts/check-content.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.50.0",

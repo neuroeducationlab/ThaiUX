@@ -300,7 +300,7 @@ export function MakeItBetter() {
   const note = (
     <div className={cn(pad)}>
       <p className="text-[0.8125rem] font-medium">{t.note}</p>
-      <div className="h-16 rounded-[8px] border border-[#d4d4da] p-2 text-[0.8125rem] text-[#8e8e98]">{t.notePlaceholder}</div>
+      <div className="h-16 rounded-[8px] border border-[#d4d4da] p-2 text-[0.8125rem] text-[#6b6b75]">{t.notePlaceholder}</div>
     </div>
   );
 

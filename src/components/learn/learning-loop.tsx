@@ -18,7 +18,7 @@ export function LearningLoop({ dict, className }: { dict: Dictionary; className?
             <span className="flex size-10 items-center justify-center rounded-full bg-accent-soft text-accent-ink" aria-hidden>
               <s.icon className="size-[1.125rem]" />
             </span>
-            <span className="tabular text-[0.8125rem] font-semibold text-ink-3" aria-hidden>
+            <span className="tabular text-[0.8125rem] font-semibold text-ink-2" aria-hidden>
               0{i + 1}
             </span>
           </div>

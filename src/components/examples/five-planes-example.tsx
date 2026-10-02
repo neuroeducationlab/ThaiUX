@@ -115,7 +115,7 @@ export default function FivePlanesExample() {
   return (
     <div className="mx-auto grid max-w-3xl items-center gap-8 md:grid-cols-[1.1fr_1fr]">
       <div className="flex gap-3">
-        <div className="flex flex-col items-center justify-between py-1 text-[0.6875rem] font-semibold tracking-wide text-ink-3 uppercase" aria-hidden>
+        <div className="flex flex-col items-center justify-between py-1 text-[0.6875rem] font-semibold tracking-wide text-ink-2 uppercase" aria-hidden>
           <span>{t.concrete}</span>
           <span className="w-px flex-1 bg-line-strong" />
           <span>{t.abstract}</span>

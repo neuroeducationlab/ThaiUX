@@ -107,7 +107,7 @@ export function GlossaryExplorer({ items, keywords }: { items: ConceptSummary[];
                 >
                   {f === "saved" ? <Bookmark className="size-3.5" aria-hidden /> : null}
                   {label(f)}
-                  <span className={cn("tabular text-[0.75rem]", active ? "text-bg/70" : "text-ink-3")}>{count(f)}</span>
+                  <span className={cn("tabular text-[0.75rem]", active ? "text-bg/80" : "text-ink-2")}>{count(f)}</span>
                 </button>
               );
             })}

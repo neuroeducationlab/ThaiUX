@@ -68,7 +68,7 @@ export default async function ConceptPage({ params }: PageProps<"/[locale]/gloss
             <div className="flex flex-wrap items-center gap-3">
               <Tag tone="accent">{dict.categories[c.categories[0]]}</Tag>
               <DifficultyDots level={c.difficulty} label={level} />
-              <span className="tabular text-[0.8125rem] text-ink-3">
+              <span className="tabular text-[0.8125rem] text-ink-2">
                 {format(dict.glossary.conceptOf, { n: index + 1, total: glossary.length })}
               </span>
             </div>

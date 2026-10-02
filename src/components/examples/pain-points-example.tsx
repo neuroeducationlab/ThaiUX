@@ -147,7 +147,7 @@ export default function PainPointsExample() {
                 )}
               >
                 <span className="flex items-start gap-3">
-                  <span className="tabular mt-0.5 text-[0.75rem] font-semibold text-ink-3">{i + 1}</span>
+                  <span className="tabular mt-0.5 text-[0.75rem] font-semibold text-ink-2">{i + 1}</span>
                   <span className="flex-1">
                     “{line}”
                     {checked ? (

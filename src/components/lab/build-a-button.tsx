@@ -685,7 +685,8 @@ export function BuildAButton() {
           pinned while the controls scroll; a grid on large screens. */}
       <div className="flex flex-col gap-6 lg:grid lg:grid-cols-[minmax(0,1fr)_minmax(0,25rem)] lg:items-start lg:gap-10">
         <div className="sticky top-16 z-10 -mx-4 bg-bg px-4 pt-2 pb-2 sm:-mx-6 sm:px-6 lg:top-24 lg:mx-0 lg:px-0 lg:pt-0 lg:pb-0">
-          <div className="overflow-hidden rounded-[var(--radius-xl)] border border-line bg-white shadow-sm">
+          {/* Learner-controlled: starts deliberately inaccessible (the lesson), so automated checks skip it. */}
+          <div className="overflow-hidden rounded-[var(--radius-xl)] border border-line bg-white shadow-sm" data-intentionally-flawed>
             <div className="relative flex h-40 flex-col items-center justify-center gap-3 bg-[radial-gradient(#e6e6ea_1px,transparent_1px)] [background-size:16px_16px] px-4 sm:h-56 lg:h-80">
               <p className="absolute top-3 left-4 text-[0.6875rem] font-semibold tracking-wider text-[#5c5c66] uppercase">{t.preview}</p>
               <button
@@ -871,7 +872,7 @@ export function BuildAButton() {
                     : { text: `${fmt(look.contrast[st])} : 1`, ok: look.contrast[st] >= WCAG.aaNormal };
             return (
               <li key={st} className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface">
-                <div className="flex h-24 items-center justify-center overflow-hidden bg-white px-3">
+                <div className="flex h-24 items-center justify-center overflow-hidden bg-white px-3" data-intentionally-flawed>
                   <StateVisual o={o} look={look} label={name} state={st} />
                 </div>
                 <div className="space-y-1 border-t border-line p-3.5">

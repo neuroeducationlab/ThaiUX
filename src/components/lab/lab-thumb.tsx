@@ -49,7 +49,7 @@ function Better() {
         <Bar w="70%" />
         <Bar w="50%" />
       </Screen>
-      <div className="mb-[18%] self-center text-xl font-light text-ink-3">→</div>
+      <div className="mb-[18%] self-center text-xl font-light text-ink-2">→</div>
       <Screen className="flex h-full w-[30%] flex-col gap-1.5">
         <Bar w="70%" className="bg-line-strong" />
         <Bar w="50%" />
@@ -98,7 +98,7 @@ function ButtonStates() {
       </div>
       <div className="flex h-8 w-32 scale-[0.97] items-center justify-center rounded-full bg-accent-press text-[0.6875rem] font-semibold text-on-accent">Active</div>
       <div className="flex h-8 w-32 items-center justify-center rounded-full bg-accent text-[0.6875rem] font-semibold text-on-accent outline-2 outline-offset-2 outline-focus">Focus</div>
-      <div className="flex h-8 w-32 items-center justify-center rounded-full bg-surface-3 text-[0.6875rem] font-semibold text-ink-3">Disabled</div>
+      <div className="flex h-8 w-32 items-center justify-center rounded-full border border-dashed border-line-strong bg-surface-2 text-[0.6875rem] font-semibold text-ink-2">Disabled</div>
     </div>
   );
 }
