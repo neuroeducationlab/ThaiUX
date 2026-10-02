@@ -5,7 +5,7 @@ import { ArrowLeft, ArrowRight, BookOpen, CircleAlert, Volume2 } from "lucide-re
 import { getI18n } from "@/i18n/server";
 import { localeMeta } from "@/i18n/config";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container, DifficultyDots, Tag } from "@/components/ui/layout";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
@@ -28,12 +28,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/glossary
   const c = getConcept(term);
   if (!c) return {};
   const local = locale === "en" ? "" : ` · ${pick(c.localTerm, locale)}`;
-  return {
-    title: `${c.term}${local}`,
-    description: pick(c.short, locale),
-    alternates: alternatesFor(locale, `/glossary/${c.id}`),
-    openGraph: { title: `${c.term}${local}`, description: pick(c.short, locale) },
-  };
+  return pageMetadata(locale, `/glossary/${c.id}`, `${c.term}${local}`, pick(c.short, locale));
 }
 
 export default async function ConceptPage({ params }: PageProps<"/[locale]/glossary/[term]">) {

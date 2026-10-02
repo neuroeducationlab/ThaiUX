@@ -114,5 +114,5 @@ export const interactionDesign: LearningModule = {
   },
   concepts: ["affordance", "feedback", "hover", "active-state", "loading-state", "toggle"],
   lab: ["build-a-button"],
-  sources: ["nng-microinteractions", "nng-heuristics", "nng-button-states", "m3-states", "hig-feedback"],
+  sources: ["nng-microinteractions", "nng-heuristics", "nng-button-states", "m3-states", "hig-feedback", "nng-wizards"],
 };

@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock, FlaskConical, MessageCircleQuestion, Quote } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/ui/layout";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
@@ -29,12 +29,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/learn/[m
   const m = getModule(id);
   if (!m) return {};
   const title = `${format(dict.learn.module, { n: m.number })} · ${pick(m.title, locale)}`;
-  return {
-    title,
-    description: pick(m.summary, locale),
-    alternates: alternatesFor(locale, `/learn/${m.id}`),
-    openGraph: { title, description: pick(m.summary, locale) },
-  };
+  return pageMetadata(locale, `/learn/${m.id}`, title, pick(m.summary, locale));
 }
 
 export default async function ModulePage({ params }: PageProps<"/[locale]/learn/[module]">) {

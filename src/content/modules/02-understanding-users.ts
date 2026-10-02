@@ -105,5 +105,5 @@ export const understandingUsers: LearningModule = {
   },
   concepts: ["usability", "feedback"],
   lab: ["ux-detective"],
-  sources: ["nng-research-methods", "nng-pain-points", "nng-need-statements", "govuk-research", "dschool-bootleg"],
+  sources: ["nng-research-methods", "nng-pain-points", "nng-need-statements", "govuk-research", "dschool-bootleg", "govuk-designing-services"],
 };

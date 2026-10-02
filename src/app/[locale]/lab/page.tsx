@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Clock, Telescope } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/ui/layout";
 import { Tag } from "@/components/ui/layout";
@@ -15,7 +15,7 @@ import { experiments, realWorld } from "@/content/lab";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, dict } = await getI18n();
-  return { title: dict.lab.title, description: dict.lab.subtitle, alternates: alternatesFor(locale, "/lab") };
+  return pageMetadata(locale, "/lab", dict.lab.title, dict.lab.subtitle);
 }
 
 export default async function LabPage() {

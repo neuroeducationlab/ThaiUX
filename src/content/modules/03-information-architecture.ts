@@ -105,5 +105,5 @@ export const informationArchitecture: LearningModule = {
   },
   concepts: ["usability", "scroll", "dropdown"],
   lab: ["which-would-you-choose", "ux-detective"],
-  sources: ["nng-ia-study-guide", "nng-card-sorting", "nng-journeys-flows", "nng-mobile-nav", "nng-hamburger", "nng-ia-vs-sitemaps"],
+  sources: ["nng-ia-study-guide", "nng-card-sorting", "nng-journeys-flows", "nng-mobile-nav", "nng-hamburger", "nng-ia-vs-sitemaps", "nng-card-vs-tree", "hig-tab-bars"],
 };

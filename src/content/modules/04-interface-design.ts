@@ -114,5 +114,5 @@ export const interfaceDesign: LearningModule = {
   },
   concepts: ["button", "default-state", "accessibility"],
   lab: ["make-it-better"],
-  sources: ["nng-visual-hierarchy", "nng-visual-principles", "hig-typography", "wcag-contrast", "laws-aesthetic"],
+  sources: ["nng-visual-hierarchy", "nng-visual-principles", "hig-typography", "wcag-contrast", "laws-aesthetic", "laws-hick"],
 };

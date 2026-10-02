@@ -96,19 +96,19 @@ export default async function Home() {
                 <ArrowRight className="size-4 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden />
               </Link>
             </div>
-            <div className="grid gap-4 self-center sm:grid-cols-2">
+            <div className="grid grid-cols-2 gap-3 self-center sm:gap-4">
               {(
                 [
                   { label: h.what.uxLabel, items: h.what.ux, Icon: HeartHandshake },
                   { label: h.what.uiLabel, items: h.what.ui, Icon: Shapes },
                 ] as const
               ).map(({ label, items, Icon }) => (
-                <div key={pick(label, "en")} className="squircle rounded-[var(--radius-lg)] border border-line bg-surface p-6 shadow-xs">
-                  <span className="flex size-10 items-center justify-center rounded-full bg-accent-soft text-accent-ink" aria-hidden>
-                    <Icon className="size-5" />
+                <div key={pick(label, "en")} className="squircle rounded-[var(--radius-lg)] border border-line bg-surface p-4 shadow-xs sm:p-6">
+                  <span className="flex size-9 items-center justify-center rounded-full bg-accent-soft text-accent-ink sm:size-10" aria-hidden>
+                    <Icon className="size-[1.125rem] sm:size-5" />
                   </span>
-                  <h3 className="type-title mt-4">{pick(label, locale)}</h3>
-                  <ul className="mt-3 space-y-2 text-[0.9375rem] text-ink-2">
+                  <h3 className="mt-3 text-[1rem] leading-snug font-semibold sm:mt-4 sm:text-[1.125rem]">{pick(label, locale)}</h3>
+                  <ul className="mt-2 space-y-1.5 text-[0.8125rem] text-ink-2 sm:mt-3 sm:space-y-2 sm:text-[0.9375rem]">
                     {pick(items, locale).map((q) => (
                       <li key={q} className="flex gap-2">
                         <span className="mt-[0.6em] size-1 shrink-0 rounded-full bg-ink-3" aria-hidden />

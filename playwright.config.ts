@@ -22,7 +22,8 @@ export default defineConfig({
     { name: "desktop", use: { ...devices["Desktop Chrome"] }, grepInvert: /@mobile/ },
     { name: "mobile", use: { ...devices["Pixel 7"] }, grep: /@mobile/ },
   ],
-  webServer: process.env.BASE_URL
+  // Content checks need no server (CONTENT_ONLY=1, see npm run check:content).
+  webServer: process.env.BASE_URL || process.env.CONTENT_ONLY
     ? undefined
     : {
         command: `npx next start -p ${PORT}`,

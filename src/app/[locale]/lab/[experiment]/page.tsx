@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container, Tag } from "@/components/ui/layout";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
@@ -24,12 +24,7 @@ export async function generateMetadata({ params }: PageProps<"/[locale]/lab/[exp
   const e = getExperiment(id);
   if (!e) return {};
   const title = `${pick(e.title, locale)} · ${dict.lab.title}`;
-  return {
-    title,
-    description: pick(e.summary, locale),
-    alternates: alternatesFor(locale, `/lab/${e.id}`),
-    openGraph: { title, description: pick(e.summary, locale) },
-  };
+  return pageMetadata(locale, `/lab/${e.id}`, title, pick(e.summary, locale));
 }
 
 export default async function ExperimentPage({ params }: PageProps<"/[locale]/lab/[experiment]">) {

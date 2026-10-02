@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { Container, Section } from "@/components/ui/layout";
@@ -13,7 +13,7 @@ import { sources, type Source } from "@/content/sources";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await getI18n();
-  return { title: pick(about.title, locale), description: pick(about.lead, locale), alternates: alternatesFor(locale, "/about") };
+  return pageMetadata(locale, "/about", pick(about.title, locale), pick(about.lead, locale));
 }
 
 /** Group the source registry by publisher, largest first. */

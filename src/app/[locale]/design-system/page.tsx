@@ -4,7 +4,7 @@ import type { Metadata } from "next";
 import { Check, CircleAlert, Minus } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/cn";
 import { contrastRatio, WCAG } from "@/lib/contrast";
 import { Container, Section } from "@/components/ui/layout";
@@ -15,7 +15,7 @@ import { ds } from "@/content/design-system";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await getI18n();
-  return { title: pick(ds.eyebrow, locale), description: pick(ds.lead, locale), alternates: alternatesFor(locale, "/design-system") };
+  return pageMetadata(locale, "/design-system", pick(ds.eyebrow, locale), pick(ds.lead, locale));
 }
 
 /**

@@ -164,7 +164,7 @@ export const principleConcepts: Concept[] = [
       ja: "どこを押すか説明が必要なら、デザインはまだ十分に語れていない。",
     },
     related: ["button", "hover", "feedback", "default-state"],
-    sources: ["norman-signifiers", "norman-affordances", "nng-clickable", "nng-flat-ui"],
+    sources: ["norman-signifiers", "norman-affordances", "nng-clickable", "nng-flat-ui", "laws-jakob"],
     aliases: ["อะฟอร์แดนซ์", "ซิกนิฟายเออร์", "signifier", "affordances", "アフォーダンス", "シグニファイア", "示能", "可供性", "意符"],
   },
   {

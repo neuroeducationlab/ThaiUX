@@ -114,5 +114,5 @@ export const accessibleDesign: LearningModule = {
   },
   concepts: ["accessibility", "focus-state", "drag-and-drop", "error-state"],
   lab: ["ux-detective"],
-  sources: ["wai-intro", "wai-principles", "wcag22", "wcag-contrast", "wcag-non-text-contrast", "wcag-keyboard", "ms-inclusive", "govuk-inclusive", "webdev-learn-a11y"],
+  sources: ["wai-intro", "wai-principles", "wcag22", "wcag-contrast", "wcag-non-text-contrast", "wcag-keyboard", "ms-inclusive", "govuk-inclusive", "webdev-learn-a11y", "wai-designing", "wai-inclusion", "mdn-reduced-motion"],
 };

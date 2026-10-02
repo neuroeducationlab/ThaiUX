@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getI18n } from "@/i18n/server";
 import { format, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/ui/layout";
 import { PageHeader } from "@/components/layout/page-header";
@@ -13,11 +13,7 @@ import { glossary } from "@/content/glossary";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, dict } = await getI18n();
-  return {
-    title: dict.glossary.title,
-    description: dict.glossary.subtitle,
-    alternates: alternatesFor(locale, "/glossary"),
-  };
+  return pageMetadata(locale, "/glossary", dict.glossary.title, dict.glossary.subtitle);
 }
 
 export default async function GlossaryPage() {

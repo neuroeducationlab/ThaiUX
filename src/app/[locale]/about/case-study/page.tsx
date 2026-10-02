@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight, Info } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { locales } from "@/i18n/config";
 import { isTranslated, pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { Container } from "@/components/ui/layout";
@@ -19,7 +19,7 @@ import { sources } from "@/content/sources";
 export async function generateMetadata(): Promise<Metadata> {
   const { locale } = await getI18n();
   const title = pick(caseStudy.title, locale);
-  return { title, description: pick(caseStudy.question, locale), alternates: alternatesFor(locale, "/about/case-study") };
+  return pageMetadata(locale, "/about/case-study", title, pick(caseStudy.question, locale));
 }
 
 export default async function CaseStudyPage() {

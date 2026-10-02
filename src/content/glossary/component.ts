@@ -85,7 +85,7 @@ export const componentConcepts: Concept[] = [
       ja: "1 つの画面に 1 つのメインアクション。ラベルには結果を書く。",
     },
     related: ["click", "affordance", "active-state", "disabled-state", "loading-state"],
-    sources: ["nng-button-states", "hig-buttons", "m3-buttons", "apg-button"],
+    sources: ["nng-button-states", "hig-buttons", "m3-buttons", "apg-button", "mdn-button"],
     aliases: ["ปุ่ม", "บัตตัน", "cta", "call to action", "primary button", "ボタン", "按钮"],
   },
   {
@@ -251,7 +251,7 @@ export const componentConcepts: Concept[] = [
       ja: "選択肢が少ないなら全部見せる。多いときにだけ畳む。",
     },
     related: ["input-field", "button", "usability"],
-    sources: ["nng-listbox-dropdown", "nng-dropdowns", "nng-radio-checkbox", "apg-combobox"],
+    sources: ["nng-listbox-dropdown", "nng-dropdowns", "nng-radio-checkbox", "apg-combobox", "hig-pull-down", "m3-menus", "govuk-radios"],
     aliases: ["ดรอปดาวน์", "เมนูเลื่อนลง", "select", "picker", "listbox", "ドロップダウン", "下拉"],
   },
   {

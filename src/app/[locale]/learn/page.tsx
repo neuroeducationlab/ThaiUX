@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { getI18n } from "@/i18n/server";
 import { pick } from "@/i18n/localized";
-import { alternatesFor } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { routes } from "@/lib/routes";
 import { Container } from "@/components/ui/layout";
 import { PageHeader } from "@/components/layout/page-header";
@@ -12,7 +12,7 @@ import { modules } from "@/content/modules";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, dict } = await getI18n();
-  return { title: dict.learn.title, description: dict.learn.subtitle, alternates: alternatesFor(locale, "/learn") };
+  return pageMetadata(locale, "/learn", dict.learn.title, dict.learn.subtitle);
 }
 
 export default async function LearnPage() {
