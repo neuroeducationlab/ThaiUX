@@ -76,4 +76,49 @@ test("mobile tab bar reaches every section @mobile", async ({ page }) => {
   await tabs.getByRole("link", { name: "Lab" }).click();
   await expect(page).toHaveURL(/\/en\/lab$/);
   await expect(tabs.getByRole("link", { name: "Lab" })).toHaveAttribute("aria-current", "page");
+  await tabs.getByRole("link", { name: "Effects" }).click();
+  await expect(page).toHaveURL(/\/en\/effects$/);
+  await expect(tabs.getByRole("link", { name: "Effects" })).toHaveAttribute("aria-current", "page");
+});
+
+test.describe("Effects library", () => {
+  test("category filter lives in the URL", async ({ page }) => {
+    await page.goto("/en/effects?category=cursor");
+    await expect(page.locator("#effects article")).toHaveCount(4);
+    await page.getByRole("group", { name: "Category" }).getByRole("button", { name: /^All/ }).click();
+    await expect(page).toHaveURL(/\/en\/effects$/);
+    await expect(page.locator("#effects article")).toHaveCount(19);
+  });
+
+  test("copying a prompt puts the five-part formula on the clipboard", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+    await page.goto("/en/effects/magnetic");
+    await page.getByRole("radio", { name: "HTML + CSS + JS" }).check({ force: true });
+    await expect(page.getByText(/as a single HTML file/)).toBeVisible();
+    await page.locator("#prompt").getByRole("button", { name: "Copy prompt" }).click();
+    await expect(page.getByText("Copied — paste it into your AI coding tool")).toBeVisible();
+    const text = await page.evaluate(() => navigator.clipboard.readText());
+    expect(text).toMatch(/^Create a magnetic button component as a single HTML file/);
+    for (const part of ["Effect:", "Trigger:", "Feel:", "Purpose:", "Guardrails:"]) expect(text).toContain(part);
+  });
+
+  test("playing an effect counts as tried", async ({ page }) => {
+    await page.goto("/en/effects/celebrate");
+    const stage = page.getByRole("region", { name: "Celebration" });
+    await stage.getByRole("button", { name: /Like/ }).click();
+    await stage.getByRole("button", { name: "Finish course" }).click();
+    await expect(stage.getByText("Course complete!")).toBeVisible();
+    await expect(stage.getByText("Tried")).toBeVisible();
+  });
+
+  test("reduced motion starts effects paused, with a way to play them", async ({ browser, baseURL }) => {
+    const context = await browser.newContext({ baseURL, reducedMotion: "reduce" });
+    const page = await context.newPage();
+    await page.goto("/en/effects/water-ripple");
+    const play = page.getByRole("button", { name: "Play effects" }).last();
+    await expect(page.getByText("Paused")).toBeVisible();
+    await play.click();
+    await expect(page.getByText("Paused")).toHaveCount(0);
+    await context.close();
+  });
 });

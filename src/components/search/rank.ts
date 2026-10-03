@@ -1,4 +1,4 @@
-export type SearchKind = "concept" | "module" | "lab" | "page";
+export type SearchKind = "concept" | "module" | "lab" | "effect" | "page";
 
 export type SearchItem = {
   id: string;

@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useMemo, useRef, useState } from "react";
-import { ArrowRight, BookA, BookOpen, CornerDownLeft, FlaskConical, Search, X, type LucideIcon } from "lucide-react";
+import { ArrowRight, BookA, BookOpen, CornerDownLeft, FlaskConical, Search, Sparkles, X, type LucideIcon } from "lucide-react";
 import { useI18n } from "@/i18n/client";
 import { format } from "@/i18n/localized";
 import { cn } from "@/lib/cn";
@@ -14,6 +14,7 @@ const icons: Record<SearchKind, LucideIcon> = {
   concept: BookA,
   module: BookOpen,
   lab: FlaskConical,
+  effect: Sparkles,
   page: ArrowRight,
 };
 
@@ -68,7 +69,7 @@ export function SearchPalette({ items, popular }: { items: SearchItem[]; popular
   }, [items, popular, query]);
 
   const groups = useMemo(() => {
-    const order: SearchKind[] = ["concept", "module", "lab", "page"];
+    const order: SearchKind[] = ["concept", "effect", "module", "lab", "page"];
     return order
       .map((kind) => ({ kind, items: results.filter((r) => r.kind === kind) }))
       .filter((g) => g.items.length > 0);
@@ -88,6 +89,7 @@ export function SearchPalette({ items, popular }: { items: SearchItem[]; popular
     concept: dict.search.groupConcept,
     module: dict.search.groupModule,
     lab: dict.search.groupLab,
+    effect: dict.search.groupEffect,
     page: dict.search.groupPage,
   };
 

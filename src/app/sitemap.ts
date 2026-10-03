@@ -4,6 +4,7 @@ import { site } from "@/lib/site";
 import { glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
+import { effects } from "@/content/effects";
 
 /** Every page in every language, with hreflang alternates for each. */
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -15,6 +16,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...glossary.map((c) => `/glossary/${c.id}`),
     "/lab",
     ...experiments.map((e) => `/lab/${e.id}`),
+    "/effects",
+    ...effects.map((e) => `/effects/${e.id}`),
     "/about",
     "/about/case-study",
     "/design-system",

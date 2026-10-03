@@ -13,6 +13,7 @@ Every concept on UXLab is something you can touch: you try it first, then learn 
 | **Learn** | 8 short modules — What is UX → Understanding users → Information architecture → Interface design → Interaction design → Prototyping → Usability testing → Accessible design |
 | **Glossary** | 22 concepts (interactions, components, principles, states), each with a live demo, IPA, local names, common mistakes and sources |
 | **Molly’s UX Lab** | UX Detective · Make It Better · Which Would You Choose? · Build a Button |
+| **Effects** | 19 live interaction effects — water ripple, X-ray lens, flower cursor, particle text, magnetic button, holographic tilt and more — each with why it works, when to use or avoid it, and a copy-ready AI prompt built on a five-part formula; plus a prompt builder |
 | **About** | Story, principles, privacy, and a 114-source reading list with the copyright policy |
 | **Case study** | Problem → research → users → IA → decisions → iteration → outcome → reflection |
 | **Design system** | Tokens read live from the stylesheet, with WCAG contrast ratios; type, space, motion, components |
@@ -21,9 +22,9 @@ Also: ⌘K search across languages and scripts, light/dark themes, on-device pro
 
 ## Quality bar
 
-- **0** axe-core WCAG 2.2 A/AA violations across 16 key pages × 4 languages × light/dark (128 checks)
+- **0** axe-core WCAG 2.2 A/AA violations across 19 key pages × 4 languages × light/dark (152 checks)
 - Keyboard-complete: every focus stop shows a visible ring (scripted Tab pass, 10 pages)
-- 164 statically generated pages; each interactive demo is code-split
+- 244 statically generated pages; each interactive demo is code-split, and effects load just before they scroll into view and pause off-screen
 - Respects `prefers-reduced-motion` and forced-colours mode
 
 ## Tech
@@ -64,6 +65,7 @@ src/
     demos/                 22 concept demos + DemoFrame (the “experience → name it” pattern)
     examples/              Module examples
     lab/                   The four Lab experiments
+    effects/               Effects library: stage engine, cards, prompt block & builder, 19 demos
     home/ design-system/   Page-specific components
   content/                 Typed content: glossary, modules, lab, sources, page copy
   i18n/                    Locale config, dictionaries (EN defines the shape), helpers
@@ -79,6 +81,7 @@ tests/                     Playwright suites (smoke, a11y, flows, content)
 - **Concept:** add it to `src/content/glossary/<category>.ts`, add or reuse a demo in `src/components/demos/registry.tsx`, then `npm run check:content`.
 - **Module:** add a file to `src/content/modules/` and list it in `index.ts`.
 - **Lab experiment:** metadata in `src/content/lab/index.ts`, component in `src/components/lab/`, register in `lab/registry.tsx`.
+- **Effect:** add it to `src/content/effects.ts` (the prompt follows the five-part formula), add a demo in `src/components/effects/demos/` built on `Stage` and `useStagePointer`, register it in `effects/registry.tsx`, then `npm run check:content`.
 - **Language:** add it to `src/i18n/config.ts` and a dictionary in `src/i18n/dictionaries/`; content falls back to English until translated.
 
 Thai and English are required for every piece of content; Chinese and Japanese fall back to English. Details: [docs/process/05-content-plan.md](docs/process/05-content-plan.md).

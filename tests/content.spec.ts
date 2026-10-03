@@ -2,6 +2,7 @@ import { expect, test } from "@playwright/test";
 import { glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
+import { effectCategories, effects } from "@/content/effects";
 import { sources } from "@/content/sources";
 import type { Localized } from "@/i18n/localized";
 
@@ -35,7 +36,7 @@ function emptyFields(value: unknown, path: string, out: string[] = []): string[]
 
 test.describe("content integrity", () => {
   test("ids are unique and URL-safe", () => {
-    for (const ids of [glossary.map((c) => c.id), modules.map((m) => m.id), experiments.map((e) => e.id)]) {
+    for (const ids of [glossary.map((c) => c.id), modules.map((m) => m.id), experiments.map((e) => e.id), effects.map((e) => e.id)]) {
       expect(new Set(ids).size).toBe(ids.length);
       for (const id of ids) expect(id).toMatch(/^[a-z0-9]+(-[a-z0-9]+)*$/);
     }
@@ -64,6 +65,17 @@ test.describe("content integrity", () => {
     for (const e of experiments) for (const c of e.concepts) expect(conceptIds.has(c), `${e.id} → concept "${c}"`).toBe(true);
   });
 
+  test("effects link to real concepts and have complete prompts", () => {
+    const categories = new Set(effectCategories.map((c) => c.id));
+    for (const e of effects) {
+      expect(categories.has(e.category), `${e.id} → category "${e.category}"`).toBe(true);
+      expect(e.related.length, `${e.id} needs related concepts`).toBeGreaterThan(0);
+      for (const c of e.related) expect(conceptIds.has(c), `${e.id} → concept "${c}"`).toBe(true);
+      for (const [part, text] of Object.entries(e.prompt)) expect(text.trim().length, `${e.id} prompt.${part}`).toBeGreaterThan(10);
+      expect(e.prompt.guardrails, `${e.id} guardrails mention reduced motion`).toMatch(/reduced-motion|reduced motion/);
+    }
+  });
+
   test("every source is cited somewhere", () => {
     const cited = new Set<string>([...glossary.flatMap((c) => c.sources), ...modules.flatMap((m) => m.sources)]);
     const unused = [...sourceIds].filter((s) => !cited.has(s));
@@ -77,6 +89,6 @@ test.describe("content integrity", () => {
   });
 
   test("no empty translations", () => {
-    expect(emptyFields({ glossary, modules, experiments }, "content")).toEqual([]);
+    expect(emptyFields({ glossary, modules, experiments, effects }, "content")).toEqual([]);
   });
 });

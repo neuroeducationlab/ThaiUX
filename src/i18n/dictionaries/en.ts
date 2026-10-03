@@ -26,6 +26,7 @@ const en = {
     learn: "Learn",
     glossary: "Glossary",
     lab: "Lab",
+    effects: "Effects",
     about: "About",
   },
   search: {
@@ -38,6 +39,7 @@ const en = {
     groupConcept: "Concepts",
     groupModule: "Modules",
     groupLab: "Lab experiments",
+    groupEffect: "Effects",
     groupPage: "Pages",
     keyNavigate: "navigate",
     keyOpen: "open",
@@ -86,6 +88,7 @@ const en = {
     conceptsExperienced: "{done} of {total} concepts experienced",
     modulesCompleted: "{done} of {total} modules completed",
     labsCompleted: "{done} of {total} experiments completed",
+    effectsTried: "{done} of {total} effects tried",
     deviceOnly: "Saved on this device only. No account, no tracking.",
     reset: "Reset progress",
     resetConfirm: "Reset all progress on this device? This can’t be undone.",
