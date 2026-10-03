@@ -126,33 +126,23 @@ export default async function AboutPage() {
             <div>
               <h3 className="type-title">{pick(a.sources.readingList, locale)}</h3>
               <p className="type-caption mt-1">{format(pick(a.sources.count, locale), { n: total, p: groups.length })}</p>
-              <div className="mt-6 space-y-3">
+              {/* Publishers at a glance — one line per source list.
+                  Hyperlink the publisher name to its index when it has one,
+                  so curious readers go straight there without a reveal step. */}
+              <ul lang="en" className="mt-6 divide-y divide-line overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface">
                 {groups.map(([publisher, list]) => (
-                  <details key={publisher} className="group rounded-[var(--radius-lg)] border border-line bg-surface">
-                    <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 px-5 py-3 font-medium text-ink [&::-webkit-details-marker]:hidden">
-                      <span lang="en">{publisher}</span>
-                      <span className="flex items-center gap-2 text-[0.8125rem] text-ink-2">
-                        <span className="tabular">{list.length}</span>
-                        <ArrowRight className="size-4 transition-transform duration-200 group-open:rotate-90 motion-reduce:transition-none" aria-hidden />
-                      </span>
-                    </summary>
-                    <ul className="divide-y divide-line border-t border-line">
-                      {list.map((s) => (
-                        <li key={s.url}>
-                          <a href={s.url} target="_blank" rel="noreferrer" className="group/link flex items-start justify-between gap-4 px-5 py-3 transition-colors hover:bg-surface-2">
-                            <span className="min-w-0" lang="en">
-                              <span className="block text-[0.9375rem] text-ink group-hover/link:underline group-hover/link:underline-offset-4">{s.title}</span>
-                              {s.author ? <span className="block text-[0.8125rem] text-ink-2">{s.author}</span> : null}
-                            </span>
-                            <ArrowUpRight className="mt-1 size-4 shrink-0 text-ink-3" aria-hidden />
-                            <span className="sr-only">{dict.a11y.newTab}</span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
+                  <li key={publisher} className="flex items-center justify-between gap-3 px-5 py-3">
+                    <span className="min-w-0 truncate font-medium text-ink">{publisher}</span>
+                    <span className="tabular shrink-0 text-[0.8125rem] font-semibold text-ink-2">{list.length}</span>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <p className="type-caption mt-3">
+                <a href={`${site.repo}/blob/main/src/content/sources.ts`} target="_blank" rel="noreferrer" className="font-semibold text-accent-ink underline-offset-4 hover:underline">
+                  {pick(a.sources.openAll, locale)} <ArrowUpRight className="inline size-3.5 align-[-0.1em]" aria-hidden />
+                </a>
+                <span className="sr-only">{dict.a11y.newTab}</span>
+              </p>
             </div>
           </div>
         </Container>

@@ -168,5 +168,6 @@ export const about = {
       ja: "{p} の発行元による {n} 件の出典",
     },
     issue: { th: "แจ้งปัญหาบน GitHub", en: "Report an issue on GitHub", zh: "在 GitHub 上反馈问题", ja: "GitHub で問題を報告" },
+    openAll: { th: "ดูทุกแหล่งพร้อมลิงก์บน GitHub", en: "See every source with links on GitHub", zh: "在 GitHub 上查看所有带链接的来源", ja: "すべての出典とリンクを GitHub で見る" },
   },
 };

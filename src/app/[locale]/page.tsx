@@ -121,19 +121,15 @@ export default async function Home() {
             </div>
           </div>
 
-          <div className="mt-20">
-            <h3 className="type-label mb-5">{pick(h.what.pathTitle, locale)}</h3>
-            <ol className="grid grid-cols-2 gap-3 lg:grid-cols-4">
+          {/* One inline row instead of a card grid: shorter, and the arrow is the diagram. */}
+          <div className="mt-14">
+            <p className="type-label mb-3">{pick(h.what.pathTitle, locale)}</p>
+            <ol className="flex flex-wrap items-baseline gap-x-2 gap-y-1 text-[0.9375rem] text-ink-2 sm:text-[1rem]">
               {h.what.path.map((step, i) => (
-                <li key={i} className="relative rounded-[var(--radius-lg)] border border-line bg-surface p-4 sm:p-5">
-                  <span className="tabular text-[0.8125rem] font-semibold text-accent-ink" aria-hidden>
-                    0{i + 1}
-                  </span>
-                  <p className="type-title mt-1">{pick(step.title, locale)}</p>
-                  <p className="mt-1 text-[0.9375rem] text-ink-2">{pick(step.desc, locale)}</p>
-                  {i < h.what.path.length - 1 ? (
-                    <ArrowRight className="absolute top-1/2 -right-[0.6rem] z-10 hidden size-4 -translate-y-1/2 rounded-full bg-bg text-ink-3 lg:block" aria-hidden />
-                  ) : null}
+                <li key={i} className="flex items-baseline gap-2">
+                  {i > 0 ? <ArrowRight className="size-3.5 self-center text-ink-3" aria-hidden /> : null}
+                  <span className="font-semibold text-ink">{pick(step.title, locale)}</span>
+                  <span className="text-ink-2">{pick(step.desc, locale)}</span>
                 </li>
               ))}
             </ol>
