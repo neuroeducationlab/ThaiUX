@@ -57,7 +57,7 @@ export default async function CaseStudyPage() {
             <Info className="mt-0.5 size-4 shrink-0 text-accent-ink" aria-hidden /> {cs.notice[locale]}
           </p>
         ) : null}
-        <header className="max-w-4xl pb-12">
+        <header className="max-w-4xl pb-10">
           <p lang="en" className="type-label mb-3 text-accent-ink">{pick(cs.eyebrow, locale)}</p>
           <h1 lang={langOf(cs.title)} className="type-h1">{pick(cs.title, locale)}</h1>
           <p lang={langOf(cs.question)} className="mt-6 text-[clamp(1.25rem,1.1rem+0.6vw,1.625rem)] leading-snug font-medium text-ink">{pick(cs.question, locale)}</p>
@@ -70,6 +70,18 @@ export default async function CaseStudyPage() {
             ))}
           </dl>
         </header>
+
+        <section aria-labelledby="tldr-h" className="mb-14 border-t border-line pt-6">
+          <h2 id="tldr-h" className="type-label mb-5">{pick(L.tldr, locale)}</h2>
+          <dl className="grid gap-6 md:grid-cols-3 md:gap-8">
+            {cs.tldr.map((t) => (
+              <div key={pick(t.label, "en")} className="min-w-0">
+                <dt className="type-label text-accent-ink">{pick(t.label, locale)}</dt>
+                <dd lang={langOf(t.text)} className="mt-2 text-[0.9375rem] leading-relaxed text-ink">{pick(t.text, locale)}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
       </Container>
 
       <Container size="wide" className="grid gap-12 lg:grid-cols-[13rem_minmax(0,1fr)] xl:gap-16">
@@ -79,30 +91,41 @@ export default async function CaseStudyPage() {
           </div>
         </aside>
 
-        <div className="min-w-0 space-y-16">
+        <div className="min-w-0 space-y-10 md:space-y-14">
           {cs.sections.map((s, i) => (
             <section key={s.id} id={s.id} aria-labelledby={`${s.id}-h`} lang={langOf(s.title)} className="scroll-mt-24">
               <p className="tabular text-[0.8125rem] font-semibold text-accent-ink" aria-hidden>
                 {String(i + 1).padStart(2, "0")}
               </p>
               <h2 id={`${s.id}-h`} className="type-h2 mt-1">{pick(s.title, locale)}</h2>
-              <div className="measure-wide mt-5 space-y-4 text-[1.0625rem] leading-relaxed text-ink-2">
+              <div className="measure-wide mt-4 space-y-3 text-[1.0625rem] leading-relaxed text-ink-2">
                 {pick(s.body, locale).map((p, j) => (
                   <p key={j}>{p}</p>
                 ))}
               </div>
 
+              {s.id === "users" ? (
+                <ul className="mt-5 grid gap-3 md:grid-cols-3">
+                  {cs.personas.map((p) => (
+                    <li key={pick(p.name, "en")} className="rounded-[var(--radius-lg)] border border-line bg-surface p-4">
+                      <p lang={langOf(p.name)} className="font-semibold text-ink">{pick(p.name, locale)}</p>
+                      <p lang={langOf(p.note)} className="mt-1 text-[0.9375rem] text-ink-2">{pick(p.note, locale)}</p>
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
+
               {s.id === "ux" ? (
-                <ul className="mt-8 grid gap-4 md:grid-cols-2">
+                <ul className="mt-6 grid gap-3 md:grid-cols-2">
                   {cs.decisions.map((d) => (
-                    <li key={pick(d.title, "en")} className="rounded-[var(--radius-lg)] border border-line bg-surface p-6">
+                    <li key={pick(d.title, "en")} className="rounded-[var(--radius-lg)] border border-line bg-surface p-5">
                       <p className="type-label text-accent-ink">{pick(L.decision, locale)}</p>
                       <h3 className="type-title mt-1">{pick(d.title, locale)}</h3>
-                      <p className="mt-3 text-[0.9375rem] text-ink">
+                      <p className="mt-2.5 text-[0.9375rem] text-ink">
                         <span className="font-semibold">{pick(L.why, locale)}: </span>
                         {pick(d.why, locale)}
                       </p>
-                      <p className="mt-2 text-[0.9375rem] text-ink-2">
+                      <p className="mt-1.5 text-[0.9375rem] text-ink-2">
                         <span className="font-semibold">{pick(L.tradeoff, locale)}: </span>
                         {pick(d.tradeoff, locale)}
                       </p>
@@ -112,17 +135,17 @@ export default async function CaseStudyPage() {
               ) : null}
 
               {s.id === "iteration" ? (
-                <ol className="mt-8 space-y-3">
+                <ol className="mt-6 space-y-3">
                   {cs.iterations.map((it, j) => (
-                    <li key={j} className="grid gap-4 rounded-[var(--radius-lg)] border border-line bg-surface p-6 md:grid-cols-2 md:gap-8">
+                    <li key={j} className="grid gap-3 rounded-[var(--radius-lg)] border border-line bg-surface p-5 md:grid-cols-2 md:gap-8">
                       <div>
                         <p className="type-label text-error">{pick(L.finding, locale)}</p>
-                        <p className="mt-1.5 text-ink">{pick(it.finding, locale)}</p>
+                        <p className="mt-1 text-ink">{pick(it.finding, locale)}</p>
                       </div>
                       <div>
                         <p className="type-label text-success">{pick(L.fix, locale)}</p>
-                        <p className="mt-1.5 text-ink">{pick(it.fix, locale)}</p>
-                        <p className="mt-2 text-[0.8125rem] font-medium text-accent-ink">{pick(it.principle, locale)}</p>
+                        <p className="mt-1 text-ink">{pick(it.fix, locale)}</p>
+                        <p className="mt-1.5 text-[0.8125rem] font-medium text-accent-ink">{pick(it.principle, locale)}</p>
                       </div>
                     </li>
                   ))}
@@ -130,7 +153,7 @@ export default async function CaseStudyPage() {
               ) : null}
 
               {s.id === "outcome" ? (
-                <dl lang={langOf(L.stats.concepts)} className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-lg)] border border-line bg-line sm:grid-cols-3">
+                <dl lang={langOf(L.stats.concepts)} className="mt-6 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius-lg)] border border-line bg-line sm:grid-cols-3">
                   {stats.map((st) => (
                     <div key={pick(st.label, "en")} className="flex flex-col-reverse bg-surface p-5">
                       <dt className="mt-1 text-[0.875rem] text-ink-2">{pick(st.label, locale)}</dt>
