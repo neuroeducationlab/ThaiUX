@@ -25,11 +25,13 @@ export async function copyText(text: string): Promise<boolean> {
 export function CopyPromptButton({
   parts,
   variant = "primary",
+  size = "md",
   className,
   onCopied,
 }: {
   parts: PromptParts;
   variant?: "primary" | "quiet";
+  size?: "sm" | "md";
   className?: string;
   onCopied?: () => void;
 }) {
@@ -50,7 +52,8 @@ export function CopyPromptButton({
         }
       }}
       className={cn(
-        "inline-flex min-h-11 items-center gap-2 rounded-full px-4 text-[0.9375rem] font-semibold transition-[background-color,transform] duration-150 active:scale-[0.97]",
+        "inline-flex items-center gap-2 rounded-full font-semibold transition-[background-color,transform] duration-150 active:scale-[0.97]",
+        size === "md" ? "min-h-11 px-4 text-[0.9375rem]" : "min-h-9 px-3.5 text-[0.8125rem] shadow-md",
         variant === "primary" ? "bg-accent text-on-accent hover:bg-accent-hover" : "border border-line-strong bg-surface text-ink hover:bg-surface-2",
         className,
       )}

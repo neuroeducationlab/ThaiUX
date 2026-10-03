@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Clock, HeartHandshake, Shapes } from "lucide-react";
+import { ArrowRight, Clock, HeartHandshake, Shapes, Sparkles } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { localeMeta, locales } from "@/i18n/config";
 import { format, pick } from "@/i18n/localized";
@@ -12,20 +12,36 @@ import { ConceptDemo } from "@/components/demos/registry";
 import { ProgressSummary } from "@/components/progress/progress-summary";
 import { LabThumb } from "@/components/lab/lab-thumb";
 import { LabDoneBadge } from "@/components/lab/lab-done-badge";
+import { PlaygroundProvider } from "@/components/effects/provider";
+import { EffectsRail, type RailItem } from "@/components/effects/effects-rail";
 import { categoryOrder, conceptsIn, getConcept, glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
+import { effectCategories, effects, getEffect } from "@/content/effects";
+import { effectsCopy } from "@/content/effects-copy";
 import { home } from "@/content/home";
 
 /**
- * Home — the brief’s eight sections in order: hero, what is UX, explore
- * concepts, interactive preview, the Lab, learning path, about (+ footer
- * from the layout). Every section ends in one clear next step.
+ * Home — the brief’s sections in order: hero, the Effects library (promoted
+ * right after the hero so people find it), what is UX, explore concepts,
+ * interactive preview, the Lab, learning path, about (+ footer from the
+ * layout). Every section ends in one clear next step.
  */
 export default async function Home() {
   const { locale, dict } = await getI18n();
   const h = home;
   const featured = getConcept("affordance");
+
+  const railItems: RailItem[] = h.effects.featured
+    .map((id) => getEffect(id))
+    .filter((e): e is NonNullable<typeof e> => !!e)
+    .map((e) => ({
+      id: e.id,
+      name: e.name,
+      categoryLabel: pick(effectCategories.find((c) => c.id === e.category)!.label, locale),
+      href: routes.effect(locale, e.id),
+      prompt: e.prompt,
+    }));
 
   const stats = [
     { n: glossary.length, label: pick(h.hero.stats.concepts, locale) },
@@ -38,12 +54,18 @@ export default async function Home() {
     <>
       {/* 1 · Hero */}
       <section aria-labelledby="hero-h">
-        <Container size="wide" className="grid items-center gap-12 pt-10 pb-20 md:pt-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16 lg:pt-20 lg:pb-28">
+        <Container size="wide" className="grid items-center gap-12 pt-10 pb-12 md:pt-16 md:pb-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16 lg:pt-20 lg:pb-20">
           <div>
-            <p className="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-3.5 py-1.5 text-[0.8125rem] font-medium text-ink-2 shadow-xs">
-              <span className="size-1.5 rounded-full bg-accent" aria-hidden />
-              {pick(h.hero.eyebrow, locale)}
-            </p>
+            <Link
+              href={routes.effects(locale)}
+              className="group mb-6 inline-flex max-w-full items-center gap-2 rounded-full border border-line bg-surface py-1 pr-3.5 pl-1 text-[0.8125rem] font-medium text-ink shadow-xs transition-[border-color,box-shadow] duration-200 hover:border-accent/40 hover:shadow-sm"
+            >
+              <span className="shrink-0 rounded-full bg-accent px-2 py-0.5 text-[0.6875rem] font-bold tracking-wide text-on-accent uppercase">
+                {pick(h.effects.badge, locale)}
+              </span>
+              <span className="truncate">{format(pick(h.effects.announce, locale), { n: effects.length })}</span>
+              <ArrowRight className="size-3.5 shrink-0 text-accent-ink transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden />
+            </Link>
             <h1 id="hero-h" className="type-display text-[clamp(2.5rem,1.5rem+3.6vw,4.75rem)]">
               {locale === "en" ? (
                 <>
@@ -80,7 +102,43 @@ export default async function Home() {
         </Container>
       </section>
 
-      {/* 2 · What is UX? */}
+      {/* 2 · Effects library — promoted right after the hero */}
+      <PlaygroundProvider>
+        <Section aria-labelledby="effects-h" className="border-t border-line pt-12 md:pt-16">
+          <Container size="wide">
+            <SectionHeader
+              id="effects-h"
+              eyebrow={
+                <span className="inline-flex items-center gap-2">
+                  <Sparkles className="size-4" aria-hidden /> {pick(h.effects.eyebrow, locale)}
+                </span>
+              }
+              title={pick(h.effects.title, locale)}
+              lead={format(pick(h.effects.lead, locale), { n: effects.length })}
+              action={
+                <ButtonLink href={routes.effects(locale)}>
+                  {format(pick(h.effects.cta, locale), { n: effects.length })} <ArrowRight className="size-4" aria-hidden />
+                </ButtonLink>
+              }
+            />
+            <EffectsRail
+              items={railItems}
+              labels={{
+                hintMouse: pick(h.effects.hintMouse, locale),
+                hintTouch: pick(h.effects.hintTouch, locale),
+                pause: pick(h.effects.pause, locale),
+                play: pick(h.effects.play, locale),
+                prev: pick(h.effects.prev, locale),
+                next: pick(h.effects.next, locale),
+                region: pick(h.effects.region, locale),
+                howToBuild: pick(effectsCopy.howToBuild, locale),
+              }}
+            />
+          </Container>
+        </Section>
+      </PlaygroundProvider>
+
+      {/* 3 · What is UX? */}
       <Section aria-labelledby="what-h" className="border-t border-line">
         <Container size="wide">
           <div className="grid gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:gap-20">
@@ -137,7 +195,7 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* 3 · Explore concepts */}
+      {/* 4 · Explore concepts */}
       <Section aria-labelledby="explore-h" className="pt-0 md:pt-0">
         <Container size="wide">
           <SectionHeader
@@ -183,7 +241,7 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* 4 · Interactive preview */}
+      {/* 5 · Interactive preview */}
       {featured ? (
         <Section tone="tinted" aria-labelledby="preview-h">
           <Container size="wide" className="grid gap-10 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] lg:items-center lg:gap-16">
@@ -211,7 +269,7 @@ export default async function Home() {
         </Section>
       ) : null}
 
-      {/* 5 · Molly’s UX Lab */}
+      {/* 6 · Molly’s UX Lab */}
       <Section aria-labelledby="lab-h">
         <Container size="wide">
           <SectionHeader
@@ -252,7 +310,7 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* 6 · Learning path */}
+      {/* 7 · Learning path */}
       <Section tone="tinted" aria-labelledby="path-h">
         <Container size="wide" className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:gap-16">
           <div>
@@ -287,7 +345,7 @@ export default async function Home() {
         </Container>
       </Section>
 
-      {/* 7 · About the project */}
+      {/* 8 · About the project */}
       <Section aria-labelledby="about-h">
         <Container size="narrow" className="text-center">
           <Eyebrow>{pick(h.about.eyebrow, locale)}</Eyebrow>

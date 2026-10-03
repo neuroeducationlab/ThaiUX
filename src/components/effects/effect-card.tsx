@@ -32,7 +32,7 @@ export type EffectSummary = {
 };
 
 /** Mount just before the stage scrolls into view; know when it’s visible. */
-function useInView(ref: React.RefObject<HTMLElement | null>) {
+export function useInView(ref: React.RefObject<HTMLElement | null>) {
   const [near, setNear] = useState(false);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -115,7 +115,7 @@ function Hint({ text, hidden }: { text: string; hidden: boolean }) {
   );
 }
 
-function Placeholder() {
+export function Placeholder() {
   return <div aria-hidden className="demo-canvas size-full" />;
 }
 

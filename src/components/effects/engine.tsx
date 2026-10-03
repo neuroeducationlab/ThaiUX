@@ -21,6 +21,8 @@ export type EffectEnv = {
   id: string;
   /** Detail page: bigger stage that captures touch gestures. */
   full: boolean;
+  /** Inside a horizontal rail: leave every pan to the browser so the rail can scroll. */
+  rail?: boolean;
   /** Effects allowed (device preference or the person’s own choice). */
   motion: boolean;
   /** On screen and allowed to move. */
@@ -363,7 +365,7 @@ export function Stage({
       inert={!env.motion}
       className={cn(
         "relative size-full overflow-hidden outline-none select-none [-webkit-tap-highlight-color:transparent]",
-        env.full ? "touch-none" : "touch-pan-y",
+        env.full ? "touch-none" : env.rail ? "touch-auto" : "touch-pan-y",
         focusable && "focus-visible:shadow-[inset_0_0_0_3px_var(--focus)]",
         className,
       )}

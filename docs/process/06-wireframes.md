@@ -8,13 +8,17 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 ┌──────────────────────────────────────────────────────────────────────┐
 │ ▣ UXLab         Learn  Glossary  Lab  About        [Search ⌘K] [TH] │
 ├──────────────────────────────────────────────────────────────────────┤
-│ (• hands-on UX/UI school · 4 languages)      ┌ This button is a lesson ┐
+│ (NEW · 19 playable effects, with AI prompts →) ┌ This button is a lesson ┐
 │ เรียน UX/UI ผ่านการลอง                        │   ·  ·  [ Press me ]  ·  │
 │ ไม่ใช่แค่อ่าน                                    │ You just experienced …  │
 │ Learn UX by experiencing it.  (serif)         │ (Hover)(Active)(Focus)… │
 │ Lead sentence…                                └─────────────────────────┘
 │ [Start exploring →] [Enter the Lab]                                   │
 │ 22 concepts · 8 modules · 4 experiments · 4 languages                 │
+├──────────────────────────────────────────────────────────────────────┤
+│ NEW · Effects  Play first. Then build it with AI.  [See all 19 →]     │
+│ Point at a card to stop it, then play.               [‹] [❚❚] [›]     │
+│ ◄ [water][x-ray][wow][flower][holo][goo]…  drifts; hover = stop+play │
 ├──────────────────────────────────────────────────────────────────────┤
 │ WHAT IS UX?  UX is how it feels…          [UX · experience] [UI · …] │
 │ 01 Problem → 02 Decision → 03 Interaction → 04 Result                 │

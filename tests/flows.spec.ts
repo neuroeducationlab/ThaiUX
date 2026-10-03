@@ -122,3 +122,39 @@ test.describe("Effects library", () => {
     await context.close();
   });
 });
+
+test.describe("Home promotes the Effects library", () => {
+  test("the hero pill leads to the Effects library", async ({ page }) => {
+    await page.goto("/en");
+    await page.getByRole("link", { name: /19 playable effects, with AI prompts/ }).click();
+    await expect(page).toHaveURL(/\/en\/effects$/);
+  });
+
+  test("the rail drifts, stops under the pointer and reveals the prompt actions", async ({ page }) => {
+    await page.goto("/en");
+    const rail = page.getByRole("list", { name: "Featured effects" });
+    await rail.scrollIntoViewIfNeeded();
+    await page.mouse.move(2, 2);
+    const start = await rail.evaluate((el) => el.scrollLeft);
+    await expect.poll(() => rail.evaluate((el) => el.scrollLeft), { timeout: 8000 }).toBeGreaterThan(start + 10);
+
+    const tile = rail.getByRole("listitem").nth(1);
+    await tile.hover();
+    const actions = tile.getByRole("button", { name: "Copy prompt" }).locator("..");
+    await expect(actions).toHaveCSS("opacity", "1");
+    const stopped = await rail.evaluate((el) => el.scrollLeft);
+    await page.waitForTimeout(900);
+    expect(await rail.evaluate((el) => el.scrollLeft)).toBe(stopped);
+  });
+
+  test("the drift has a pause button", async ({ page }) => {
+    await page.goto("/en");
+    const rail = page.getByRole("list", { name: "Featured effects" });
+    await page.getByRole("button", { name: "Pause" }).click();
+    await expect(page.getByRole("button", { name: "Play" })).toBeVisible();
+    await page.mouse.move(2, 2);
+    const stopped = await rail.evaluate((el) => el.scrollLeft);
+    await page.waitForTimeout(1200);
+    expect(await rail.evaluate((el) => el.scrollLeft)).toBe(stopped);
+  });
+});

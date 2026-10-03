@@ -6,12 +6,6 @@ import type { Localized } from "@/i18n/localized";
  */
 export const home = {
   hero: {
-    eyebrow: {
-      th: "โรงเรียน UX/UI แบบลงมือทำ · 4 ภาษา",
-      en: "A hands-on UX/UI school · 4 languages",
-      zh: "动手学的 UX/UI 课堂 · 4 种语言",
-      ja: "手を動かして学ぶ UX/UI · 4 言語",
-    },
     /** In `en` the serif line *is* the headline, so it isn’t repeated. */
     title: {
       th: "เรียน UX/UI ผ่านการลอง ไม่ใช่แค่อ่าน",
@@ -91,6 +85,50 @@ export const home = {
       zh: "触摸屏没有悬停，焦点环也只在使用键盘时出现——这又是设计师需要考虑的两件事。",
       ja: "タッチ画面にはホバーがなく、フォーカスリングはキーボード操作のときだけ表示されます。どちらもデザイナーが考慮すること。",
     },
+  },
+
+  /** Promotion for the Effects library: the hero pill and the moving rail. */
+  effects: {
+    badge: { th: "ใหม่", en: "New", zh: "新", ja: "NEW" },
+    announce: {
+      th: "คลังเอฟเฟกต์ {n} แบบ พร้อม Prompt",
+      en: "{n} playable effects, with AI prompts",
+      zh: "{n} 种可玩特效，附 AI 提示词",
+      ja: "遊べるエフェクト {n} 種・プロンプト付き",
+    },
+    eyebrow: { th: "ใหม่ · คลังเอฟเฟกต์", en: "New · Effects library", zh: "新 · 特效库", ja: "NEW · エフェクト集" },
+    title: {
+      th: "เล่นก่อน แล้วสร้างเองด้วย AI",
+      en: "Play first. Then build it with AI.",
+      zh: "先玩，再用 AI 做出来。",
+      ja: "まず遊んで、AI で作ろう。",
+    },
+    lead: {
+      th: "{n} เอฟเฟกต์ที่ตอบสนองต่อเมาส์จริง ทุกอันมี Prompt ให้ก๊อปไปสร้างเองได้ทันที",
+      en: "{n} effects that answer your mouse — each with a prompt you can copy and build yourself.",
+      zh: "{n} 种会回应鼠标的特效——每一种都附有可以复制、自己动手做的提示词。",
+      ja: "マウスに反応する {n} のエフェクト。どれも、コピーして自分で作れるプロンプト付き。",
+    },
+    cta: { th: "ดูทั้ง {n} เอฟเฟกต์", en: "See all {n} effects", zh: "查看全部 {n} 种特效", ja: "{n} 種類すべて見る" },
+    hintMouse: {
+      th: "ชี้การ์ดเพื่อหยุด แล้วลองเล่นได้เลย",
+      en: "Point at a card to stop it, then play.",
+      zh: "把光标移到卡片上就会停下，然后开始玩。",
+      ja: "カードを指すと止まります。そのまま遊んでみて。",
+    },
+    hintTouch: {
+      th: "แตะการ์ดเพื่อเล่น ปัดเพื่อดูเพิ่ม",
+      en: "Tap a card to play, swipe for more.",
+      zh: "点按卡片开始玩，左右滑动查看更多。",
+      ja: "タップで遊べます。スワイプでもっと見る。",
+    },
+    pause: { th: "หยุดการเลื่อน", en: "Pause", zh: "暂停", ja: "一時停止" },
+    play: { th: "เลื่อนต่อ", en: "Play", zh: "继续", ja: "再生" },
+    prev: { th: "ดูการ์ดก่อนหน้า", en: "Previous cards", zh: "上一组卡片", ja: "前のカード" },
+    next: { th: "ดูการ์ดถัดไป", en: "Next cards", zh: "下一组卡片", ja: "次のカード" },
+    region: { th: "เอฟเฟกต์แนะนำ", en: "Featured effects", zh: "精选特效", ja: "おすすめのエフェクト" },
+    /** Shown in this order; the most striking first. */
+    featured: ["water-ripple", "xray", "particles", "flower-cursor", "tilt", "gooey", "magnetic", "spotlight"] as const,
   },
 
   what: {
