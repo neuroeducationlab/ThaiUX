@@ -7,9 +7,9 @@
 | Lint | `npm run lint` | ESLint (Next + React hooks rules) | ✅ clean |
 | Types | `npm run typecheck` | `next typegen` + `tsc --noEmit` (typed routes, content types) | ✅ clean |
 | Content | `npm run check:content` | ids, cross-links, sources, HTTPS, empty translations, effect prompts complete with reduced-motion guardrails (8 checks) | ✅ 8/8 |
-| Smoke | `npm run test:e2e` | 19 key pages × 4 languages: status 200, correct `html[lang]`, one `h1`, no console errors; localized 404 | ✅ 77/77 |
-| Accessibility | `npm run test:e2e` | axe-core, WCAG 2.2 A/AA tags, 19 pages × 4 languages × light/dark = 152 page checks | ✅ 0 violations |
-| User flows | `npm run test:e2e` | language detection (5 cases) + remembered choice, skip link, hero lesson, URL filter state, Build a Button completion, Detective, mobile tab bar; Effects: URL filter, copy prompt to clipboard (stack switch), tried progress, reduced-motion pause + opt-in | ✅ 16/16 |
+| Smoke | `npm run test:e2e` | 21 key pages × 4 languages: status 200, correct `html[lang]`, one `h1`, no console errors; localized 404 | ✅ 85/85 |
+| Accessibility | `npm run test:e2e` | axe-core, WCAG 2.2 A/AA tags, 21 pages × 4 languages × light/dark = 168 page checks | ✅ 0 violations |
+| User flows | `npm run test:e2e` | language detection (5 cases) + remembered choice, skip link, hero lesson, URL filter state, Build a Button completion, Detective, mobile tab bar; Effects: URL filter, copy prompt to clipboard (stack switch), tried progress, reduced-motion pause + opt-in; Home: Effects pill, drifting rail that stops on hover and reveals prompt actions, pause button | ✅ 19/19 |
 
 The e2e suites run against a production build (`npm run build && npm run test:e2e`).
 

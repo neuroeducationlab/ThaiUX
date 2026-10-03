@@ -31,8 +31,8 @@ export const caseStudy = {
     {
       label: { th: "ผลลัพธ์", en: "Outcome", zh: "成果", ja: "結果" },
       text: {
-        th: "22 แนวคิด · 8 บทเรียน · 4 Lab · 19 เอฟเฟกต์ · 4 ภาษา · WCAG 2.2 AA 0 ปัญหา",
-        en: "22 concepts · 8 modules · 4 Lab experiments · 19 effects · 4 languages · 0 WCAG 2.2 AA findings",
+        th: "22 แนวคิด · 8 บทเรียน · 4 Lab · 21 เอฟเฟกต์ · 4 ภาษา · WCAG 2.2 AA 0 ปัญหา",
+        en: "22 concepts · 8 modules · 4 Lab experiments · 21 effects · 4 languages · 0 WCAG 2.2 AA findings",
       },
     },
   ] as { label: Localized; text: Localized }[],
@@ -168,10 +168,10 @@ export const caseStudy = {
       title: { th: "ผลลัพธ์", en: "Outcome" },
       body: {
         th: [
-          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 19 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
+          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 21 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
         ],
         en: [
-          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 19 key pages, in all four languages, in light and dark mode (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
+          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 21 key pages, in all four languages, in light and dark mode (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
         ],
       },
     },

@@ -3,6 +3,7 @@ import { glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
 import { effectCategories, effects } from "@/content/effects";
+import { effectIds } from "@/content/effect-ids";
 import { sources } from "@/content/sources";
 import type { Localized } from "@/i18n/localized";
 
@@ -66,6 +67,7 @@ test.describe("content integrity", () => {
   });
 
   test("effects link to real concepts and have complete prompts", () => {
+    expect(effects.map((e) => e.id), "effect-ids.ts lists every effect, in gallery order").toEqual([...effectIds]);
     const categories = new Set(effectCategories.map((c) => c.id));
     for (const e of effects) {
       expect(categories.has(e.category), `${e.id} → category "${e.category}"`).toBe(true);

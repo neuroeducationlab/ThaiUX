@@ -128,7 +128,7 @@ export const home = {
     next: { th: "ดูการ์ดถัดไป", en: "Next cards", zh: "下一组卡片", ja: "次のカード" },
     region: { th: "เอฟเฟกต์แนะนำ", en: "Featured effects", zh: "精选特效", ja: "おすすめのエフェクト" },
     /** Shown in this order; the most striking first. */
-    featured: ["water-ripple", "xray", "particles", "flower-cursor", "tilt", "gooey", "magnetic", "spotlight"] as const,
+    featured: ["water-ripple", "parallax", "xray", "particles", "lanyard", "tilt", "flower-cursor", "gooey"] as const,
   },
 
   what: {

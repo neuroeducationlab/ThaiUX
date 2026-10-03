@@ -10,7 +10,7 @@
 │   └── /glossary/{term}          Concept: one-minute summary → demo → problem → how → in practice → mistake → takeaway
 ├── /lab                          Molly’s UX Lab (4 experiments) + Real-World UX (coming soon)
 │   └── /lab/{experiment}         ux-detective · make-it-better · which-would-you-choose · build-a-button
-├── /effects                      Effects library: 19 live effects, filter by category (?category=…), prompt formula, prompt builder
+├── /effects                      Effects library: 21 live effects, filter by category (?category=…), prompt formula, prompt builder
 │   └── /effects/{effect}         Effect: live stage → why it works / use it for / avoid it for → five-part AI prompt → related concepts
 ├── /about                        Story, principles, process, privacy, #sources (reading list + copyright)
 │   └── /about/case-study         Portfolio case study
@@ -18,7 +18,7 @@
 └── (anything else)               Localized 404
 ```
 
-`{locale}` ∈ `th` (default) · `en` · `zh` (Simplified) · `ja`. **61 pages per language, 244 pre-rendered.**
+`{locale}` ∈ `th` (default) · `en` · `zh` (Simplified) · `ja`. **63 pages per language, 252 pre-rendered.**
 
 ## Navigation model
 

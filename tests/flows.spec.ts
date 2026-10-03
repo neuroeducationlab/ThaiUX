@@ -87,7 +87,7 @@ test.describe("Effects library", () => {
     await expect(page.locator("#effects article")).toHaveCount(4);
     await page.getByRole("group", { name: "Category" }).getByRole("button", { name: /^All/ }).click();
     await expect(page).toHaveURL(/\/en\/effects$/);
-    await expect(page.locator("#effects article")).toHaveCount(19);
+    await expect(page.locator("#effects article")).toHaveCount(21);
   });
 
   test("copying a prompt puts the five-part formula on the clipboard", async ({ page, context }) => {
@@ -126,7 +126,7 @@ test.describe("Effects library", () => {
 test.describe("Home promotes the Effects library", () => {
   test("the hero pill leads to the Effects library", async ({ page }) => {
     await page.goto("/en");
-    await page.getByRole("link", { name: /19 playable effects, with AI prompts/ }).click();
+    await page.getByRole("link", { name: /21 playable effects, with AI prompts/ }).click();
     await expect(page).toHaveURL(/\/en\/effects$/);
   });
 

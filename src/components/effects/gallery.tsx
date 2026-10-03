@@ -16,10 +16,12 @@ import { usePlayground } from "./provider";
 type Filter = "all" | EffectCategory;
 
 export function EffectGrid({ items }: { items: EffectSummary[] }) {
+  // with an odd count, the last card spans both columns in the two-column layout, so rows always end complete
+  const odd = items.length % 2 === 1;
   return (
     <ul className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-      {items.map((item) => (
-        <li key={item.id} className="flex">
+      {items.map((item, i) => (
+        <li key={item.id} className={cn("flex", odd && i === items.length - 1 && "md:col-span-2 xl:col-span-1")}>
           <EffectCard item={item} />
         </li>
       ))}

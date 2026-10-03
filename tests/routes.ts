@@ -18,6 +18,8 @@ export const keyPaths = [
   "/effects",
   "/effects/water-ripple",
   "/effects/xray",
+  "/effects/parallax",
+  "/effects/lanyard",
   "/about",
   "/about/case-study",
   "/design-system",

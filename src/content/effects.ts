@@ -1,4 +1,5 @@
 import type { Localized } from "@/i18n/localized";
+import type { EffectId } from "./effect-ids";
 
 /**
  * Effects library — interaction effects you can play with, each with the
@@ -11,26 +12,7 @@ import type { Localized } from "@/i18n/localized";
 
 export type EffectCategory = "cursor" | "reveal" | "physics" | "depth" | "micro";
 
-export type EffectId =
-  | "water-ripple"
-  | "xray"
-  | "flower-cursor"
-  | "particles"
-  | "image-trail"
-  | "magnetic"
-  | "tilt"
-  | "spotlight"
-  | "gooey"
-  | "exploded-view"
-  | "hover-preview"
-  | "glow-cards"
-  | "spring-drag"
-  | "before-after"
-  | "kinetic-type"
-  | "text-scramble"
-  | "celebrate"
-  | "tactile"
-  | "hover-styles";
+export type { EffectId } from "./effect-ids";
 
 /** The five-part prompt formula: Effect · Trigger · Feel · Purpose · Guardrails. */
 export type PromptParts = {
@@ -247,6 +229,49 @@ export const effects: Effect[] = [
     },
   },
   {
+    id: "parallax",
+    category: "depth",
+    level: 1,
+    tech: ["SVG", "CSS", "JS"],
+    name: "Mouse parallax",
+    localName: { th: "พารัลแลกซ์ตามเมาส์", en: "Mouse parallax", zh: "鼠标视差", ja: "マウス・パララックス" },
+    tagline: {
+      th: "ทิวทัศน์หลายชั้นขยับด้วยความเร็วไม่เท่ากันตามเมาส์ ภาพแบน ๆ จึงมีมิติขึ้นมาทันที",
+      en: "Layers of a landscape move at different speeds as you move, and a flat picture gains depth.",
+      zh: "风景的各个图层随鼠标以不同速度移动，平面画面立刻有了纵深。",
+      ja: "風景のレイヤーがマウスに合わせて違う速さで動き、平らな絵に奥行きが生まれます。",
+    },
+    try: {
+      th: "เลื่อนเมาส์ช้า ๆ ไปทางซ้ายและขวา",
+      en: "Move slowly from side to side.",
+      zh: "左右慢慢移动鼠标。",
+      ja: "左右にゆっくり動かしてみましょう。",
+    },
+    why: {
+      th: "สมองตัดสินระยะจากความเร็ว ของใกล้เคลื่อนเร็วกว่าของไกล (Motion parallax) แค่ให้แต่ละชั้นขยับไม่เท่ากัน ภาพ 2 มิติก็ดูลึกทันที โดยไม่ต้องใช้วิดีโอหรือ 3D",
+      en: "Your brain judges distance by speed: near things move faster than far ones (motion parallax). Give each layer a different speed and a flat picture instantly looks deep — no video or 3D needed.",
+    },
+    use: {
+      th: "ฮีโร่ของหน้าแรก หน้าเล่าเรื่องแบรนด์ หรือภาพประกอบที่อยากให้คนหยุดดู",
+      en: "Hero sections, brand storytelling pages, or illustrations you want people to linger on.",
+    },
+    avoid: {
+      th: "การเคลื่อนไหวแรง ๆ หรือขยับเองโดยไม่มีใครสั่ง พารัลแลกซ์เป็นสาเหตุอันดับต้น ๆ ของอาการเวียนหัวจากหน้าจอ จึงต้องปิดเมื่อผู้ใช้ตั้งค่าลดการเคลื่อนไหว",
+      en: "Strong or automatic movement: parallax is one of the top causes of motion sickness on screens, so it must switch off when people ask for reduced motion.",
+    },
+    related: ["hover", "feedback", "accessibility"],
+    prompt: {
+      build: "a mouse-driven parallax landscape for a hero section",
+      effect:
+        "six stacked SVG layers (sky, sun, far mountains, hills with a pagoda, palm trees, foreground grass); each layer shifts in the opposite direction to the cursor, the nearest layers the most, so the scene gains depth.",
+      trigger: "the pointer’s position inside the hero, measured from its centre, sets the target offset; leaving the hero eases every layer back to the centre.",
+      feel: "offsets from 1% (sky) to 11% (foreground) of the width; ease toward the target with lerp 0.08 per frame so it floats and never snaps.",
+      purpose: "give a flat illustration depth and make the first screen feel alive without a video or a 3D library.",
+      guardrails:
+        "animate translate3d only, with will-change while active; oversize each layer so its edges never show; keep it subtle and driven by the user — nothing moves on its own — and switch it off completely for prefers-reduced-motion, because parallax is a common vestibular trigger; arrow keys can move it; on touch screens show the still scene.",
+    },
+  },
+  {
     id: "image-trail",
     category: "cursor",
     level: 2,
@@ -372,6 +397,49 @@ export const effects: Effect[] = [
       purpose: "make a reward or premium item feel special and real, like a collectible card.",
       guardrails:
         "drive everything with CSS variables updated in requestAnimationFrame; no tilt on touch devices or with prefers-reduced-motion; keep text large and high-contrast; add will-change only while the card is being hovered.",
+    },
+  },
+  {
+    id: "lanyard",
+    category: "physics",
+    level: 3,
+    tech: ["SVG", "JS"],
+    name: "Lanyard badge",
+    localName: { th: "ป้ายห้อยคอ", en: "Lanyard badge", zh: "挂绳工牌", ja: "ストラップ付きバッジ" },
+    tagline: {
+      th: "ป้ายห้อยคอที่จับเหวี่ยงได้จริง สายแกว่งตามแรงโน้มถ่วงก่อนค่อย ๆ นิ่ง",
+      en: "An event badge on a lanyard you can grab and fling; the strap swings with real gravity before it settles.",
+      zh: "挂在绳子上的工牌，可以抓住甩动；绳子随真实重力摆动，然后慢慢停下。",
+      ja: "つかんで投げられるストラップ付きバッジ。重力で揺れて、やがて落ち着きます。",
+    },
+    try: {
+      th: "จับป้ายแล้วลากไปด้านข้าง จากนั้นปล่อยมือ",
+      en: "Grab the badge, pull it to the side and let go.",
+      zh: "抓住工牌拉到一边，然后松手。",
+      ja: "バッジをつかんで横に引き、手を離してみましょう。",
+    },
+    why: {
+      th: "การเคลื่อนไหวที่เป็นไปตามฟิสิกส์จริง (แรงโน้มถ่วง ความเฉื่อย และการหน่วง) ทำให้สมองเชื่อว่าเป็นวัตถุที่จับต้องได้ ความรู้สึกนี้ทำให้คนอยากเล่นซ้ำ และจำแบรนด์ได้",
+      en: "Motion that obeys real physics — gravity, inertia, damping — convinces the brain it’s an object you can hold. That feeling makes people play again and remember the brand.",
+    },
+    use: {
+      th: "หน้าอีเวนต์ บัตรเข้างาน พอร์ตโฟลิโอ หรือหน้า 404 ที่อยากมีของเล่นชิ้นเล็ก ๆ",
+      en: "Event pages, conference passes, portfolios, or a 404 page that deserves a small toy.",
+    },
+    avoid: {
+      th: "ข้อมูลสำคัญที่ต้องอ่านบนป้ายที่แกว่งไปมา และการใส่หลายชิ้นในหน้าเดียว เพราะหนักเครื่อง",
+      en: "Important information people must read on a swinging badge, or several of them on one page — it’s heavy on the processor.",
+    },
+    related: ["drag-and-drop", "feedback"],
+    prompt: {
+      build: "a draggable lanyard badge with rope physics",
+      effect:
+        "a badge card hangs from the top of the section on a strap drawn as an SVG path through about 14 rope points; the badge tilts to follow the strap and shows the visitor’s role and progress.",
+      trigger: "press and drag the badge to pull it (with pointer capture); release to let it swing; the strap stays pinned at the top.",
+      feel: "Verlet integration at a fixed 60 Hz step: gravity 0.45 px per frame², damping 0.985, 10 constraint passes per frame; a fling keeps the speed of your release.",
+      purpose: "add a playful, physical moment that rewards curiosity and makes the page memorable.",
+      guardrails:
+        "simulate only while visible; touch-action: none on the badge only; arrow keys give it a push; keep the text on the badge large; with prefers-reduced-motion show it hanging still; no physics library needed.",
     },
   },
   {
