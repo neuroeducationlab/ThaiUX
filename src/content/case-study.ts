@@ -31,8 +31,8 @@ export const caseStudy = {
     {
       label: { th: "ผลลัพธ์", en: "Outcome", zh: "成果", ja: "結果" },
       text: {
-        th: "22 แนวคิด · 8 บทเรียน · 4 Lab · 4 ภาษา · 164 หน้าสถิต · WCAG 2.2 AA 0 ปัญหา",
-        en: "22 concepts · 8 modules · 4 Lab experiments · 4 languages · 164 static pages · 0 WCAG 2.2 AA findings",
+        th: "22 แนวคิด · 8 บทเรียน · 4 Lab · 19 เอฟเฟกต์ · 4 ภาษา · WCAG 2.2 AA 0 ปัญหา",
+        en: "22 concepts · 8 modules · 4 Lab experiments · 19 effects · 4 languages · 0 WCAG 2.2 AA findings",
       },
     },
   ] as { label: Localized; text: Localized }[],
@@ -102,10 +102,10 @@ export const caseStudy = {
       title: { th: "สถาปัตยกรรมข้อมูล", en: "Information architecture" },
       body: {
         th: [
-          "สี่ส่วนตอบสี่ความต้องการ: เรียนรู้ (เส้นทางมีลำดับ) · คลังศัพท์ (ค้นหาและลอง) · Lab (ฝึกตัดสินใจ) · เกี่ยวกับ (ความน่าเชื่อถือ) ทุก URL มีภาษานำหน้าเช่น /th/glossary/hover และ ⌘K ค้นข้ามภาษาข้ามตัวอักษร พิมพ์ “โฮเวอร์” หรือ “悬停” ก็เจอ Hover บนมือถือใช้แถบแท็บด้านล่างห้าปุ่มให้นิ้วโป้งเอื้อมถึง",
+          "ห้าส่วนตอบห้าความต้องการ: เรียนรู้ (เส้นทางมีลำดับ) · คลังศัพท์ (ค้นหาและลอง) · Lab (ฝึกตัดสินใจ) · เอฟเฟกต์ (ได้ไอเดียและสร้างเองด้วย AI) · เกี่ยวกับ (ความน่าเชื่อถือ) ทุก URL มีภาษานำหน้าเช่น /th/glossary/hover และ ⌘K ค้นข้ามภาษาข้ามตัวอักษร พิมพ์ “โฮเวอร์” หรือ “悬停” ก็เจอ Hover บนมือถือใช้แถบแท็บด้านล่างห้าปุ่มให้นิ้วโป้งเอื้อมถึง",
         ],
         en: [
-          "Four sections answer four needs: Learn (a structured path) · Glossary (look up and try) · Lab (practise decisions) · About (trust). Every URL carries its language (/th/glossary/hover), and ⌘K search works across languages and scripts — typing “โฮเวอร์” or “悬停” finds Hover. On phones, a five-item bottom tab bar keeps navigation within thumb reach.",
+          "Five sections answer five needs: Learn (a structured path) · Glossary (look up and try) · Lab (practise decisions) · Effects (get inspired, then build with AI) · About (trust). Every URL carries its language (/th/glossary/hover), and ⌘K search works across languages and scripts — typing “โฮเวอร์” or “悬停” finds Hover. On phones, a five-item bottom tab bar keeps navigation within thumb reach.",
         ],
       },
     },
@@ -168,10 +168,10 @@ export const caseStudy = {
       title: { th: "ผลลัพธ์", en: "Outcome" },
       body: {
         th: [
-          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 16 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
+          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 19 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
         ],
         en: [
-          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 16 key pages, in all four languages, in light and dark mode (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
+          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 19 key pages, in all four languages, in light and dark mode (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
         ],
       },
     },

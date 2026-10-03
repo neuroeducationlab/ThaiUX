@@ -14,6 +14,7 @@ import { caseStudy } from "@/content/case-study";
 import { glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
+import { effects } from "@/content/effects";
 import { sources } from "@/content/sources";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,7 +31,7 @@ export default async function CaseStudyPage() {
   // element by element (UI labels that are translated keep the page language).
   const translated = isTranslated(cs.title, locale);
   const langOf = <T,>(v: Parameters<typeof isTranslated<T>>[0]) => (isTranslated(v, locale) ? undefined : "en");
-  const pagesPerLocale = 1 + 1 + modules.length + 1 + glossary.length + 1 + experiments.length + 3;
+  const pagesPerLocale = 1 + 1 + modules.length + 1 + glossary.length + 1 + experiments.length + 1 + effects.length + 3;
 
   const stats = [
     { n: glossary.length, label: L.stats.concepts },
