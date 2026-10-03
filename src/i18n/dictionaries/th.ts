@@ -23,6 +23,7 @@ const th: Dictionary = {
     learn: "เรียนรู้",
     glossary: "คลังศัพท์",
     lab: "Lab",
+    effects: "เอฟเฟกต์",
     about: "เกี่ยวกับ",
   },
   search: {
@@ -35,6 +36,7 @@ const th: Dictionary = {
     groupConcept: "คลังศัพท์",
     groupModule: "บทเรียน",
     groupLab: "การทดลองใน Lab",
+    groupEffect: "เอฟเฟกต์",
     groupPage: "หน้า",
     keyNavigate: "เลื่อน",
     keyOpen: "เปิด",
@@ -83,6 +85,7 @@ const th: Dictionary = {
     conceptsExperienced: "ลองแล้ว {done} จาก {total} ศัพท์",
     modulesCompleted: "เรียนจบ {done} จาก {total} บท",
     labsCompleted: "ทดลองแล้ว {done} จาก {total} การทดลอง",
+    effectsTried: "ลองแล้ว {done} จาก {total} เอฟเฟกต์",
     deviceOnly: "บันทึกไว้ในอุปกรณ์นี้เท่านั้น ไม่ต้องสมัครสมาชิก และไม่มีการติดตาม",
     reset: "ล้างความคืบหน้า",
     resetConfirm: "ล้างความคืบหน้าทั้งหมดในอุปกรณ์นี้ใช่ไหม? ย้อนกลับไม่ได้นะ",

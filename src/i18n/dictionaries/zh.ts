@@ -23,6 +23,7 @@ const zh: Dictionary = {
     learn: "学习",
     glossary: "术语库",
     lab: "实验室",
+    effects: "特效",
     about: "关于",
   },
   search: {
@@ -35,6 +36,7 @@ const zh: Dictionary = {
     groupConcept: "概念",
     groupModule: "课程",
     groupLab: "实验",
+    groupEffect: "交互特效",
     groupPage: "页面",
     keyNavigate: "选择",
     keyOpen: "打开",
@@ -83,6 +85,7 @@ const zh: Dictionary = {
     conceptsExperienced: "已体验 {done} / {total} 个概念",
     modulesCompleted: "已完成 {done} / {total} 节课",
     labsCompleted: "已完成 {done} / {total} 个实验",
+    effectsTried: "已体验 {done} / {total} 个特效",
     deviceOnly: "仅保存在此设备上。无需账号，不做追踪。",
     reset: "重置进度",
     resetConfirm: "要重置此设备上的所有进度吗？此操作无法撤销。",

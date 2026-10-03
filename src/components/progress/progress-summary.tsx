@@ -12,16 +12,20 @@ export function ProgressSummary({
   total,
   className,
 }: {
-  kind: "concepts" | "modules" | "labs";
+  kind: "concepts" | "modules" | "labs" | "effects";
   total: number;
   className?: string;
 }) {
   const { dict } = useI18n();
   const state = useProgress();
   const hydrated = useHydrated();
-  const done = kind === "concepts" ? state.experienced.length : kind === "modules" ? state.completed.length : state.labs.length;
-  const template =
-    kind === "concepts" ? dict.progress.conceptsExperienced : kind === "modules" ? dict.progress.modulesCompleted : dict.progress.labsCompleted;
+  const done = { concepts: state.experienced, modules: state.completed, labs: state.labs, effects: state.effects }[kind].length;
+  const template = {
+    concepts: dict.progress.conceptsExperienced,
+    modules: dict.progress.modulesCompleted,
+    labs: dict.progress.labsCompleted,
+    effects: dict.progress.effectsTried,
+  }[kind];
   const text = format(template, { done: Math.min(done, total), total });
 
   return (

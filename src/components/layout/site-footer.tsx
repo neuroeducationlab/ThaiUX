@@ -14,6 +14,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
     { href: routes.learn(locale), label: dict.nav.learn },
     { href: routes.glossary(locale), label: dict.nav.glossary },
     { href: routes.lab(locale), label: dict.nav.lab },
+    { href: routes.effects(locale), label: dict.nav.effects },
   ];
   const project = [
     { href: routes.about(locale), label: dict.nav.about },

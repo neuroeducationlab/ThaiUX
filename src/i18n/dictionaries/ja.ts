@@ -23,6 +23,7 @@ const ja: Dictionary = {
     learn: "学ぶ",
     glossary: "用語集",
     lab: "Lab",
+    effects: "エフェクト",
     about: "About",
   },
   search: {
@@ -35,6 +36,7 @@ const ja: Dictionary = {
     groupConcept: "用語",
     groupModule: "レッスン",
     groupLab: "Lab の実験",
+    groupEffect: "エフェクト",
     groupPage: "ページ",
     keyNavigate: "移動",
     keyOpen: "開く",
@@ -83,6 +85,7 @@ const ja: Dictionary = {
     conceptsExperienced: "{total} 個中 {done} 個の用語を体験済み",
     modulesCompleted: "{total} 個中 {done} 個のレッスンを完了",
     labsCompleted: "{total} 個中 {done} 個の実験を完了",
+    effectsTried: "{total} 個中 {done} 個のエフェクトを体験",
     deviceOnly: "この端末にのみ保存されます。アカウント不要、トラッキングなし。",
     reset: "進捗をリセット",
     resetConfirm: "この端末のすべての進捗をリセットしますか？元に戻せません。",

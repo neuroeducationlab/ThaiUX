@@ -6,10 +6,10 @@
 | --- | --- | --- | --- |
 | Lint | `npm run lint` | ESLint (Next + React hooks rules) | ✅ clean |
 | Types | `npm run typecheck` | `next typegen` + `tsc --noEmit` (typed routes, content types) | ✅ clean |
-| Content | `npm run check:content` | ids, cross-links, sources, HTTPS, empty translations (7 checks) | ✅ 7/7 |
-| Smoke | `npm run test:e2e` | 16 key pages × 4 languages: status 200, correct `html[lang]`, one `h1`, no console errors; localized 404 | ✅ 65/65 |
-| Accessibility | `npm run test:e2e` | axe-core, WCAG 2.2 A/AA tags, 16 pages × 4 languages × light/dark = 128 page checks | ✅ 0 violations |
-| User flows | `npm run test:e2e` | language detection (5 cases) + remembered choice, skip link, hero lesson, URL filter state, Build a Button completion, Detective, mobile tab bar | ✅ 12/12 |
+| Content | `npm run check:content` | ids, cross-links, sources, HTTPS, empty translations, effect prompts complete with reduced-motion guardrails (8 checks) | ✅ 8/8 |
+| Smoke | `npm run test:e2e` | 19 key pages × 4 languages: status 200, correct `html[lang]`, one `h1`, no console errors; localized 404 | ✅ 77/77 |
+| Accessibility | `npm run test:e2e` | axe-core, WCAG 2.2 A/AA tags, 19 pages × 4 languages × light/dark = 152 page checks | ✅ 0 violations |
+| User flows | `npm run test:e2e` | language detection (5 cases) + remembered choice, skip link, hero lesson, URL filter state, Build a Button completion, Detective, mobile tab bar; Effects: URL filter, copy prompt to clipboard (stack switch), tried progress, reduced-motion pause + opt-in | ✅ 16/16 |
 
 The e2e suites run against a production build (`npm run build && npm run test:e2e`).
 

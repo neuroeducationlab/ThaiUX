@@ -22,7 +22,7 @@ export function MobileTabBar() {
       className="pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-line bg-[var(--header-bg)] backdrop-blur-xl backdrop-saturate-150 md:hidden"
     >
       <ul className="mx-auto grid max-w-lg grid-cols-5 px-1 pt-1">
-        {navItems.map((item) => {
+        {navItems.filter((item) => item.mobile).map((item) => {
           const current = ariaCurrent(pathname, item.key, locale);
           const Icon = item.icon;
           return (

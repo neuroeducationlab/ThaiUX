@@ -12,10 +12,11 @@ export type ProgressState = {
   completed: string[]; // module ids marked complete
   labs: string[]; // lab experiment ids finished
   saved: string[]; // bookmarked concept ids
+  effects: string[]; // playground effects tried
 };
 
 const KEY = "thaiux:progress:v1";
-const EMPTY: ProgressState = { experienced: [], completed: [], labs: [], saved: [] };
+const EMPTY: ProgressState = { experienced: [], completed: [], labs: [], saved: [], effects: [] };
 
 let state: ProgressState = EMPTY;
 let loaded = false;
@@ -33,6 +34,7 @@ function load() {
         completed: parsed.completed ?? [],
         labs: parsed.labs ?? [],
         saved: parsed.saved ?? [],
+        effects: parsed.effects ?? [],
       };
     }
   } catch {
@@ -93,6 +95,7 @@ export const progress = {
   setCompleted: (id: string, done: boolean) =>
     update((s) => ({ ...s, completed: done ? add(s.completed, id) : remove(s.completed, id) })),
   markLab: (id: string) => update((s) => ({ ...s, labs: add(s.labs, id) })),
+  markEffect: (id: string) => update((s) => (s.effects.includes(id) ? s : { ...s, effects: add(s.effects, id) })),
   toggleSaved: (id: string) => {
     let nowSaved = false;
     update((s) => {

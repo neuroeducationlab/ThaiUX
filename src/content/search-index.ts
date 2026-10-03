@@ -6,6 +6,7 @@ import type { SearchItem } from "@/components/search/rank";
 import { glossary } from "./glossary";
 import { modules } from "./modules";
 import { experiments } from "./lab";
+import { effectCategories, effects } from "./effects";
 
 /** Suggestions shown before anyone types — the most useful first steps. */
 export const popularSearchIds = [
@@ -52,14 +53,30 @@ export function buildSearchIndex(locale: Locale): SearchItem[] {
     keywords: [e.title.en, pick(e.summary, locale)].join(" "),
   }));
 
+  const effectItems: SearchItem[] = effects.map((e) => ({
+    id: `effect:${e.id}`,
+    kind: "effect",
+    title: e.name,
+    titleLang: "en",
+    subtitle: pick(e.tagline, locale),
+    href: routes.effect(locale, e.id),
+    keywords: [
+      ...Object.values(e.localName),
+      pick(effectCategories.find((c) => c.id === e.category)!.label, locale),
+      e.tech.join(" "),
+      "effect animation prompt",
+    ].join(" "),
+  }));
+
   const pages: SearchItem[] = [
     { id: "page:learn", kind: "page", title: dict.nav.learn, href: routes.learn(locale), keywords: "learn modules path" },
     { id: "page:glossary", kind: "page", title: dict.nav.glossary, href: routes.glossary(locale), keywords: "glossary terms dictionary" },
     { id: "page:lab", kind: "page", title: dict.lab.title, href: routes.lab(locale), keywords: "lab experiments playground" },
+    { id: "page:effects", kind: "page", title: dict.nav.effects, href: routes.effects(locale), keywords: "effects interactions animation cursor hover prompts vibe coding เอฟเฟกต์ 特效 エフェクト" },
     { id: "page:about", kind: "page", title: dict.nav.about, href: routes.about(locale), keywords: "about molly project" },
     { id: "page:case-study", kind: "page", title: dict.footer.caseStudy, href: routes.caseStudy(locale), keywords: "case study portfolio process" },
     { id: "page:design-system", kind: "page", title: dict.footer.designSystem, href: routes.designSystem(locale), keywords: "design system tokens components colour typography" },
   ];
 
-  return [...concepts, ...learning, ...lab, ...pages];
+  return [...concepts, ...learning, ...lab, ...effectItems, ...pages];
 }

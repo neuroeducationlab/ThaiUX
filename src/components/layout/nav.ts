@@ -1,15 +1,20 @@
-import { BookA, BookOpen, FlaskConical, House, Info, type LucideIcon } from "lucide-react";
+import { BookA, BookOpen, FlaskConical, House, Info, Sparkles, type LucideIcon } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import { routes } from "@/lib/routes";
 
-export type NavKey = "home" | "learn" | "glossary" | "lab" | "about";
+export type NavKey = "home" | "learn" | "glossary" | "lab" | "effects" | "about";
 
-export const navItems: { key: NavKey; href: (l: Locale) => string; icon: LucideIcon }[] = [
-  { key: "home", href: routes.home, icon: House },
-  { key: "learn", href: routes.learn, icon: BookOpen },
-  { key: "glossary", href: routes.glossary, icon: BookA },
-  { key: "lab", href: routes.lab, icon: FlaskConical },
-  { key: "about", href: routes.about, icon: Info },
+/**
+ * `mobile: false` keeps a destination out of the five-tab bar on phones
+ * (it stays in the header on larger screens and in the footer everywhere).
+ */
+export const navItems: { key: NavKey; href: (l: Locale) => string; icon: LucideIcon; mobile: boolean }[] = [
+  { key: "home", href: routes.home, icon: House, mobile: true },
+  { key: "learn", href: routes.learn, icon: BookOpen, mobile: true },
+  { key: "glossary", href: routes.glossary, icon: BookA, mobile: true },
+  { key: "lab", href: routes.lab, icon: FlaskConical, mobile: true },
+  { key: "effects", href: routes.effects, icon: Sparkles, mobile: true },
+  { key: "about", href: routes.about, icon: Info, mobile: false },
 ];
 
 /** Which top-level section a pathname belongs to. */
@@ -18,6 +23,7 @@ export function sectionOf(pathname: string): NavKey {
   if (seg === "learn") return "learn";
   if (seg === "glossary") return "glossary";
   if (seg === "lab") return "lab";
+  if (seg === "effects") return "effects";
   if (seg === "about" || seg === "design-system") return "about";
   return "home";
 }
