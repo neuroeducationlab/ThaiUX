@@ -80,7 +80,7 @@ export default async function DesignSystemPage() {
     { id: "a11y", label: pick(ds.nav.a11y, locale) },
   ];
 
-  const cell = (theme: "light" | "dark", p: (typeof PAIRS)[number]) => {
+  const swatch = (theme: "light" | "dark", p: (typeof PAIRS)[number]) => {
     const t = tokens[theme];
     const fg = t[p.token];
     const bg = t[p.bg];
@@ -88,26 +88,27 @@ export default async function DesignSystemPage() {
     const min = p.kind === "text" ? WCAG.aaNormal : WCAG.nonText;
     const ok = r >= min;
     return (
-      <td className="px-4 py-3 align-middle">
-        <span className="flex items-center gap-3">
-          <span
-            className="flex h-10 w-14 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-line text-[0.9375rem] font-semibold"
-            style={{ background: bg, color: fg }}
-            aria-hidden
-          >
-            {p.kind === "text" && !p.decorative ? "Aa" : <span className="block h-1.5 w-8 rounded-full" style={{ background: fg }} />}
-          </span>
-          <span className="min-w-0">
-            <span className="block font-mono text-[0.75rem] text-ink-2">{fg}</span>
-            <span className={cn("tabular flex items-center gap-1 text-[0.8125rem] font-semibold", p.decorative ? "text-ink-2" : ok ? "text-success" : "text-error")}>
-              {p.decorative ? <Minus className="size-3.5" aria-hidden /> : ok ? <Check className="size-3.5" aria-hidden /> : <CircleAlert className="size-3.5" aria-hidden />}
-              {(Math.floor(r * 10) / 10).toFixed(1)} : 1
-            </span>
+      <span className="flex items-center gap-3">
+        <span
+          className="flex h-10 w-14 shrink-0 items-center justify-center rounded-[var(--radius-sm)] border border-line text-[0.9375rem] font-semibold"
+          style={{ background: bg, color: fg }}
+          aria-hidden
+        >
+          {p.kind === "text" && !p.decorative ? "Aa" : <span className="block h-1.5 w-8 rounded-full" style={{ background: fg }} />}
+        </span>
+        <span className="min-w-0">
+          <span className="block font-mono text-[0.75rem] text-ink-2">{fg}</span>
+          <span className={cn("tabular flex items-center gap-1 text-[0.8125rem] font-semibold", p.decorative ? "text-ink-2" : ok ? "text-success" : "text-error")}>
+            {p.decorative ? <Minus className="size-3.5" aria-hidden /> : ok ? <Check className="size-3.5" aria-hidden /> : <CircleAlert className="size-3.5" aria-hidden />}
+            {(Math.floor(r * 10) / 10).toFixed(1)} : 1
           </span>
         </span>
-      </td>
+      </span>
     );
   };
+  const cell = (theme: "light" | "dark", p: (typeof PAIRS)[number]) => (
+    <td className="px-4 py-3 align-middle">{swatch(theme, p)}</td>
+  );
 
   return (
     <>
@@ -127,8 +128,29 @@ export default async function DesignSystemPage() {
         <Container size="wide">
           <h2 id="colour-h" className="type-h2">{pick(ds.nav.colour, locale)}</h2>
           <p className="type-lead measure-wide mt-4">{pick(ds.colour.intro, locale)}</p>
-          <div className="mt-8 overflow-x-auto rounded-[var(--radius-lg)] border border-line bg-surface" tabIndex={0} role="region" aria-labelledby="colour-h">
-            <table className="w-full min-w-[44rem] text-left text-[0.9375rem]">
+          <ul className="mt-8 divide-y divide-line overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface lg:hidden">
+            {PAIRS.map((p) => (
+              <li key={p.token} className="px-4 py-3">
+                <div className="mb-2 flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
+                  <span className="font-mono text-[0.8125rem] font-semibold text-ink">--{p.token}</span>
+                  <span className="text-[0.75rem] text-ink-2">
+                    {pick(ds.colour.roles[p.token], locale)}
+                    {p.decorative ? ` · ${pick(ds.colour.decorative, locale)}` : ""}
+                  </span>
+                </div>
+                <div className="grid grid-cols-2 gap-x-3">
+                  {(["light", "dark"] as const).map((theme) => (
+                    <div key={theme} className="min-w-0">
+                      <p className="type-label mb-1 text-ink-2">{pick(ds.colour[theme], locale)}</p>
+                      {swatch(theme, p)}
+                    </div>
+                  ))}
+                </div>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 hidden overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface lg:block">
+            <table className="w-full text-left text-[0.9375rem]">
               <thead className="border-b border-line text-[0.8125rem] text-ink-2">
                 <tr>
                   <th scope="col" className="px-4 py-3 font-semibold">{pick(ds.colour.token, locale)}</th>
@@ -166,20 +188,20 @@ export default async function DesignSystemPage() {
           <p className="type-lead measure-wide mt-4">{pick(ds.type.intro, locale)}</p>
           <ul className="mt-8 divide-y divide-line overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface">
             {TYPE.map((t) => (
-              <li key={t.cls} className="grid gap-2 px-5 py-5 md:grid-cols-[10rem_minmax(0,1fr)] md:items-baseline md:gap-6">
-                <span>
-                  <span className="block text-[0.875rem] font-semibold text-ink">{t.name}</span>
-                  <span className="block font-mono text-[0.75rem] text-ink-2">{t.spec}</span>
+              <li key={t.cls} className="grid gap-1 px-5 py-3.5 md:grid-cols-[10rem_minmax(0,1fr)] md:items-baseline md:gap-6 md:py-4">
+                <span className="flex flex-wrap items-baseline gap-x-2">
+                  <span className="text-[0.875rem] font-semibold text-ink">{t.name}</span>
+                  <span className="font-mono text-[0.75rem] text-ink-2">{t.spec}</span>
                 </span>
                 <span className={cn(t.cls, "block min-w-0 truncate", t.cls === "type-display" && "text-[clamp(2rem,1.4rem+2.6vw,3.5rem)]")} aria-hidden>
                   {pick(ds.type.sample, locale)}
                 </span>
               </li>
             ))}
-            <li className="grid gap-2 px-5 py-5 md:grid-cols-[10rem_minmax(0,1fr)] md:items-baseline md:gap-6">
-              <span>
-                <span className="block text-[0.875rem] font-semibold text-ink">Serif accent</span>
-                <span className="block font-mono text-[0.75rem] text-ink-2">Instrument Serif</span>
+            <li className="grid gap-1 px-5 py-3.5 md:grid-cols-[10rem_minmax(0,1fr)] md:items-baseline md:gap-6 md:py-4">
+              <span className="flex flex-wrap items-baseline gap-x-2">
+                <span className="text-[0.875rem] font-semibold text-ink">Serif accent</span>
+                <span className="font-mono text-[0.75rem] text-ink-2">Instrument Serif</span>
               </span>
               <span lang="en" className="type-serif-accent block text-[2.5rem] leading-none text-accent-ink" aria-hidden>
                 Affordance, Feedback
@@ -193,7 +215,7 @@ export default async function DesignSystemPage() {
         <Container size="wide">
           <h2 id="space-h" className="type-h2">{pick(ds.nav.space, locale)}</h2>
           <p className="type-lead measure-wide mt-4">{pick(ds.space.intro, locale)}</p>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-[var(--radius-lg)] border border-line bg-surface p-6">
               <h3 className="type-title mb-4">{pick(ds.space.spacing, locale)}</h3>
               <ul className="space-y-2">
