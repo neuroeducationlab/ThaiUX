@@ -152,6 +152,12 @@ const zh: Dictionary = {
     taughtIn: "所属课程",
     goDeeper: "深入了解",
     conceptOf: "第 {n} / {total} 个概念",
+    peekTry: "试一试",
+    peekClose: "关闭小示例",
+    peekLesson: "完整课程",
+    peekLabel: "{term}——小示例",
+    peekTip: "把鼠标停在卡片上即可当场试玩，或点按“试一试”。",
+    peekFailed: "这个示例没有加载成功。完整课程仍可打开。",
   },
   learn: {
     title: "学习",

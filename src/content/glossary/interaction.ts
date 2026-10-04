@@ -25,6 +25,12 @@ export const interactionConcepts: Concept[] = [
       zh: "把鼠标移到下方的卡片上，留意有哪些变化。",
       ja: "下のカードにポインターを重ねて、何が変わるか観察してみましょう。",
     },
+    peek: {
+      th: "เลื่อนเมาส์ไปบนการ์ดเมนู",
+      en: "Move your pointer over the card",
+      zh: "把指针移到卡片上",
+      ja: "カードにポインターを乗せて",
+    },
     demo: "hover",
     problem: {
       th: "บนหน้าจอที่เต็มไปด้วยข้อความและรูป ผู้ใช้ไม่รู้ว่าอะไรคลิกได้บ้าง Hover ช่วยยืนยันก่อนที่เขาจะตัดสินใจคลิก",
@@ -111,6 +117,12 @@ export const interactionConcepts: Concept[] = [
       en: "Try to hit each target five times and see which one you miss more often.",
       zh: "分别点中两个目标各 5 次，看看哪个更容易点偏。",
       ja: "2 つのターゲットをそれぞれ 5 回クリックして、どちらがミスしやすいか比べてみましょう。",
+    },
+    peek: {
+      th: "กดเป้าทั้งสองให้โดนอย่างละ 3 ครั้ง",
+      en: "Hit both targets three times",
+      zh: "两个目标各点中 3 次",
+      ja: "両方の的を 3 回ずつ押して",
     },
     demo: "click",
     problem: {
@@ -199,6 +211,12 @@ export const interactionConcepts: Concept[] = [
       zh: "在下方框内把短文滚动到底，留意顶部的进度条。",
       ja: "下の枠の短い記事を最後までスクロールして、上部の進捗バーに注目しましょう。",
     },
+    peek: {
+      th: "เลื่อนอ่านให้ถึงข้อสุดท้าย",
+      en: "Scroll to the last tip",
+      zh: "滚动到最后一条",
+      ja: "最後のコツまでスクロール",
+    },
     demo: "scroll",
     problem: {
       th: "หน้าจอมีพื้นที่จำกัด แต่เนื้อหามักยาวกว่านั้นเสมอ ผู้ใช้ต้องรู้ว่ายังมีอะไรอยู่ข้างล่าง และตอนนี้อ่านไปถึงไหนแล้ว",
@@ -286,6 +304,12 @@ export const interactionConcepts: Concept[] = [
       zh: "打开再关闭飞行模式。注意所有变化都是即时的——不需要点“保存”。",
       ja: "機内モードをオン・オフしてみましょう。すべてが即座に変わり、「保存」は不要です。",
     },
+    peek: {
+      th: "ลองเปิด-ปิดโหมดเครื่องบิน",
+      en: "Flip airplane mode on and off",
+      zh: "开关一下飞行模式",
+      ja: "機内モードをオン・オフして",
+    },
     demo: "toggle",
     problem: {
       th: "การตั้งค่าแบบเปิด/ปิด ผู้ใช้ต้องรู้ทันทีว่าตอนนี้เปิดหรือปิดอยู่ และกดแล้วมีผลหรือยัง",
@@ -369,6 +393,12 @@ export const interactionConcepts: Concept[] = [
       zh: "把设计步骤排成正确顺序——拖动把手，或使用箭头按钮。",
       ja: "デザインの手順を正しい順番に並べましょう。ハンドルをドラッグするか、矢印ボタンを使います。",
     },
+    peek: {
+      th: "ลากเรียงขั้นตอนให้ถูกลำดับ",
+      en: "Drag the steps into order",
+      zh: "把步骤拖成正确顺序",
+      ja: "手順をドラッグして並べ替えて",
+    },
     demo: "drag-and-drop",
     problem: {
       th: "บางงานเข้าใจง่ายที่สุดเมื่อได้ “จับ” สิ่งของโดยตรง เช่น จัดลำดับรายการหรือย้ายไฟล์ แทนการพิมพ์ตัวเลขหรือเลือกจากเมนู",
@@ -451,6 +481,12 @@ export const interactionConcepts: Concept[] = [
       en: "Swipe the card left or right (or drag it with a mouse). Try a short swipe and let go, too — or use the buttons instead.",
       zh: "把卡片向左或向右滑动（也可以用鼠标拖动）。也试试只滑一点就松手——或者直接使用下方按钮。",
       ja: "カードを左右にスワイプ（マウスならドラッグ）してみましょう。少しだけ動かして離すのも試して。下のボタンでも操作できます。",
+    },
+    peek: {
+      th: "ปัดข้อความไปทางซ้าย",
+      en: "Swipe a message to the left",
+      zh: "把消息向左滑",
+      ja: "メッセージを左にスワイプ",
     },
     demo: "swipe",
     problem: {

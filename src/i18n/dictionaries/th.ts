@@ -152,6 +152,12 @@ const th: Dictionary = {
     taughtIn: "เรียนในบท",
     goDeeper: "เจาะลึก",
     conceptOf: "ศัพท์ที่ {n} จาก {total}",
+    peekTry: "ลองเลย",
+    peekClose: "ปิดตัวอย่างย่อ",
+    peekLesson: "บทเรียนเต็ม",
+    peekLabel: "{term} — ตัวอย่างย่อ",
+    peekTip: "วางเมาส์บนการ์ดเพื่อเล่นตัวอย่างได้ทันที หรือแตะ “ลองเลย”",
+    peekFailed: "โหลดตัวอย่างนี้ไม่สำเร็จ แต่ยังเปิดบทเรียนเต็มได้",
   },
   learn: {
     title: "เรียนรู้",

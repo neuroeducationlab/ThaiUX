@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useMemo, useState } from "react";
-import { Bookmark, Search, X } from "lucide-react";
+import { Bookmark, Search, Sparkles, X } from "lucide-react";
 import { useI18n } from "@/i18n/client";
 import { format } from "@/i18n/localized";
 import { cn } from "@/lib/cn";
@@ -120,13 +120,19 @@ export function GlossaryExplorer({ items, keywords }: { items: ConceptSummary[];
       </p>
 
       {visible.length ? (
-        <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {visible.map((item) => (
-            <li key={item.id}>
-              <ConceptCard item={item} headingLevel={2} />
-            </li>
-          ))}
-        </ul>
+        <>
+          <p className="-mt-3 mb-5 flex items-start gap-2 text-[0.875rem] text-ink-2">
+            <Sparkles className="mt-0.5 size-4 shrink-0 text-accent" aria-hidden />
+            {dict.glossary.peekTip}
+          </p>
+          <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {visible.map((item) => (
+              <li key={item.id}>
+                <ConceptCard item={item} headingLevel={2} />
+              </li>
+            ))}
+          </ul>
+        </>
       ) : (
         <div className="mx-auto max-w-md rounded-[var(--radius-xl)] border border-dashed border-line-strong px-6 py-14 text-center">
           {filter === "saved" && !query ? (

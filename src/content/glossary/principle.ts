@@ -25,6 +25,12 @@ export const principleConcepts: Concept[] = [
       zh: "分别用两个按钮发送消息。哪一个让你确信消息真的发出去了？",
       ja: "2 つのボタンでメッセージを送ってみましょう。本当に送れたと確信できるのはどちら？",
     },
+    peek: {
+      th: "กดส่งในแบบ A แล้วลองแบบ B",
+      en: "Send the message in A, then in B",
+      zh: "先在 A 里发送，再试 B",
+      ja: "A で送信してから B でも",
+    },
     demo: "feedback",
     problem: {
       th: "เมื่อกดแล้วไม่มีอะไรเกิดขึ้น ผู้ใช้จะสงสัยว่าระบบค้างหรือเปล่า แล้วกดซ้ำ ซึ่งอาจทำให้สั่งซื้อหรือโอนเงินซ้ำได้",
@@ -107,6 +113,12 @@ export const principleConcepts: Concept[] = [
       en: "Guess which elements are clickable. Tap the ones you think you can press, then reveal the answer.",
       zh: "猜猜哪些元素可以点击。点一下你认为能按的，然后揭晓答案。",
       ja: "どの要素がクリックできるか当ててみましょう。押せると思うものをタップしてから、答えを見ます。",
+    },
+    peek: {
+      th: "แตะสิ่งที่ดูเหมือนกดได้",
+      en: "Tap what looks clickable",
+      zh: "点你觉得能点的东西",
+      ja: "押せそうなものをタップ",
     },
     demo: "affordance",
     problem: {
@@ -191,6 +203,12 @@ export const principleConcepts: Concept[] = [
       zh: "任务：在两个菜单中分别找到“修改密码”，比较各自用了多少时间。",
       ja: "タスク：2 つのメニューで「パスワードを変更」を探し、かかった時間を比べましょう。",
     },
+    peek: {
+      th: "หา “เปลี่ยนรหัสผ่าน” ในเมนู A และ B",
+      en: "Find “Change password” in A and B",
+      zh: "在 A 和 B 里找到“修改密码”",
+      ja: "A と B で「パスワードを変更」を探して",
+    },
     demo: "usability",
     problem: {
       th: "ผลิตภัณฑ์ที่สวยแต่ใช้ยาก ทำให้คนทำงานไม่สำเร็จ ต้องโทรถามคอลเซ็นเตอร์ หรือเลิกใช้แล้วไปหาคู่แข่ง",
@@ -273,6 +291,12 @@ export const principleConcepts: Concept[] = [
       en: "Turn on each simulation — blurred vision, colour blindness, low contrast — and see whether you can still use the order card.",
       zh: "逐一打开模拟效果——视力模糊、色盲、低对比度——看看你还能不能使用这张点餐卡片。",
       ja: "シミュレーション（視界のぼやけ、色覚の違い、低コントラスト）を 1 つずつオンにして、注文カードがまだ使えるか試してみましょう。",
+    },
+    peek: {
+      th: "ลองเปิดตัวจำลองการมองเห็น",
+      en: "Turn on a vision simulation",
+      zh: "打开一种视觉模拟",
+      ja: "見え方シミュレーションをオンに",
     },
     demo: "accessibility",
     problem: {

@@ -22,6 +22,9 @@ export function useDemo() {
   return useContext(DemoContext);
 }
 
+/** Lets other frames (the glossary card peek) host demos with the same API. */
+export const DemoProvider = DemoContext.Provider;
+
 export function DemoFrame({
   conceptId,
   term,

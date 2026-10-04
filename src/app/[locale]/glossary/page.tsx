@@ -27,6 +27,8 @@ export default async function GlossaryPage() {
     categories: c.categories,
     difficulty: c.difficulty,
     href: routes.concept(locale, c.id),
+    demo: c.demo,
+    peek: pick(c.peek, locale),
   }));
 
   // Extra matching text (other languages’ names + aliases) so search works across scripts

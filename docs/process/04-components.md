@@ -29,6 +29,19 @@
 
 1. Tell people what to try. 2. Let them do it. 3. **Name what they just felt.** Demos call `experience()` at the key moment; the concept is saved to on-device progress. Each of the 22 demos is code-split (`next/dynamic`) so a page only loads its own.
 
+## The card peek: `ConceptCard` + `components/peeks/`
+
+Every glossary card can turn into a card-sized demo (UXDR-27). The card owns the behaviour; each peek is a small demo file that uses the same `useDemo()` API as the full demos.
+
+| State (`data-peek`) | What you see | How you get there |
+| --- | --- | --- |
+| `idle` | The card face: term (a link stretched over the card), local name, one sentence, difficulty, **Try it** | — |
+| `mist` | A faint mist follows the resting pointer | A real mouse move onto the card |
+| `open` | The face blurs out; the demo condenses in: term · *Full lesson →* · ×, the stage, then the hint (→ “You just experienced …”) | Pointer slows for ~0.3 s (hover), or **Try it** (pin: focus moves into the demo) |
+| `closing` | A light puff of mist; the face returns; the demo unmounts | Pointer leaves (hover), ×, Esc, a tap or focus outside (pin), or another card opens |
+
+Rules: only one peek at a time (a tiny store); peeks are code-split and start downloading when the pointer arrives; Esc goes to the innermost thing first (a peek’s own dialog, listbox or tooltip calls `preventDefault`); reduced motion keeps the swap but drops the mist. Each peek must fit a stage of about 263 × 170 px (checked at 375, 1024 and 1440 px) and pass axe when opened (44 checks).
+
 ## Lab patterns
 
 | Experiment | Pattern | Accessibility notes |

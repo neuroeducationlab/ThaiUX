@@ -25,6 +25,12 @@ export const componentConcepts: Concept[] = [
       zh: "在两个对话框之间切换，决定要按哪个按钮。哪一个让你更快做出决定？",
       ja: "2 つのダイアログを切り替えて、どのボタンを押すか決めてみましょう。どちらが早く決められますか？",
     },
+    peek: {
+      th: "ตอบทั้งแบบ A และ B แบบไหนเร็วกว่า?",
+      en: "Answer in A and B — which is faster?",
+      zh: "A 和 B 都回答一次——哪个更快？",
+      ja: "A と B で答えて。どちらが速い？",
+    },
     demo: "button",
     problem: {
       th: "เมื่อหน้าจอมีหลายปุ่ม ผู้ใช้ต้องรู้ทันทีว่าปุ่มไหนคือการกระทำหลัก และแต่ละปุ่มจะทำอะไร",
@@ -112,6 +118,12 @@ export const componentConcepts: Concept[] = [
       zh: "在两个输入框中都输入邮箱，然后检查每个框原本问的是什么。哪一个更容易核对？",
       ja: "両方の欄にメールアドレスを入力してから、それぞれ何を聞かれていたか確認してみましょう。見直しやすいのはどちら？",
     },
+    peek: {
+      th: "พิมพ์อีเมลลงทั้งสองช่อง",
+      en: "Type an email in both fields",
+      zh: "在两个输入框里都输入邮箱",
+      ja: "両方の欄にメールを入力",
+    },
     demo: "input-field",
     problem: {
       th: "ฟอร์มคือจุดที่คนยอมแพ้บ่อยที่สุด ช่องที่ไม่ชัดว่าต้องกรอกอะไร หรือแจ้งข้อผิดพลาดไม่ดี ทำให้คนเลิกกลางทาง",
@@ -195,6 +207,12 @@ export const componentConcepts: Concept[] = [
       zh: "用两种方式选择 T 恤尺码。哪一种点击次数更少，并且能直接看到所有选项？",
       ja: "2 つの方法で T シャツのサイズを選んでみましょう。クリックが少なく、選択肢がすぐ見えるのはどちら？",
     },
+    peek: {
+      th: "เลือกไซซ์ในแบบ A แล้วแบบ B",
+      en: "Pick a size in A, then in B",
+      zh: "先在 A 里选尺码，再试 B",
+      ja: "A でサイズを選んでから B でも",
+    },
     demo: "dropdown",
     problem: {
       th: "ตัวเลือกจำนวนมากกินพื้นที่หน้าจอ Dropdown ช่วยประหยัดพื้นที่ แต่แลกกับการที่ตัวเลือกถูกซ่อน และต้องคลิกเพิ่ม",
@@ -277,6 +295,12 @@ export const componentConcepts: Concept[] = [
       en: "Point at — or Tab to — the toolbar icons. Then press Esc to dismiss a tooltip.",
       zh: "用鼠标指向或用 Tab 键移到工具栏图标上，然后按 Esc 关闭提示。",
       ja: "ツールバーのアイコンにポインターを合わせるか Tab で移動し、Esc でツールチップを閉じてみましょう。",
+    },
+    peek: {
+      th: "ชี้เมาส์หรือกด Tab ไปที่ไอคอน",
+      en: "Hover or Tab onto an icon",
+      zh: "悬停或用 Tab 移到图标上",
+      ja: "アイコンにホバー、または Tab で移動",
     },
     demo: "tooltip",
     problem: {
@@ -364,6 +388,12 @@ export const componentConcepts: Concept[] = [
       en: "Press “Delete project”, then try Tab, Esc or clicking the background. Notice how focus stays inside the dialog.",
       zh: "点击“删除项目”，然后试试 Tab、Esc 或点击背景。留意焦点是如何被留在对话框内的。",
       ja: "「プロジェクトを削除」を押して、Tab、Esc、背景のクリックを試してみましょう。フォーカスがダイアログ内に留まる様子に注目。",
+    },
+    peek: {
+      th: "เปิดหน้าต่างยืนยัน แล้วลองปิด",
+      en: "Open the dialog, then close it",
+      zh: "打开对话框，再关掉它",
+      ja: "ダイアログを開いて閉じてみて",
     },
     demo: "modal",
     problem: {

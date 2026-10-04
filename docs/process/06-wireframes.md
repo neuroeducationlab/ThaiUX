@@ -39,6 +39,22 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
+## Glossary card peek (desktop) — UXDR-27
+
+```
+ rest the pointer ~0.3 s        the mist thickens…          …and clears to a live demo
+┌──────────────────────────┐  ┌──────────────────────────┐  ┌──────────────────────────┐
+│ [Interaction]            │  │ ░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░ │  │ Hover    Full lesson →  ×│
+│ Hover            (serif) │  │ ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▒▒▒░░░░░░ │  │ ┌ · · · · · · · · · · ┐  │
+│ โฮเวอร์ · …              │  │ ░▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒░░░░░ │  │ │ [▣ Mango rice View→] │  │
+│ One sentence…   ░▒▓▒░    │  │ ░░▒▒▓▓▓▓▓▓▓▓▓▓▓▒▒▒░░░░░░ │  │ │    state: hover      │  │
+│                  ░▒░     │  │ ░░░░▒▒▒▒▒▒▒▒▒▒▒▒░░░░░░░░ │  │ └ · · · · · · · · · · ┘  │
+│ ●○○ Beginner  [▶ Try it] │  │                          │  │ ● hint → ✓ You just…     │
+└──────────────────────────┘  └──────────────────────────┘  └──────────────────────────┘
+  the term is the link; Try it      face blurs out,               leave or Esc → back;
+  opens the same demo on touch      demo condenses in             Try it → focus moves in
+```
+
 ## Concept page (phone)
 
 ```

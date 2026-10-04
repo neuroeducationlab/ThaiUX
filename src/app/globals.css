@@ -484,6 +484,109 @@
   transition-duration: 120ms;
 }
 
+/* Glossary peek (UXDR-27): a faint mist gathers where the pointer rests,
+   thickens, then parts to show a live mini demo inside the card.
+   The card sets --mx/--my (px) and data-peek = idle | mist | open | closing. */
+.peek-card {
+  --fog: 112 124 218; /* a pale periwinkle haze on light cards */
+  --fog-a: 0.17;
+  --fog-noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='256' height='256'%3E%3Cfilter id='n' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.012' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 2 0 0 0 -.45'/%3E%3C/filter%3E%3Crect width='256' height='256' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .peek-card {
+    --fog: 222 226 255;
+    --fog-a: 0.24;
+  }
+}
+:root[data-theme="dark"] .peek-card {
+  --fog: 222 226 255;
+  --fog-a: 0.24;
+}
+.peek-fog {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  overflow: hidden;
+  border-radius: inherit;
+  pointer-events: none;
+}
+.peek-haze {
+  position: absolute;
+  left: var(--mx, 50%);
+  top: var(--my, 70%);
+  width: 26rem;
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(var(--fog) / calc(var(--fog-a) * 3)), rgb(var(--fog) / var(--fog-a)) 55%, rgb(var(--fog) / 0));
+  /* soft fractal noise turns the glow into drifting wisps */
+  -webkit-mask: var(--fog-noise) 0 0 / 16rem 16rem, radial-gradient(closest-side, #000 35%, transparent);
+  -webkit-mask-composite: source-in;
+  mask: var(--fog-noise) 0 0 / 16rem 16rem, radial-gradient(closest-side, #000 35%, transparent);
+  mask-composite: intersect;
+  filter: blur(8px);
+  opacity: 0;
+  scale: 0.3;
+  transition: left 480ms var(--ease-out-soft), top 480ms var(--ease-out-soft), scale 700ms var(--ease-out-soft), opacity 420ms ease;
+  animation: peek-drift 18s linear infinite;
+}
+.peek-card[data-peek="mist"] .peek-haze {
+  opacity: 1;
+  scale: 0.55;
+}
+.peek-card[data-peek="open"] .peek-haze {
+  animation: peek-bloom 1000ms var(--ease-out-soft) both, peek-drift 18s linear infinite;
+}
+.peek-card[data-peek="closing"] .peek-haze {
+  animation: peek-puff 560ms ease-out both, peek-drift 18s linear infinite;
+}
+
+/* The card's own face fades into the mist, and back */
+.peek-face {
+  transition: opacity 420ms ease 100ms, filter 520ms var(--ease-out-soft) 60ms;
+}
+.peek-card[data-peek="open"] .peek-face {
+  opacity: 0;
+  filter: blur(6px);
+  transition-duration: 240ms, 300ms;
+  transition-delay: 0ms, 0ms;
+}
+
+/* …while the demo condenses out of it */
+.peek-live {
+  animation: peek-emerge 680ms var(--ease-out-soft) 160ms both;
+}
+.peek-card[data-peek="closing"] .peek-live {
+  animation: peek-vanish 280ms ease both;
+}
+
+@keyframes peek-drift {
+  to { -webkit-mask-position: 16rem 8rem, 0 0; mask-position: 16rem 8rem, 0 0; }
+}
+@keyframes peek-bloom {
+  0% { opacity: 1; scale: 0.55; }
+  38% { opacity: 1; scale: 2.3; }
+  100% { opacity: 0; scale: 3.1; }
+}
+@keyframes peek-puff {
+  0% { opacity: 0; scale: 1.5; }
+  30% { opacity: 0.85; }
+  100% { opacity: 0; scale: 2.4; }
+}
+@keyframes peek-emerge {
+  from { opacity: 0; filter: blur(12px); scale: 0.985; }
+  to { opacity: 1; filter: none; scale: none; }
+}
+@keyframes peek-vanish {
+  to { opacity: 0; filter: blur(8px); }
+}
+
+/* Reduced motion: no mist and no drift — the demo simply swaps in */
+@media (prefers-reduced-motion: reduce) {
+  .peek-fog { display: none; }
+  .peek-live { animation-delay: 0ms; }
+}
+
 /* Windows High Contrast / forced colours */
 @media (forced-colors: active) {
   :focus-visible { outline: 2px solid CanvasText; }

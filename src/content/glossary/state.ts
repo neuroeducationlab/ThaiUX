@@ -25,6 +25,12 @@ export const stateConcepts: Concept[] = [
       zh: "先什么都别碰。只看默认状态，选出看起来最像可以点击的按钮。",
       ja: "まだ何も触らずに、デフォルト状態だけを見て、いちばん押せそうなボタンを選んでみましょう。",
     },
+    peek: {
+      th: "ปุ่มไหนดูกดได้ที่สุด?",
+      en: "Which “Continue” looks clickable?",
+      zh: "哪个“继续”看起来最能点？",
+      ja: "どの「続ける」が一番押せそう？",
+    },
     demo: "default-state",
     problem: {
       th: "ผู้ใช้ตัดสินใจส่วนใหญ่จากสิ่งที่เห็นก่อนแตะ ถ้าสถานะปกติไม่บอกว่าใช้งานได้ ก็จะไม่มีใครแตะเพื่อไปเห็น Hover หรือ Feedback เลย",
@@ -107,6 +113,12 @@ export const stateConcepts: Concept[] = [
       en: "Press and hold each button, then release. Which one feels like pressing a real button?",
       zh: "按住每个按钮再松开。哪一个感觉像在按一个真实的按钮？",
       ja: "それぞれのボタンを長押ししてから離してみましょう。本物のボタンを押した感覚があるのはどちら？",
+    },
+    peek: {
+      th: "กดค้างที่ปุ่มจ่ายเงินทีละปุ่ม",
+      en: "Press and hold each Pay button",
+      zh: "依次按住两个支付按钮",
+      ja: "支払いボタンをそれぞれ長押し",
     },
     demo: "active-state",
     problem: {
@@ -191,6 +203,12 @@ export const stateConcepts: Concept[] = [
       zh: "点击示例区域，然后按几次 Tab 键。再打开“隐藏焦点框”并继续按 Tab——你还知道自己在哪里吗？",
       ja: "例の中をクリックして、Tab キーを何回か押してみましょう。次に「フォーカス枠を隠す」をオンにしてもう一度 Tab。いまどこにいるか分かりますか？",
     },
+    peek: {
+      th: "คลิกช่องอีเมล แล้วกด Tab",
+      en: "Click the email field, then press Tab",
+      zh: "点击邮箱栏，然后按 Tab",
+      ja: "メール欄をクリックして Tab キー",
+    },
     demo: "focus-state",
     problem: {
       th: "หลายคนใช้งานด้วยคีย์บอร์ด เช่น ผู้ที่มีข้อจำกัดด้านการเคลื่อนไหว ผู้ใช้โปรแกรมอ่านหน้าจอ หรือคนที่อยากทำงานเร็ว ถ้าไม่เห็นโฟกัส ก็เหมือนใช้เมาส์ที่มองไม่เห็นเคอร์เซอร์",
@@ -273,6 +291,12 @@ export const stateConcepts: Concept[] = [
       en: "Try pressing “Confirm booking” in both versions before filling everything in. Which one tells you what to do next?",
       zh: "在两个版本中，都先不填完就试着点击“确认预订”。哪一个告诉了你下一步该做什么？",
       ja: "両方のバージョンで、すべて入力する前に「予約を確定」を押してみましょう。次に何をすべきか教えてくれるのはどちら？",
+    },
+    peek: {
+      th: "ลองกดจองในแบบ A แล้วแบบ B",
+      en: "Try to book in A, then in B",
+      zh: "先在 A 里预订，再试 B",
+      ja: "A で予約してから B でも試して",
     },
     demo: "disabled-state",
     problem: {
@@ -357,6 +381,12 @@ export const stateConcepts: Concept[] = [
       zh: "用三种方式加载新闻流：空白、加载动画和骨架屏。哪一种等待感觉最漫长？",
       ja: "ニュースフィードを 3 通りで読み込んでみましょう。空白、スピナー、スケルトン。いちばん長く感じる待ち時間はどれ？",
     },
+    peek: {
+      th: "ลองโหลดฟีดสองรูปแบบ",
+      en: "Load the feed in two styles",
+      zh: "用两种样式加载动态",
+      ja: "2 つのスタイルで読み込んでみて",
+    },
     demo: "loading-state",
     problem: {
       th: "เครือข่ายช้าหรือเซิร์ฟเวอร์ประมวลผลนานเป็นเรื่องปกติ ถ้าหน้าจอเงียบ ผู้ใช้จะคิดว่าระบบพัง แล้วกดซ้ำหรือออกไปเลย",
@@ -440,6 +470,12 @@ export const stateConcepts: Concept[] = [
       zh: "输入格式错误的手机号（例如 12345），在两个版本中分别提交。哪一个能让你更快改正？",
       ja: "形式の間違った電話番号（例：12345）を入力して、両方のバージョンで送信してみましょう。早く直せるのはどちら？",
     },
+    peek: {
+      th: "ใส่เบอร์ไม่ครบแล้วกดส่ง ทั้ง A และ B",
+      en: "Send a short number in A and B",
+      zh: "在 A 和 B 里各发送不完整的号码",
+      ja: "A と B で短い番号を送信",
+    },
     demo: "error-state",
     problem: {
       th: "ทุกคนทำผิดได้ ปัญหาที่แท้จริงคือข้อความที่ทำให้ผู้ใช้รู้สึกผิด และไม่บอกว่าต้องแก้อย่างไร",
@@ -522,6 +558,12 @@ export const stateConcepts: Concept[] = [
       en: "Make a pretend transfer with both versions. Which one leaves you confident — and knowing what to do next?",
       zh: "用两个版本分别进行一次模拟转账。哪一个让你更安心，并且知道下一步该做什么？",
       ja: "両方のバージョンで、模擬の振込をしてみましょう。安心できて、次にすることが分かるのはどちら？",
+    },
+    peek: {
+      th: "ลองโอนเงินในแบบ A แล้วแบบ B",
+      en: "Make a transfer in A, then in B",
+      zh: "先在 A 里转账，再试 B",
+      ja: "A で送金してから B でも",
     },
     demo: "success-state",
     problem: {

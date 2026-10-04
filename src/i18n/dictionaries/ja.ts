@@ -152,6 +152,12 @@ const ja: Dictionary = {
     taughtIn: "関連レッスン",
     goDeeper: "さらに深く",
     conceptOf: "{total} 個中 {n} 個目",
+    peekTry: "試す",
+    peekClose: "ミニデモを閉じる",
+    peekLesson: "詳しく見る",
+    peekLabel: "{term}：ミニデモ",
+    peekTip: "カードにポインターを乗せると、その場で試せます。タッチなら「試す」をタップ。",
+    peekFailed: "このデモを読み込めませんでした。詳しいページは開けます。",
   },
   learn: {
     title: "学ぶ",

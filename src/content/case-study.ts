@@ -102,10 +102,10 @@ export const caseStudy = {
       title: { th: "สถาปัตยกรรมข้อมูล", en: "Information architecture" },
       body: {
         th: [
-          "ห้าส่วนตอบห้าความต้องการ: เรียนรู้ (เส้นทางมีลำดับ) · คลังศัพท์ (ค้นหาและลอง) · Lab (ฝึกตัดสินใจ) · เอฟเฟกต์ (ได้ไอเดียและสร้างเองด้วย AI) · เกี่ยวกับ (ความน่าเชื่อถือ) ทุก URL มีภาษานำหน้าเช่น /th/glossary/hover และ ⌘K ค้นข้ามภาษาข้ามตัวอักษร พิมพ์ “โฮเวอร์” หรือ “悬停” ก็เจอ Hover บนมือถือใช้แถบแท็บด้านล่างห้าปุ่มให้นิ้วโป้งเอื้อมถึง",
+          "ห้าส่วนตอบห้าความต้องการ: เรียนรู้ (เส้นทางมีลำดับ) · คลังศัพท์ (ค้นหาและลอง แค่วางเมาส์บนการ์ดก็เล่นตัวอย่างย่อได้ทันที) · Lab (ฝึกตัดสินใจ) · เอฟเฟกต์ (ได้ไอเดียและสร้างเองด้วย AI) · เกี่ยวกับ (ความน่าเชื่อถือ) ทุก URL มีภาษานำหน้าเช่น /th/glossary/hover และ ⌘K ค้นข้ามภาษาข้ามตัวอักษร พิมพ์ “โฮเวอร์” หรือ “悬停” ก็เจอ Hover บนมือถือใช้แถบแท็บด้านล่างห้าปุ่มให้นิ้วโป้งเอื้อมถึง",
         ],
         en: [
-          "Five sections answer five needs: Learn (a structured path) · Glossary (look up and try) · Lab (practise decisions) · Effects (get inspired, then build with AI) · About (trust). Every URL carries its language (/th/glossary/hover), and ⌘K search works across languages and scripts — typing “โฮเวอร์” or “悬停” finds Hover. On phones, a five-item bottom tab bar keeps navigation within thumb reach.",
+          "Five sections answer five needs: Learn (a structured path) · Glossary (look up and try — rest the pointer on a card and its mini demo plays right there) · Lab (practise decisions) · Effects (get inspired, then build with AI) · About (trust). Every URL carries its language (/th/glossary/hover), and ⌘K search works across languages and scripts — typing “โฮเวอร์” or “悬停” finds Hover. On phones, a five-item bottom tab bar keeps navigation within thumb reach.",
         ],
       },
     },
@@ -168,10 +168,10 @@ export const caseStudy = {
       title: { th: "ผลลัพธ์", en: "Outcome" },
       body: {
         th: [
-          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 21 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
+          "axe-core ตามเกณฑ์ WCAG 2.2 A/AA ไม่พบปัญหาบน 21 หน้าหลัก ครบทั้งสี่ภาษา ทั้งสองโหมด และในตัวอย่างย่อทั้ง 22 ตัวบนการ์ดคลังศัพท์ (เสริมด้วยการตรวจด้วยคีย์บอร์ด) ตัวชี้วัดจริงจะมาจากการทดสอบกับผู้ใช้: ผู้เริ่มต้นอธิบายแนวคิดด้วยคำของตัวเองได้หลังลองหนึ่งนาทีหรือไม่",
         ],
         en: [
-          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 21 key pages, in all four languages, in light and dark mode (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
+          "Automated axe-core checks against WCAG 2.2 A/AA report no violations on all 21 key pages, in all four languages, in light and dark mode, and in all 22 glossary mini demos opened in place (backed up by keyboard passes). The real success measure comes from testing with learners: can a beginner explain a concept in their own words after one minute of trying it?",
         ],
       },
     },

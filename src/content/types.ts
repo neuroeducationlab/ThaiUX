@@ -63,6 +63,8 @@ export interface Concept {
   short: Localized;
   /** What the user should do in the demo. */
   instruction: Localized;
+  /** A few words on what to try in the card-sized demo on the glossary page. */
+  peek: Localized;
   demo: DemoId;
   /** The real-world problem this concept exists to solve. */
   problem: Localized;

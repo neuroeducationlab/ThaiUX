@@ -11,7 +11,7 @@ Every concept on UXLab is something you can touch: you try it first, then learn 
 | Section | What you get |
 | --- | --- |
 | **Learn** | 8 short modules — What is UX → Understanding users → Information architecture → Interface design → Interaction design → Prototyping → Usability testing → Accessible design |
-| **Glossary** | 22 concepts (interactions, components, principles, states), each with a live demo, IPA, local names, common mistakes and sources |
+| **Glossary** | 22 concepts (interactions, components, principles, states), each with a live demo, IPA, local names, common mistakes and sources. Rest the pointer on a card and a faint mist clears into a mini demo you can play right there (or tap **Try it**) |
 | **Molly’s UX Lab** | UX Detective · Make It Better · Which Would You Choose? · Build a Button |
 | **Effects** | 21 live interaction effects — water ripple, X-ray lens, mouse parallax, lanyard badge, flower cursor, particle text, holographic tilt and more — each with why it works, when to use or avoid it, and a copy-ready AI prompt built on a five-part formula; plus a prompt builder |
 | **About** | Story, principles, privacy, and a 114-source reading list with the copyright policy |
@@ -22,7 +22,7 @@ Also: ⌘K search across languages and scripts, light/dark themes, on-device pro
 
 ## Quality bar
 
-- **0** axe-core WCAG 2.2 A/AA violations across 21 key pages × 4 languages × light/dark (168 checks)
+- **0** axe-core WCAG 2.2 A/AA violations across 21 key pages × 4 languages × light/dark (168 checks), plus all 22 glossary mini demos opened in place (44 checks)
 - Keyboard-complete: every focus stop shows a visible ring (scripted Tab pass, 10 pages)
 - 252 statically generated pages; each interactive demo is code-split, and effects load just before they scroll into view and pause off-screen
 - Respects `prefers-reduced-motion` and forced-colours mode
@@ -63,6 +63,8 @@ src/
     ui/                    Button, Switch, SegmentedControl, Tabs, ProgressBar, layout primitives, toast
     layout/                Header, mobile tab bar, footer, language & theme switchers
     demos/                 22 concept demos + DemoFrame (the “experience → name it” pattern)
+    peeks/                 22 card-sized mini demos that play inside the glossary cards
+    glossary/              Concept card (hover-intent peek, mist), explorer, save button
     examples/              Module examples
     lab/                   The four Lab experiments
     effects/               Effects library: stage engine, cards, prompt block & builder, home rail, 21 demos
@@ -78,7 +80,7 @@ tests/                     Playwright suites (smoke, a11y, flows, content)
 
 ## Adding content
 
-- **Concept:** add it to `src/content/glossary/<category>.ts`, add or reuse a demo in `src/components/demos/registry.tsx`, then `npm run check:content`.
+- **Concept:** add it to `src/content/glossary/<category>.ts` (including a short `peek` hint), add or reuse a demo in `src/components/demos/registry.tsx` and a card-sized peek in `src/components/peeks/registry.tsx`, then `npm run check:content`.
 - **Module:** add a file to `src/content/modules/` and list it in `index.ts`.
 - **Lab experiment:** metadata in `src/content/lab/index.ts`, component in `src/components/lab/`, register in `lab/registry.tsx`.
 - **Effect:** add it to `src/content/effects.ts` (the prompt follows the five-part formula), add a demo in `src/components/effects/demos/` built on `Stage` and `useStagePointer`, register it in `effects/registry.tsx`, then `npm run check:content`.

@@ -82,7 +82,9 @@ function getServerSnapshot() {
 
 function update(fn: (s: ProgressState) => ProgressState) {
   load();
-  state = fn(state);
+  const next = fn(state);
+  if (next === state) return; // nothing changed: skip the write and the re-render
+  state = next;
   persist();
   emit();
 }
@@ -91,10 +93,10 @@ const add = (list: string[], id: string) => (list.includes(id) ? list : [...list
 const remove = (list: string[], id: string) => list.filter((x) => x !== id);
 
 export const progress = {
-  markExperienced: (id: string) => update((s) => ({ ...s, experienced: add(s.experienced, id) })),
+  markExperienced: (id: string) => update((s) => (s.experienced.includes(id) ? s : { ...s, experienced: add(s.experienced, id) })),
   setCompleted: (id: string, done: boolean) =>
     update((s) => ({ ...s, completed: done ? add(s.completed, id) : remove(s.completed, id) })),
-  markLab: (id: string) => update((s) => ({ ...s, labs: add(s.labs, id) })),
+  markLab: (id: string) => update((s) => (s.labs.includes(id) ? s : { ...s, labs: add(s.labs, id) })),
   markEffect: (id: string) => update((s) => (s.effects.includes(id) ? s : { ...s, effects: add(s.effects, id) })),
   toggleSaved: (id: string) => {
     let nowSaved = false;

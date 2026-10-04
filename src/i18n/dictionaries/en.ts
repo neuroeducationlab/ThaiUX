@@ -155,6 +155,12 @@ const en = {
     taughtIn: "Taught in",
     goDeeper: "Go deeper",
     conceptOf: "Concept {n} of {total}",
+    peekTry: "Try it",
+    peekClose: "Close the mini demo",
+    peekLesson: "Full lesson",
+    peekLabel: "{term} — mini demo",
+    peekTip: "Rest your pointer on a card to play with it right there — or tap “Try it”.",
+    peekFailed: "This demo didn’t load. The full lesson still works.",
   },
   learn: {
     title: "Learn",
