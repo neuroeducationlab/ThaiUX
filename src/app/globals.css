@@ -587,6 +587,49 @@
   .peek-live { animation-delay: 0ms; }
 }
 
+/* Hero mind map (UXDR-29). Positions come from script (transform on each
+   node, --dx/--dy on the centre button); this is the look. */
+.ux-map-stage {
+  background-color: var(--surface);
+  background-image:
+    radial-gradient(closest-side, color-mix(in oklab, var(--accent) 13%, transparent), transparent) ,
+    radial-gradient(circle at 1px 1px, var(--line-strong) 1px, transparent 0);
+  background-size: 62% 78%, 18px 18px;
+  background-position: center, 0 0;
+  background-repeat: no-repeat, repeat;
+}
+.ux-map-stage:not([data-ready]) :is(.ux-leaf, .ux-hub, .ux-edge) { opacity: 0; }
+.ux-leaf, .ux-hub { will-change: transform; }
+.ux-center { translate: calc(-50% + var(--dx, 0px)) calc(-50% + var(--dy, 0px)); touch-action: none; }
+.ux-center[data-demo="hover"] { background-color: var(--accent-hover); box-shadow: var(--shadow-lg); }
+.ux-center[data-demo="active"] { background-color: var(--accent-press); scale: 0.96; }
+.ux-edge {
+  fill: none;
+  stroke: var(--line-strong);
+  stroke-width: 1.4;
+  transition: stroke 400ms ease, opacity 400ms ease;
+}
+.ux-edge-hub { stroke-width: 2.2; }
+.ux-edge[data-lit] { stroke: color-mix(in oklab, var(--accent) 75%, transparent); }
+.ux-edge-rel {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.4;
+  stroke-dasharray: 3 4;
+  opacity: 0.8;
+}
+.ux-pulse {
+  fill: var(--accent);
+  filter: drop-shadow(0 0 6px var(--accent));
+}
+.ux-ghost { transition: transform 650ms var(--ease-out-soft); }
+.ux-ripple { animation: ux-ripple 520ms var(--ease-out-soft) both; }
+@keyframes ux-ripple {
+  from { opacity: 0.9; scale: 0.4; }
+  to { opacity: 0; scale: 1.8; }
+}
+.ux-callout { animation: fade-up 260ms var(--ease-out-soft) both; }
+
 /* Windows High Contrast / forced colours */
 @media (forced-colors: active) {
   :focus-visible { outline: 2px solid CanvasText; }

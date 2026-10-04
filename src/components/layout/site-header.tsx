@@ -22,25 +22,23 @@ export function SiteHeader() {
 
         <nav aria-label={dict.a11y.mainNav} className="hidden md:block">
           <ul className="flex items-center gap-1">
-            {navItems
-              .filter((n) => n.key !== "home")
-              .map((item) => {
-                const current = ariaCurrent(pathname, item.key, locale);
-                return (
-                  <li key={item.key}>
-                    <Link
-                      href={item.href(locale)}
-                      aria-current={current}
-                      className={cn(
-                        "inline-flex h-10 items-center rounded-full px-4 text-[0.9375rem] font-medium transition-colors duration-200",
-                        current ? "bg-surface-2 text-ink" : "text-ink-2 hover:bg-surface-2/70 hover:text-ink",
-                      )}
-                    >
-                      {dict.nav[item.key]}
-                    </Link>
-                  </li>
-                );
-              })}
+            {navItems.map((item) => {
+              const current = ariaCurrent(pathname, item.key, locale);
+              return (
+                <li key={item.key}>
+                  <Link
+                    href={item.href(locale)}
+                    aria-current={current}
+                    className={cn(
+                      "inline-flex h-10 items-center rounded-full px-3 text-[0.9375rem] font-medium transition-colors duration-200 lg:px-4",
+                      current ? "bg-surface-2 text-ink" : "text-ink-2 hover:bg-surface-2/70 hover:text-ink",
+                    )}
+                  >
+                    {dict.nav[item.key]}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </nav>
 

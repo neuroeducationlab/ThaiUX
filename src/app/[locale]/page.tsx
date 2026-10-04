@@ -7,7 +7,7 @@ import { routes } from "@/lib/routes";
 import { cn } from "@/lib/cn";
 import { Container, Eyebrow, Section, SectionHeader } from "@/components/ui/layout";
 import { ButtonLink } from "@/components/ui/button";
-import { HeroStage } from "@/components/home/hero-stage";
+import { UxMap, type MapConcept, type MapLabels } from "@/components/home/ux-map";
 import { ConceptDemo } from "@/components/demos/registry";
 import { ProgressSummary } from "@/components/progress/progress-summary";
 import { LabThumb } from "@/components/lab/lab-thumb";
@@ -15,7 +15,7 @@ import { LabDoneBadge } from "@/components/lab/lab-done-badge";
 import { PlaygroundProvider } from "@/components/effects/provider";
 import { EffectsRail, type RailItem } from "@/components/effects/effects-rail";
 import { categoryOrder, conceptsIn, getConcept, glossary } from "@/content/glossary";
-import { modules } from "@/content/modules";
+import { modules, modulesForConcept } from "@/content/modules";
 import { experiments } from "@/content/lab";
 import { effectCategories, effects, getEffect } from "@/content/effects";
 import { effectsCopy } from "@/content/effects-copy";
@@ -42,6 +42,63 @@ export default async function Home() {
       href: routes.effect(locale, e.id),
       prompt: e.prompt,
     }));
+
+  // The hero map: every concept with where it leads (lesson, module, Lab, effect)
+  const shortName = (s: string) => s.split(" · ")[0].split(", ")[0].split(" or ")[0].replace(/[（(].*?[）)]/g, "").trim();
+  const mapConcepts: MapConcept[] = glossary.map((c) => {
+    const m = modulesForConcept(c.id)[0];
+    const lab = experiments.find((e) => e.concepts.includes(c.id));
+    const fx = effects.find((e) => e.related.includes(c.id));
+    const links: MapConcept["links"] = [];
+    if (m) links.push({ kind: "module", label: `${format(dict.learn.module, { n: m.number })} · ${pick(m.title, locale)}`, href: routes.module(locale, m.id) });
+    if (lab) links.push({ kind: "lab", label: `Lab ${lab.letter} · ${pick(lab.title, locale)}`, href: routes.experiment(locale, lab.id) });
+    if (fx) links.push({ kind: "effect", label: `${pick(h.map.effectLink, locale)} · ${fx.name}`, href: routes.effect(locale, fx.id) });
+    return {
+      id: c.id,
+      term: c.term,
+      local: shortName(pick(c.localTerm, locale)),
+      short: pick(c.short, locale),
+      category: c.categories[0],
+      demo: c.demo,
+      peek: pick(c.peek, locale),
+      href: routes.concept(locale, c.id),
+      related: c.related,
+      links,
+    };
+  });
+  const mapLabels: MapLabels = {
+    label: pick(h.map.label, locale),
+    region: pick(h.map.region, locale),
+    mapLabel: pick(h.map.mapLabel, locale),
+    button: pick(h.stage.button, locale),
+    done: pick(h.stage.done, locale),
+    prompt: pick(h.map.prompt, locale),
+    touchPrompt: pick(h.map.touchPrompt, locale),
+    progress: pick(h.stage.progress, locale),
+    explain: {
+      hover: pick(h.stage.explain.hover, locale),
+      "active-state": pick(h.stage.explain.active, locale),
+      "focus-state": pick(h.stage.explain.focus, locale),
+      feedback: pick(h.stage.explain.feedback, locale),
+      ...Object.fromEntries(Object.entries(h.map.explain).map(([k, v]) => [k, pick(v, locale)])),
+    },
+    milestone: pick(h.map.milestone, locale),
+    localNames: pick(h.map.localNames, locale),
+    showMe: pick(h.map.showMe, locale),
+    stop: pick(h.map.stop, locale),
+    coach: pick(h.map.coach, locale),
+    more: pick(h.map.more, locale),
+    tour: h.map.tour.map((t) => pick(t, locale)),
+    try: pick(h.map.card.try, locale),
+    lesson: pick(h.map.card.lesson, locale),
+    related: pick(h.map.card.related, locale),
+    back: pick(h.map.card.back, locale),
+    close: pick(h.map.card.close, locale),
+    experienced: dict.progress.experienced,
+    notYet: dict.progress.notYet,
+    youExperienced: dict.glossary.youExperienced,
+    categories: dict.categories,
+  };
 
   const stats = [
     { n: glossary.length, label: pick(h.hero.stats.concepts, locale) },
@@ -98,7 +155,7 @@ export default async function Home() {
               ))}
             </dl>
           </div>
-          <HeroStage />
+          <UxMap concepts={mapConcepts} labels={mapLabels} />
         </Container>
       </section>
 

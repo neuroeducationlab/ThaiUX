@@ -87,6 +87,79 @@ export const home = {
     },
   },
 
+  /** The hero’s mind map: 22 concepts that light up as you do them (UXDR-29). */
+  map: {
+    label: { th: "แผนที่นี้คือบทเรียน", en: "This map is a lesson", zh: "这张地图就是一堂课", ja: "このマップが教材です" },
+    region: { th: "แผนที่ความรู้ UX/UI ที่เล่นได้", en: "Playable map of UX/UI concepts", zh: "可以玩的 UX/UI 概念地图", ja: "触れる UX/UI 用語マップ" },
+    mapLabel: { th: "22 คำศัพท์ UX/UI แบ่งเป็น 4 กลุ่ม", en: "22 UX/UI concepts in four groups", zh: "22 个 UX/UI 概念，分为 4 组", ja: "4 つのグループ、22 の UX/UI 用語" },
+    prompt: {
+      th: "ลองชี้ กด หรือลากปุ่ม แล้วดูแผนที่สว่างขึ้น หรือเปิดคำไหนก็ได้",
+      en: "Point at the button, press it, drag it — and watch the map light up. Or open any word.",
+      zh: "指向按钮、按下、拖动——看地图一点点亮起来。也可以打开任意一个词。",
+      ja: "ボタンに乗せる、押す、ドラッグする。マップが光っていきます。どの言葉も開けます。",
+    },
+    touchPrompt: {
+      th: "แตะหรือลากปุ่ม แล้วดูแผนที่สว่างขึ้น หรือแตะคำไหนก็ได้",
+      en: "Tap or drag the button and watch the map light up — or tap any word.",
+      zh: "点按或拖动按钮，看地图亮起来——也可以点任意一个词。",
+      ja: "ボタンをタップかドラッグしてマップを光らせよう。どの言葉もタップできます。",
+    },
+    explain: {
+      click: {
+        th: "กดแล้วปล่อย วิธีพื้นฐานที่สุดที่บอกระบบว่า “ทำสิ่งนี้”",
+        en: "Press and release: the most basic way to say “do this”.",
+        zh: "按下再松开：告诉界面“执行这个”最基本的方式。",
+        ja: "押して離す。「これを実行して」と伝える、いちばん基本の操作です。",
+      },
+      "drag-and-drop": {
+        th: "คุณจับ ลาก แล้วปล่อย แผนที่ทั้งแผ่นเลยขยับตาม",
+        en: "You grabbed it, moved it and let go — and the whole map followed.",
+        zh: "你抓住它、移动、松手——整张地图都跟着动了。",
+        ja: "つかんで、動かして、離す。マップ全体がついてきました。",
+      },
+      tooltip: {
+        th: "ป้ายสั้น ๆ ที่โผล่มาเมื่อชี้ บอกความหมายได้โดยไม่ต้องคลิก",
+        en: "A short label that appears when you point — the meaning without a click.",
+        zh: "指向时出现的简短说明——不用点击就知道意思。",
+        ja: "ポインターを乗せると出る短いラベル。クリックせずに意味が分かります。",
+      },
+      toggle: {
+        th: "สวิตช์เดียว สองสถานะ มีผลทันที ชื่อบนแผนที่เปลี่ยนไปหมดแล้ว",
+        en: "One switch, two states, instant effect: every label just changed.",
+        zh: "一个开关、两种状态、立即生效：所有标签都变了。",
+        ja: "スイッチひとつ、状態は 2 つ、すぐに反映。ラベルが全部変わりました。",
+      },
+      "success-state": {
+        th: "แถบสีเขียวนี้ยืนยันว่าคุณทำได้ดี นี่แหละ Success state",
+        en: "That green banner confirms you’ve done well — a Success state.",
+        zh: "这条绿色提示确认你做得很好——这就是成功状态。",
+        ja: "緑のバナーが「よくできました」と伝えます。これが成功状態です。",
+      },
+    } as Record<string, Localized>,
+    milestone: { th: "สัมผัสแล้ว {n} คำ เก่งมาก!", en: "{n} concepts experienced — nice work!", zh: "已体验 {n} 个概念——做得好！", ja: "{n} 個の用語を体験。いい調子！" },
+    localNames: { th: "ชื่อไทย", en: "Other names", zh: "中文名", ja: "日本語名" },
+    showMe: { th: "พาดูหน่อย", en: "Show me", zh: "演示一下", ja: "見せて" },
+    stop: { th: "หยุด", en: "Stop", zh: "停止", ja: "止める" },
+    coach: { th: "ลองกดฉันสิ", en: "Try me", zh: "试试我", ja: "押してみて" },
+    more: { th: "คลิกเพื่อดูเพิ่ม", en: "Click for more", zh: "点击查看更多", ja: "クリックで詳しく" },
+    effectLink: { th: "เอฟเฟกต์", en: "Effect", zh: "特效", ja: "エフェクト" },
+    tour: [
+      { th: "ชี้ที่ปุ่ม: นี่คือ Hover", en: "Point at the button — that’s Hover", zh: "指向按钮——这就是悬停", ja: "ボタンに乗せる。これがホバー" },
+      { th: "กดปุ่ม: Active state → Click → Feedback", en: "Press it — Active state, Click, then Feedback", zh: "按下它——按下状态、点击，然后是反馈", ja: "押す。アクティブ状態、クリック、そしてフィードバック" },
+      { th: "จับแล้วลาก แผนที่ทั้งแผ่นขยับตาม: Drag and drop", en: "Grab it and drag — the map follows: Drag and drop", zh: "抓住拖动——地图跟着动：拖放", ja: "つかんでドラッグ。マップがついてくる：ドラッグ＆ドロップ" },
+      { th: "ชี้ที่คำไหนก็ได้ เพื่อดูความหมายสั้น ๆ: Tooltip", en: "Point at any word for a quick meaning — a Tooltip", zh: "指向任意词语查看简短含义——工具提示", ja: "言葉に乗せると短い意味が出る。ツールチップ" },
+      { th: "เปิดคำนั้น เพื่อดูบทเรียนย่อและลองเล่น", en: "Open the word for a mini lesson you can play", zh: "打开它，看一堂能互动的小课", ja: "開くと、触れるミニレッスンが出てきます" },
+      { th: "ตาคุณแล้ว! สำรวจให้ครบทั้ง 22 คำ", en: "Your turn — explore all 22", zh: "轮到你了——探索全部 22 个", ja: "あなたの番。22 個ぜんぶ探検しよう" },
+    ] as Localized[],
+    card: {
+      try: { th: "ลองเล่นตรงนี้", en: "Try it here", zh: "在这里试试", ja: "ここで試す" },
+      lesson: { th: "บทเรียนเต็ม", en: "Full lesson", zh: "完整课程", ja: "詳しいレッスン" },
+      related: { th: "เชื่อมกับ", en: "Connects to", zh: "相关概念", ja: "つながり" },
+      back: { th: "กลับไปที่แผนที่", en: "Back to the map", zh: "返回地图", ja: "マップに戻る" },
+      close: { th: "ปิด", en: "Close", zh: "关闭", ja: "閉じる" },
+    },
+  },
+
   /** Promotion for the Effects library: the hero pill and the moving rail. */
   effects: {
     badge: { th: "ใหม่", en: "New", zh: "新", ja: "NEW" },

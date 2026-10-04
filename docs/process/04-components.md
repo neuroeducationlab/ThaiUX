@@ -29,6 +29,15 @@
 
 1. Tell people what to try. 2. Let them do it. 3. **Name what they just felt.** Demos call `experience()` at the key moment; the concept is saved to on-device progress. Each of the 22 demos is code-split (`next/dynamic`) so a page only loads its own.
 
+## The hero map: `components/home/ux-map.tsx`
+
+A mind map that is also the homepage’s first lesson (UXDR-29).
+
+- **Layout** (`ux-map-layout.ts`): measured label sizes in, positions out. Wide stages: hubs on the diagonals, concepts on arcs, a relaxation pass, then a spiral search that guarantees no overlaps. Portrait stages: two branches above the button and two below, in centred rows. Re-runs on resize, when fonts load and when labels switch language. Checked overlap-free at 360–1440 px in Thai, English and Japanese, with and without local names.
+- **Motion**: one requestAnimationFrame loop that sleeps when nothing moves. Springs pull every node to its anchor; dragging the button offsets the whole map with per-node lag (the “elastic” feel), dragging a word pulls its related words. Positions are written straight to `transform`, never through React state.
+- **Discovering by doing**: hover, active state, click, feedback, focus state, drag and drop, tooltip, toggle and success state are each triggered by using the map itself; the other 13 are discovered in their mini demos. Each discovery marks progress, sends a spark along the branch and queues a one-line callout (announced politely to screen readers).
+- **Access**: the button is a normal button; the 22 words are one tab stop (roving `tabindex`, arrow keys move to the nearest word in that direction); a card is a dialog that takes focus and gives it back; Esc closes the innermost thing first. Reduced motion: no burst, drift, springs, sparks or coach pointer.
+
 ## The card peek: `ConceptCard` + `components/peeks/`
 
 Every glossary card can turn into a card-sized demo (UXDR-27). The card owns the behaviour; each peek is a small demo file that uses the same `useDemo()` API as the full demos.

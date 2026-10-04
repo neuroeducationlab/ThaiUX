@@ -8,11 +8,13 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 ┌──────────────────────────────────────────────────────────────────────┐
 │ ▣ UXLab         Learn  Glossary  Lab  About        [Search ⌘K] [TH] │
 ├──────────────────────────────────────────────────────────────────────┤
-│ (NEW · 21 playable effects, with AI prompts →) ┌ This button is a lesson ┐
-│ เรียน UX/UI ผ่านการลอง                        │   ·  ·  [ Press me ]  ·  │
-│ ไม่ใช่แค่อ่าน                                    │ You just experienced …  │
-│ Learn UX by experiencing it.  (serif)         │ (Hover)(Active)(Focus)… │
-│ Lead sentence…                                └─────────────────────────┘
+│ (NEW · 21 playable effects, with AI prompts →) ┌ This map is a lesson 3/22┐
+│ เรียน UX/UI ผ่านการลอง                        │ (Hover✓)─INTERACTION  ┌COMPONENTS
+│ ไม่ใช่แค่อ่าน                                    │ (Click)      ╲       ╱ (Modal)│
+│ Learn UX by experiencing it.  (serif)         │        [ Press me ] ← drag me  │
+│ Lead sentence…                                │ PRINCIPLES ╱   ╲ STATES (Focus)│
+│                                               │ hint …  [Other names] [▶ Show]│
+│                                               └───────────────────────────────┘
 │ [Start exploring →] [Enter the Lab]                                   │
 │ 22 concepts · 8 modules · 4 experiments · 4 languages                 │
 ├──────────────────────────────────────────────────────────────────────┤
@@ -37,6 +39,30 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 │              Made in Thailand, for anyone starting out               │
 │                 [The story] [Case study →]   ไทย English 中文 日本語   │
 └──────────────────────────────────────────────────────────────────────┘
+```
+
+## Hero map (desktop) — UXDR-29
+
+```
+┌ ✦ This map is a lesson ─────────────────────── 5 of 22 experienced ▬▬──┐
+│  (Toggle) (Swipe)                         (Button) (Input field)        │
+│ (Scroll) (Drag and drop✓)       ┌ Hover ✓ ──────────────┐ (Dropdown)    │
+│ (Click✓)   INTERACTION 3/6 ─╮   │ It reacted before you │  COMPONENTS   │
+│ (Hover✓) ·····spark·····    ╰── │ clicked…  (callout)   │   0/5 (Modal) │
+│                         [ Press me ]   ← drag: the map follows on springs │
+│ (Accessibility)  PRINCIPLES ╱        ╲ STATES 2/7   (Active state✓)     │
+│ (Usability) (Feedback✓)  ┌ AFFORDANCE ─────────────── ✕ ┐ (Focus ✓)     │
+│ (Affordance) ← click ──→ │ The cues that tell people…   │ (Loading)     │
+│                          │ [▶ Try it here]              │               │
+│                          │ 📖 Full lesson            →  │               │
+│                          │ 🎓 Module 1 · What is UX? →  │               │
+│                          │ ⚗ Lab A · UX Detective    →  │               │
+│                          │ ✦ Effect · Flower cursor  →  │               │
+│                          │ Connects to (Button)(Hover)  │               │
+├──────────────────────────└──────────────────────────────┘───────────────┤
+│ Point at the button, press it, drag it…   Other names (○)  [▶ Show me] │
+└─────────────────────────────────────────────────────────────────────────┘
+ phones: INTERACTION + COMPONENTS above the button, PRINCIPLES + STATES below
 ```
 
 ## Glossary card peek (desktop) — UXDR-27

@@ -226,3 +226,58 @@ test.describe("Glossary cards play their own demo", () => {
     await expect(swipe).toHaveAttribute("data-peek", "idle");
   });
 });
+
+test.describe("Hero map", () => {
+  const mapOf = (page: Page) => page.getByRole("region", { name: "Playable map of UX/UI concepts" });
+  const word = (page: Page, name: string) =>
+    mapOf(page).getByRole("group", { name: "22 UX/UI concepts in four groups" }).getByRole("button", { name: new RegExp(`^${name} —`) });
+
+  test("doing things to the button lights up the map; dragging it counts too", async ({ page }) => {
+    await page.goto("/en");
+    const b = await settle(page, mapOf(page).getByRole("button", { name: "Press me" }));
+    await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2, { steps: 4 });
+    await expect(word(page, "Hover")).toContainText("Experienced");
+    await page.mouse.down();
+    await page.mouse.move(b.x - 40, b.y + 50, { steps: 8 });
+    await page.mouse.up();
+    await expect(word(page, "Drag and drop")).toContainText("Experienced");
+    await expect(word(page, "Active state")).toContainText("Experienced");
+    await expect(mapOf(page).getByText(/^3 of 22 experienced$/)).toBeVisible();
+  });
+
+  test("a word opens a card with where to go next, and a mini demo to play", async ({ page }) => {
+    await page.goto("/en");
+    await word(page, "Toggle").click();
+    const card = mapOf(page).getByRole("dialog", { name: /Toggle/ });
+    await expect(card).toBeFocused();
+    await expect(card.getByRole("link", { name: "Full lesson" })).toHaveAttribute("href", "/en/glossary/toggle");
+    await card.getByRole("button", { name: "Try it here" }).click();
+    await card.getByRole("switch", { name: /Airplane mode/ }).click();
+    await expect(card.getByText("You just experienced “Toggle”.")).toBeVisible();
+    await page.keyboard.press("Escape");
+    await page.keyboard.press("Escape");
+    await expect(mapOf(page).getByRole("dialog")).toHaveCount(0);
+    await expect(word(page, "Toggle")).toBeFocused();
+    await expect(word(page, "Toggle")).toContainText("Experienced");
+  });
+
+  test("Show me plays a guided tour that doesn’t count as progress", async ({ page }) => {
+    await page.goto("/en");
+    const map = mapOf(page);
+    await map.getByRole("button", { name: "Show me" }).click();
+    await expect(map.getByText("Point at the button — that’s Hover")).toBeVisible();
+    await expect(map.getByText("Open the word for a mini lesson you can play")).toBeVisible({ timeout: 15_000 });
+    await map.getByRole("button", { name: "Stop" }).click();
+    await expect(map.getByRole("button", { name: "Show me" })).toBeVisible();
+    await expect(map.getByText(/^0 of 22 experienced$/)).toBeVisible();
+  });
+
+  test("on a phone, taps light up the map and open words as a sheet @mobile", async ({ page }) => {
+    await page.goto("/en");
+    const map = mapOf(page);
+    await map.getByRole("button", { name: "Press me" }).tap();
+    await expect(word(page, "Feedback")).toContainText("Experienced");
+    await word(page, "Swipe").tap();
+    await expect(map.getByRole("dialog", { name: /Swipe/ })).toBeVisible();
+  });
+});

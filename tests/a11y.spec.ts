@@ -25,6 +25,20 @@ for (const colorScheme of ["light", "dark"] as const) {
       }
     }
 
+    // The hero map with a word’s card open, then its mini demo (UXDR-29)
+    test(`axe hero map card and mini demo (${colorScheme})`, async ({ page }) => {
+      await page.goto("/en", { waitUntil: "networkidle" });
+      const map = page.getByRole("region", { name: "Playable map of UX/UI concepts" });
+      await map.getByRole("button", { name: /^Affordance —/ }).click();
+      const card = map.getByRole("dialog");
+      await expect(card).toBeVisible();
+      const scan = () => new AxeBuilder({ page }).withTags(tags).include('[aria-label="Playable map of UX/UI concepts"]').exclude("[data-intentionally-flawed]").analyze();
+      expect(summarise((await scan()).violations)).toEqual([]);
+      await card.getByRole("button", { name: "Try it here" }).click();
+      await card.locator(".demo-canvas > :not([aria-hidden])").first().waitFor();
+      expect(summarise((await scan()).violations)).toEqual([]);
+    });
+
     // Each glossary card’s mini demo, opened in place (UXDR-27)
     for (const c of glossary) {
       test(`axe glossary peek: ${c.id} (${colorScheme})`, async ({ page }) => {
