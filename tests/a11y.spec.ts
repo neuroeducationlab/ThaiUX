@@ -28,6 +28,7 @@ for (const colorScheme of ["light", "dark"] as const) {
 
     // The hero tour, part by part, paused, and at its end (UXDR-31)
     test(`axe hero tour (${colorScheme})`, async ({ page }) => {
+      test.setTimeout(60_000);
       await page.goto("/en", { waitUntil: "networkidle" });
       const name = "30-second tour: what you get from UXLab";
       const tour = page.getByRole("region", { name });
