@@ -1,4 +1,5 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
+import { modules } from "@/content/modules";
 
 /** Scroll a pointer target into view instantly (the site scrolls smoothly), so it sits still under the mouse. */
 async function settle(page: Page, target: Locator) {
@@ -42,15 +43,6 @@ test("skip link moves focus to the main content", async ({ page }) => {
   await expect(skip).toBeFocused();
   await page.keyboard.press("Enter");
   await expect(page.locator("main")).toBeFocused();
-});
-
-test("hero button names what you just experienced", async ({ page }) => {
-  await page.goto("/en");
-  const button = page.getByRole("button", { name: "Press me" });
-  await button.hover();
-  await expect(page.getByText("You just experienced “Hover”.")).toBeVisible();
-  await button.click();
-  await expect(page.getByText("You just experienced “Feedback”.")).toBeVisible();
 });
 
 test("glossary filter lives in the URL", async ({ page }) => {
@@ -227,57 +219,96 @@ test.describe("Glossary cards play their own demo", () => {
   });
 });
 
-test.describe("Hero map", () => {
-  const mapOf = (page: Page) => page.getByRole("region", { name: "Playable map of UX/UI concepts" });
-  const word = (page: Page, name: string) =>
-    mapOf(page).getByRole("group", { name: "22 UX/UI concepts in four groups" }).getByRole("button", { name: new RegExp(`^${name} —`) });
+test.describe("Hero tour", () => {
+  const tourOf = (page: Page) => page.getByRole("region", { name: "30-second tour: what you get from UXLab" });
+  /** Press the call to action (again, if it landed before the page hydrated) until the tour is running. */
+  const start = async (page: Page, how: "click" | "tap" = "click") => {
+    const tour = tourOf(page);
+    await expect(async () => {
+      const cta = tour.getByRole("button", { name: "Take the 30-second tour" });
+      if (await cta.isVisible()) await cta[how]();
+      await expect(tour.getByRole("button", { name: "Pause the tour" })).toBeVisible({ timeout: 1000 });
+    }).toPass();
+    return tour;
+  };
 
-  test("doing things to the button lights up the map; dragging it counts too", async ({ page }) => {
+  test("one button starts the tour; it can be paused, skipped through and closed", async ({ page }) => {
     await page.goto("/en");
-    const b = await settle(page, mapOf(page).getByRole("button", { name: "Press me" }));
-    await page.mouse.move(b.x + b.width / 2, b.y + b.height / 2, { steps: 4 });
-    await expect(word(page, "Hover")).toContainText("Experienced");
-    await page.mouse.down();
-    await page.mouse.move(b.x - 40, b.y + 50, { steps: 8 });
-    await page.mouse.up();
-    await expect(word(page, "Drag and drop")).toContainText("Experienced");
-    await expect(word(page, "Active state")).toContainText("Experienced");
-    await expect(mapOf(page).getByText(/^3 of 22 experienced$/)).toBeVisible();
-  });
-
-  test("a word opens a card with where to go next, and a mini demo to play", async ({ page }) => {
-    await page.goto("/en");
-    await word(page, "Toggle").click();
-    const card = mapOf(page).getByRole("dialog", { name: /Toggle/ });
-    await expect(card).toBeFocused();
-    await expect(card.getByRole("link", { name: "Full lesson" })).toHaveAttribute("href", "/en/glossary/toggle");
-    await card.getByRole("button", { name: "Try it here" }).click();
-    await card.getByRole("switch", { name: /Airplane mode/ }).click();
-    await expect(card.getByText("You just experienced “Toggle”.")).toBeVisible();
+    const tour = await start(page);
+    await expect(tour.getByRole("button", { name: "Pause the tour" })).toBeFocused();
+    await expect(tour.locator("[aria-live]")).toHaveText("Part 1 of 4 · Pick an effect: Does your page feel a bit flat?");
+    await tour.getByRole("button", { name: "Pause the tour" }).click();
+    await expect(tour.getByText("Paused — press to carry on")).toBeVisible();
+    await tour.getByRole("button", { name: "Resume the tour" }).click();
+    await page.keyboard.press("ArrowRight");
+    await expect(tour.getByRole("button", { name: "Go to part 2: Copy the prompt" })).toHaveAttribute("aria-current", "step");
     await page.keyboard.press("Escape");
-    await page.keyboard.press("Escape");
-    await expect(mapOf(page).getByRole("dialog")).toHaveCount(0);
-    await expect(word(page, "Toggle")).toBeFocused();
-    await expect(word(page, "Toggle")).toContainText("Experienced");
+    await expect(tour.getByRole("button", { name: "Take the 30-second tour" })).toBeFocused();
   });
 
-  test("Show me plays a guided tour that doesn’t count as progress", async ({ page }) => {
+  test("the prompt in the tour is real: copying it pauses the tour", async ({ page, context }) => {
+    await context.grantPermissions(["clipboard-read", "clipboard-write"]);
     await page.goto("/en");
-    const map = mapOf(page);
-    await map.getByRole("button", { name: "Show me" }).click();
-    await expect(map.getByText("Point at the button — that’s Hover")).toBeVisible();
-    await expect(map.getByText("Open the word for a mini lesson you can play")).toBeVisible({ timeout: 15_000 });
-    await map.getByRole("button", { name: "Stop" }).click();
-    await expect(map.getByRole("button", { name: "Show me" })).toBeVisible();
-    await expect(map.getByText(/^0 of 22 experienced$/)).toBeVisible();
+    const tour = await start(page);
+    await tour.getByRole("button", { name: "Go to part 2: Copy the prompt" }).click();
+    await tour.getByRole("button", { name: "Copy prompt" }).click();
+    await expect(tour.getByText(/Copied! The tour is paused/)).toBeVisible();
+    const text = await page.evaluate(() => navigator.clipboard.readText());
+    expect(text).toMatch(/^Create a magnetic button component/);
+    expect(text).toContain("Guardrails:");
   });
 
-  test("on a phone, taps light up the map and open words as a sheet @mobile", async ({ page }) => {
+  test("it ends on the journey and where to start, and never counts as progress", async ({ page }) => {
     await page.goto("/en");
-    const map = mapOf(page);
-    await map.getByRole("button", { name: "Press me" }).tap();
-    await expect(word(page, "Feedback")).toContainText("Experienced");
-    await word(page, "Swipe").tap();
-    await expect(map.getByRole("dialog", { name: /Swipe/ })).toBeVisible();
+    const tour = await start(page);
+    await tour.getByRole("button", { name: "Go to part 4: Get your certificate" }).click();
+    await expect(tour.getByRole("heading", { name: "It’s that easy." })).toBeFocused({ timeout: 10_000 });
+    await expect(tour.getByRole("link", { name: /^Finish 8 modules, get a certificate/ })).toHaveAttribute("href", "/en/learn/certificate");
+    await expect(tour.getByRole("link", { name: "Start Module 1" })).toHaveAttribute("href", "/en/learn/what-is-ux");
+    expect(await page.evaluate(() => localStorage.getItem("thaiux:progress:v1"))).toBeNull();
+  });
+
+  test("on a phone, a tap on the picture pauses it and another carries on @mobile", async ({ page }) => {
+    await page.goto("/en");
+    const tour = await start(page, "tap");
+    const stage = tour.locator(".tour-stage");
+    await expect(stage).toHaveAttribute("data-mode", "playing");
+    await stage.tap({ position: { x: 24, y: 220 } });
+    await expect(stage).toHaveAttribute("data-mode", "paused");
+    await stage.tap({ position: { x: 24, y: 220 } });
+    await expect(stage).toHaveAttribute("data-mode", "playing");
+  });
+});
+
+test.describe("Certificate", () => {
+  const seed = (page: Page, done: string[]) =>
+    page.evaluate((completed) => localStorage.setItem("thaiux:progress:v1", JSON.stringify({ experienced: [], completed, labs: [], saved: [], effects: [] })), done);
+
+  test("locked until every module is done: a sample, the progress and the next module", async ({ page }) => {
+    await page.goto("/en");
+    await seed(page, modules.slice(0, 3).map((m) => m.id));
+    await page.goto("/en/learn/certificate");
+    await expect(page.getByText("Your certificate is waiting")).toBeVisible();
+    await expect(page.getByRole("progressbar", { name: "3 of 8 modules completed" })).toBeVisible();
+    await expect(page.getByRole("link", { name: "Continue with Module 4" })).toHaveAttribute("href", `/en/learn/${modules[3].id}`);
+    await expect(page.getByRole("img", { name: /^Certificate preview/ })).toHaveAttribute("aria-label", /\(Sample\)$/);
+    await expect(page.getByRole("button", { name: /Download/ })).toHaveCount(0);
+  });
+
+  test("the last module unlocks it; the name goes on it and it downloads as a PNG", async ({ page }) => {
+    await page.goto("/en");
+    await seed(page, modules.slice(0, 7).map((m) => m.id));
+    await page.goto(`/en/learn/${modules[7].id}`);
+    await page.getByRole("button", { name: "Mark module as complete" }).click();
+    await page.getByRole("link", { name: "All done — get your certificate" }).click();
+    await expect(page).toHaveURL(/\/en\/learn\/certificate$/);
+    await expect(page.getByText("Congratulations — you’ve finished all 8 modules!")).toBeVisible();
+    await page.getByLabel("Name on the certificate").fill("Ada Lovelace");
+    await expect(page.getByRole("img", { name: /Ada Lovelace/ })).toBeVisible();
+    const download = page.waitForEvent("download");
+    await page.getByRole("button", { name: "Download image (PNG)" }).click();
+    expect((await download).suggestedFilename()).toBe("UXLab-certificate.png");
+    await page.reload();
+    await expect(page.getByLabel("Name on the certificate")).toHaveValue("Ada Lovelace");
   });
 });

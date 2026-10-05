@@ -6,6 +6,7 @@ export const keyPaths = [
   "/learn",
   "/learn/what-is-ux",
   "/learn/accessible-design",
+  "/learn/certificate",
   "/glossary",
   "/glossary/hover",
   "/glossary/affordance",

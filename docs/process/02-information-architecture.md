@@ -5,7 +5,8 @@
 ```
 /{locale}                         Home
 ├── /learn                        Learning path (8 modules)
-│   └── /learn/{module}           Module: scenario → what → why → topics → example → takeaway → reflect → sources
+│   ├── /learn/{module}           Module: scenario → what → why → topics → example → takeaway → reflect → sources
+│   └── /learn/certificate        Certificate: preview + progress until all 8 modules are done, then your name → PNG / print / share
 ├── /glossary                     22 concepts, filter by category (?category=…), search
 │   └── /glossary/{term}          Concept: one-minute summary → demo → problem → how → in practice → mistake → takeaway
 ├── /lab                          Molly’s UX Lab (4 experiments) + Real-World UX (coming soon)

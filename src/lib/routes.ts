@@ -5,6 +5,7 @@ export const routes = {
   home: (l: Locale) => `/${l}`,
   learn: (l: Locale) => `/${l}/learn`,
   module: (l: Locale, id: string) => `/${l}/learn/${id}`,
+  certificate: (l: Locale) => `/${l}/learn/certificate`,
   glossary: (l: Locale) => `/${l}/glossary`,
   concept: (l: Locale, id: string) => `/${l}/glossary/${id}`,
   lab: (l: Locale) => `/${l}/lab`,

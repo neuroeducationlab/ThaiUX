@@ -7,6 +7,7 @@ import { glossary } from "./glossary";
 import { modules } from "./modules";
 import { experiments } from "./lab";
 import { effectCategories, effects } from "./effects";
+import { certificate } from "./certificate";
 
 /** Suggestions shown before anyone types — the most useful first steps. */
 export const popularSearchIds = [
@@ -72,6 +73,7 @@ export function buildSearchIndex(locale: Locale): SearchItem[] {
     { id: "page:learn", kind: "page", title: dict.nav.learn, href: routes.learn(locale), keywords: "learn modules path" },
     { id: "page:glossary", kind: "page", title: dict.nav.glossary, href: routes.glossary(locale), keywords: "glossary terms dictionary" },
     { id: "page:lab", kind: "page", title: dict.lab.title, href: routes.lab(locale), keywords: "lab experiments playground" },
+    { id: "page:certificate", kind: "page", title: pick(certificate.title, locale), href: routes.certificate(locale), keywords: "certificate completion เกียรติบัตร ใบประกาศ 证书 修了証" },
     { id: "page:effects", kind: "page", title: dict.nav.effects, href: routes.effects(locale), keywords: "effects interactions animation cursor hover prompts vibe coding เอฟเฟกต์ 特效 エフェクト" },
     { id: "page:about", kind: "page", title: dict.nav.about, href: routes.about(locale), keywords: "about molly project" },
     { id: "page:case-study", kind: "page", title: dict.footer.caseStudy, href: routes.caseStudy(locale), keywords: "case study portfolio process" },

@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight, Award } from "lucide-react";
 import { getI18n } from "@/i18n/server";
 import { pick } from "@/i18n/localized";
 import { pageMetadata } from "@/lib/seo";
@@ -9,6 +11,7 @@ import { LearningLoop } from "@/components/learn/learning-loop";
 import { ModulePath, type ModuleSummary } from "@/components/learn/module-path";
 import { ProgressSummary } from "@/components/progress/progress-summary";
 import { modules } from "@/content/modules";
+import { certificate } from "@/content/certificate";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { locale, dict } = await getI18n();
@@ -39,7 +42,17 @@ export default async function LearnPage() {
       <section aria-labelledby="path-heading">
         <div className="mb-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <h2 id="path-heading" className="type-h2">{dict.learn.pathTitle}</h2>
-          <ProgressSummary kind="modules" total={modules.length} className="w-full max-w-xs" />
+          <div className="w-full max-w-xs">
+            <ProgressSummary kind="modules" total={modules.length} />
+            <Link
+              href={routes.certificate(locale)}
+              className="group mt-3 inline-flex min-h-11 items-center gap-2 text-[0.9375rem] font-semibold text-accent-ink underline-offset-4 hover:underline"
+            >
+              <Award className="size-[1.125rem] shrink-0" aria-hidden />
+              {pick(certificate.learnHub, locale)}
+              <ArrowRight className="size-4 shrink-0 transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden />
+            </Link>
+          </div>
         </div>
         <ModulePath modules={items} />
       </section>

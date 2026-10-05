@@ -10,8 +10,8 @@ Every concept on UXLab is something you can touch: you try it first, then learn 
 
 | Section | What you get |
 | --- | --- |
-| **Home** | A playable mind map of all 22 concepts around one button: point at it, press it, drag it (the map follows on springs) and each concept you perform lights up with a one-line lesson; open any word for its meaning, a mini demo and links to its lesson, module, Lab experiment and effect, or press *Show me* for a guided tour |
-| **Learn** | 8 short modules — What is UX → Understanding users → Information architecture → Interface design → Interaction design → Prototyping → Usability testing → Accessible design |
+| **Home** | One clear call to action: a 30-second tour that shows what you get — a plain page that effects bring to life, a prompt you copy into your own AI (really copied), a glossary card that opens into a demo, and a certificate with your name — told as one easy journey: pick an effect → copy the prompt → learn by doing → get your certificate |
+| **Learn** | 8 short modules — What is UX → Understanding users → Information architecture → Interface design → Interaction design → Prototyping → Usability testing → Accessible design. Finish all eight for a certificate in your name, drawn on your device (PNG, print/PDF, share) |
 | **Glossary** | 22 concepts (interactions, components, principles, states), each with a live demo, IPA, local names, common mistakes and sources. Rest the pointer on a card and a faint mist clears into a mini demo you can play right there (or tap **Try it**) |
 | **Molly’s UX Lab** | UX Detective · Make It Better · Which Would You Choose? · Build a Button |
 | **Effects** | 21 live interaction effects — water ripple, X-ray lens, mouse parallax, lanyard badge, flower cursor, particle text, holographic tilt and more — each with why it works, when to use or avoid it, and a copy-ready AI prompt built on a five-part formula; plus a prompt builder |
@@ -23,9 +23,9 @@ Also: ⌘K search across languages and scripts, light/dark themes, on-device pro
 
 ## Quality bar
 
-- **0** axe-core WCAG 2.2 A/AA violations across 21 key pages × 4 languages × light/dark (168 checks), plus all 22 glossary mini demos opened in place (44 checks) and the hero map’s card and mini demo (2 checks)
+- **0** axe-core WCAG 2.2 A/AA violations across 22 key pages × 4 languages × light/dark (176 checks), plus all 22 glossary mini demos opened in place (44 checks), the hero tour part by part and the unlocked certificate (4 checks)
 - Keyboard-complete: every focus stop shows a visible ring (scripted Tab pass, 10 pages)
-- 252 statically generated pages; each interactive demo is code-split, and effects load just before they scroll into view and pause off-screen
+- 256 statically generated pages; each interactive demo is code-split, and effects load just before they scroll into view and pause off-screen
 - Respects `prefers-reduced-motion` and forced-colours mode
 
 ## Tech
@@ -69,7 +69,8 @@ src/
     examples/              Module examples
     lab/                   The four Lab experiments
     effects/               Effects library: stage engine, cards, prompt block & builder, home rail, 21 demos
-    home/                  Hero mind map: layout (no-overlap packing), spring physics, cards, guided tour
+    home/                  Hero call to action + 30-second tour (engine, four scenes, ghost pointer)
+    certificate/           Canvas-drawn certificate: fonts, layout, download / print / share
     design-system/         Design system page components
   content/                 Typed content: glossary, modules, lab, sources, page copy
   i18n/                    Locale config, dictionaries (EN defines the shape), helpers

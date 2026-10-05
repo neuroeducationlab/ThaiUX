@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "",
     "/learn",
     ...modules.map((m) => `/learn/${m.id}`),
+    "/learn/certificate",
     "/glossary",
     ...glossary.map((c) => `/glossary/${c.id}`),
     "/lab",

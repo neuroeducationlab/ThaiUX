@@ -6,15 +6,17 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 
 ```
 ┌──────────────────────────────────────────────────────────────────────┐
-│ ▣ UXLab         Learn  Glossary  Lab  About        [Search ⌘K] [TH] │
+│ ▣ UXLab    Home  Learn  Glossary  Lab  Effects  About  [Search ⌘K] [TH] │
 ├──────────────────────────────────────────────────────────────────────┤
-│ (NEW · 21 playable effects, with AI prompts →) ┌ This map is a lesson 3/22┐
-│ เรียน UX/UI ผ่านการลอง                        │ (Hover✓)─INTERACTION  ┌COMPONENTS
-│ ไม่ใช่แค่อ่าน                                    │ (Click)      ╲       ╱ (Modal)│
-│ Learn UX by experiencing it.  (serif)         │        [ Press me ] ← drag me  │
-│ Lead sentence…                                │ PRINCIPLES ╱   ╲ STATES (Focus)│
-│                                               │ hint …  [Other names] [▶ Show]│
-│                                               └───────────────────────────────┘
+│ (NEW · 21 playable effects, with AI prompts →) ┌ [effect]       [prompt] ┐
+│ เรียน UX/UI ผ่านการลอง                        │  Not sure how to make   │
+│ ไม่ใช่แค่อ่าน                                    │  your UI stand out?     │
+│ Learn UX by experiencing it.  (serif)         │  UXLab is the answer.   │
+│ Lead sentence…                                │ [▶ Take the 30-second tour]│
+│                                               │ [concept]  [certificate] │
+│                                               ├─────────────────────────┤
+│                                               │ 1 Pick  2 Copy  3 Learn  4 Cert│
+│                                               └─────────────────────────┘
 │ [Start exploring →] [Enter the Lab]                                   │
 │ 22 concepts · 8 modules · 4 experiments · 4 languages                 │
 ├──────────────────────────────────────────────────────────────────────┤
@@ -41,29 +43,61 @@ Sketched before any visual design to fix structure and hierarchy. Fidelity was t
 └──────────────────────────────────────────────────────────────────────┘
 ```
 
-## Hero map (desktop) — UXDR-29
+## Hero tour — UXDR-31
+
+One button, then four quick parts. The journey row at the bottom is also the progress bar (one segment per part, tap to jump); a ghost pointer shows every move.
 
 ```
-┌ ✦ This map is a lesson ─────────────────────── 5 of 22 experienced ▬▬──┐
-│  (Toggle) (Swipe)                         (Button) (Input field)        │
-│ (Scroll) (Drag and drop✓)       ┌ Hover ✓ ──────────────┐ (Dropdown)    │
-│ (Click✓)   INTERACTION 3/6 ─╮   │ It reacted before you │  COMPONENTS   │
-│ (Hover✓) ·····spark·····    ╰── │ clicked…  (callout)   │   0/5 (Modal) │
-│                         [ Press me ]   ← drag: the map follows on springs │
-│ (Accessibility)  PRINCIPLES ╱        ╲ STATES 2/7   (Active state✓)     │
-│ (Usability) (Feedback✓)  ┌ AFFORDANCE ─────────────── ✕ ┐ (Focus ✓)     │
-│ (Affordance) ← click ──→ │ The cues that tell people…   │ (Loading)     │
-│                          │ [▶ Try it here]              │               │
-│                          │ 📖 Full lesson            →  │               │
-│                          │ 🎓 Module 1 · What is UX? →  │               │
-│                          │ ⚗ Lab A · UX Detective    →  │               │
-│                          │ ✦ Effect · Flower cursor  →  │               │
-│                          │ Connects to (Button)(Hover)  │               │
-├──────────────────────────└──────────────────────────────┘───────────────┤
-│ Point at the button, press it, drag it…   Other names (○)  [▶ Show me] │
-└─────────────────────────────────────────────────────────────────────────┘
- phones: INTERACTION + COMPONENTS above the button, PRINCIPLES + STATES below
+Poster                                 Part 1 · Pick an effect (10 s)
+┌ [effect]              [prompt] ┐     ┌ Part 1/4 · Pick an effect ──────────┐
+│   Not sure how to make your UI  │     │ Does your page feel a bit flat?      │
+│   stand out?                    │     │ ┌ your-site.com ─────────────────┐  │
+│   UXLab is the answer.          │     │ │ ░░░░  plain page  [Sign up] ↖   │  │ “Click… nothing happens”
+│   [▶ Take the 30-second tour]   │     │ └────────────────────────────────┘  │
+│   Everything you’ll get · pause │     │ [✓Gooey blobs][✓Glow border][Magnetic][Celebration]
+│ [concept]         [certificate] │     │ → blobs wipe in, cards glow, button pulls, confetti
+├─────────────────────────────────┤     ├──────────────────────────────────────┤
+│ 1 Pick  2 Copy  3 Learn  4 Cert │     │ ▬▬▬▬ ──── ──── ────        [❚❚] [✕] │
+└─────────────────────────────────┘     └──────────────────────────────────────┘
+
+Part 2 · Copy the prompt (8 s)         Part 3 · Learn by doing (7 s)
+┌ Magnetic button  React+Tailwind ┐    [Hover] [Tooltip] [Feedback ← mist → ♥ Liked +1]
+│ Create a magnetic button…       │    ✓ You just experienced “Feedback”.
+│                 [✓ Copy prompt] │ ←  (22 concepts) (8 modules) (4 experiments)
+└──┌ Your AI coding tool ────────┐┘    the Copy button is real: pressing it copies
+   │        [Create a magnetic…] │     the prompt and pauses the tour
+   │ Added a magnetic button. [⦿]│
+   │ [ Paste a prompt…        ➤ ]│
+   └─────────────────────────────┘
+
+Part 4 · Get your certificate (7 s)    Finale
+ ✓✓✓✓✓✓✓✓ 8/8                          ✦ That’s the tour
+┌ UXLab ─── 🔒 → unlocked ────────┐     It’s that easy.
+│  CERTIFICATE OF COMPLETION      │     ✓ Pick an effect you love — 21 to choose from  →
+│  Your Name   (types in)         │     ✓ Copy its prompt into the AI you vibe-code with →
+│  [⬇ Download → ✓ Saved]   (seal)│     ✓ Understand UX/UI terms by playing with them  →
+└─────────────────────────────────┘     ✓ Finish 8 modules, get a certificate         →
+                                        [Start Module 1 →] [See all 21 effects] ↺ Watch again
 ```
+
+## Certificate — UXDR-32
+
+```
+Home › Learn › Certificate
+Certificate
+Finish all eight modules and UXLab makes you a certificate in your name…
+
+┌──────────────────────────────────┐   ┌ 🔒 Your certificate is waiting ─┐
+│ UXLab                  site.url  │   │ You’ve finished 3 of 8.        │
+│   CERTIFICATE OF COMPLETION      │   │ ▬▬▬▬▬▬──────────               │
+│        เกียรติบัตร                  │   │ [Continue with Module 4 →]     │
+│   Your Name   (SAMPLE watermark) │   └────────────────────────────────┘
+│   has completed all eight…       │   Name on the certificate [________]
+│   1 What is UX? · 2 … · 8 …      │   (unlocked: [⬇ PNG] [🖨 Print / PDF] [Share])
+│ date ────   (seal)   ──── issuer │   Records completion on this device; not accredited.
+└──────────────────────────────────┘   Your modules: ✓1 ✓2 ✓3 ○4 ○5 ○6 ○7 ○8
+```
+
 
 ## Glossary card peek (desktop) — UXDR-27
 

@@ -2,10 +2,11 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/dictionaries/en";
-import { format } from "@/i18n/localized";
+import { format, pick } from "@/i18n/localized";
 import { routes } from "@/lib/routes";
 import { site } from "@/lib/site";
 import { Container } from "@/components/ui/layout";
+import { certificate } from "@/content/certificate";
 import { Logo } from "./logo";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -15,6 +16,7 @@ export function SiteFooter({ locale, dict }: { locale: Locale; dict: Dictionary 
     { href: routes.glossary(locale), label: dict.nav.glossary },
     { href: routes.lab(locale), label: dict.nav.lab },
     { href: routes.effects(locale), label: dict.nav.effects },
+    { href: routes.certificate(locale), label: pick(certificate.title, locale) },
   ];
   const project = [
     { href: routes.about(locale), label: dict.nav.about },

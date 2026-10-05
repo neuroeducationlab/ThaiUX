@@ -29,14 +29,22 @@
 
 1. Tell people what to try. 2. Let them do it. 3. **Name what they just felt.** Demos call `experience()` at the key moment; the concept is saved to on-device progress. Each of the 22 demos is code-split (`next/dynamic`) so a page only loads its own.
 
-## The hero map: `components/home/ux-map.tsx`
+## The hero tour: `components/home/value-tour.tsx` + `tour-scenes.tsx`
 
-A mind map that is also the homepage’s first lesson (UXDR-29).
+One call to action, then a 30-second tour of what people get (UXDR-31).
 
-- **Layout** (`ux-map-layout.ts`): measured label sizes in, positions out. Wide stages: hubs on the diagonals, concepts on arcs, a relaxation pass, then a spiral search that guarantees no overlaps. Portrait stages: two branches above the button and two below, in centred rows. Re-runs on resize, when fonts load and when labels switch language. Checked overlap-free at 360–1440 px in Thai, English and Japanese, with and without local names.
-- **Motion**: one requestAnimationFrame loop that sleeps when nothing moves. Springs pull every node to its anchor; dragging the button offsets the whole map with per-node lag (the “elastic” feel), dragging a word pulls its related words. Positions are written straight to `transform`, never through React state.
-- **Discovering by doing**: hover, active state, click, feedback, focus state, drag and drop, tooltip, toggle and success state are each triggered by using the map itself; the other 13 are discovered in their mini demos. Each discovery marks progress, sends a spark along the branch and queues a one-line callout (announced politely to screen readers).
-- **Access**: the button is a normal button; the 22 words are one tab stop (roving `tabindex`, arrow keys move to the nearest word in that direction); a card is a dialog that takes focus and gives it back; Esc closes the innermost thing first. Reduced motion: no burst, drift, springs, sparks or coach pointer.
+- **Engine** (`value-tour.tsx`): `idle → playing ⇄ paused → done`. Each part has a list of beats (ms) and an end; a requestAnimationFrame clock advances only while playing and turns time into the current beat. The progress bar for the current part is written straight to a CSS variable (`--p`) every frame, so React re-renders only when the beat changes.
+- **Scenes** (`tour-scenes.tsx`): four pure pictures of “part × beat”. They mark targets with `data-ghost="2 3"` (the ghost pointer goes there on those beats) and `data-press="3"` (it presses). The engine measures where the target *rests* (offsets, ignoring transforms, so a window still sliding in is aimed at correctly) and moves the pointer imperatively.
+- **Real where it counts**: part 2’s Copy prompt button really copies the effect’s prompt (for the stack chosen on the Effects page) and pauses the tour; the finale’s links go to the effect, the prompt, the glossary and the certificate.
+- **Access**: everything in the scenes is a picture (`aria-hidden`) except real controls; captions go to a polite live region. The journey row is a list; during the tour each step is a button (“Go to part 2: Copy the prompt”, `aria-current="step"`). Focus moves to Pause on start, to the recap heading at the end and back to the call to action on close; Esc closes; ←/→ jump parts. Pausing freezes every animation in the stage (`animation-play-state`). It also pauses on a tap on the picture and when less than 20 % of it is on screen. Reduced motion: the call to action doesn’t pulse, the corner cards don’t drift, and every transition is instant — the story still plays.
+
+## The certificate: `components/certificate/`
+
+Earned by completing all eight modules (UXDR-32); everything stays on the device.
+
+- `draw.ts` draws the certificate on a 2000 × 1414 canvas (A4 landscape) with the page’s own web fonts (`--font-inter`, `--font-thai`, `--font-serif-display`) plus the system’s Chinese or Japanese fonts, loading each face before the final paint. Long titles shrink to fit; the course line wraps on word boundaries (`Intl.Segmenter` knows Thai, Chinese and Japanese); module names are laid out whole, never split.
+- `certificate-view.tsx`: locked → a watermarked preview (with your name if you type one), progress and *Continue with Module N*; unlocked → the date is stamped once, then PNG download, print / save as PDF (only the certificate prints, one A4 landscape page) and share via the Web Share API where available. The name and date live in `localStorage` (`thaiux:certificate:v1`).
+- `CompleteModule` shows “N more to your certificate” after each module, and “All done — get your certificate” after the last.
 
 ## The card peek: `ConceptCard` + `components/peeks/`
 

@@ -30,134 +30,115 @@ export const home = {
     },
   },
 
-  stage: {
-    label: { th: "ปุ่มนี้คือบทเรียน", en: "This button is a lesson", zh: "这个按钮就是一堂课", ja: "このボタンが教材です" },
-    button: { th: "กดฉันสิ", en: "Press me", zh: "按我试试", ja: "押してみて" },
-    done: { th: "เรียบร้อย", en: "Done", zh: "完成", ja: "完了" },
-    prompt: {
-      th: "ลองชี้ ลองกด หรือกด Tab เพื่อไปที่ปุ่มด้วยคีย์บอร์ด",
-      en: "Point at it, press it — or press Tab to reach it with a keyboard.",
-      zh: "指向它、按下它——或者按 Tab 键用键盘找到它。",
-      ja: "ポインターを乗せる、押す、または Tab キーでボタンまで移動してみましょう。",
+  /**
+   * The hero’s right side (UXDR-31): one clear call to action that plays a
+   * fast, pausable tour of what people get — effects, copy-ready prompts,
+   * learning by doing, and a certificate — told as one easy journey.
+   */
+  tour: {
+    region: {
+      th: "ทัวร์ 30 วินาที: สิ่งที่คุณจะได้จาก UXLab",
+      en: "30-second tour: what you get from UXLab",
+      zh: "30 秒导览：你能从 UXLab 得到什么",
+      ja: "30 秒ツアー：UXLab で得られるもの",
     },
-    explain: {
-      hover: {
-        th: "ปุ่มตอบสนองก่อนคุณคลิก คุณจึงรู้ว่ามันกดได้",
-        en: "It reacted before you clicked, so you knew it was clickable.",
-        zh: "你还没点击它就有了反应，所以你知道它可以点。",
-        ja: "クリックする前に反応したので、押せると分かりました。",
-      },
-      active: {
-        th: "ปุ่มยุบลงตอนกด ยืนยันว่าระบบรับรู้การสัมผัสแล้ว",
-        en: "It pressed in under your finger, confirming the touch.",
-        zh: "按下时它会微微下沉，确认收到了你的操作。",
-        ja: "押した瞬間にへこみ、操作が伝わったことを確認できます。",
-      },
-      focus: {
-        th: "วงแหวนบอกผู้ใช้คีย์บอร์ดว่ากำลังอยู่ตรงไหน",
-        en: "The ring shows keyboard users exactly where they are.",
-        zh: "这个外框告诉键盘用户现在的位置。",
-        ja: "リングが、キーボード利用者にいまの位置を示します。",
-      },
-      feedback: {
-        th: "ระบบบอกผลลัพธ์ให้รู้ทันที ไม่ต้องเดา",
-        en: "It told you the result straight away. No guessing.",
-        zh: "它立刻告诉你结果，不用猜。",
-        ja: "結果をすぐに伝えてくれるので、迷いません。",
-      },
-    } as Record<"hover" | "active" | "focus" | "feedback", Localized>,
-    progress: { th: "สัมผัสแล้ว {n} จาก {total}", en: "{n} of {total} experienced", zh: "已体验 {n} / {total}", ja: "{total} 個中 {n} 個を体験" },
-    complete: {
-      th: "นี่คือศัพท์ UX ที่คุณเรียนรู้ด้วยการสัมผัส ไม่ใช่การท่องจำ",
-      en: "UX terms learnt by feeling them, not by memorising them.",
-      zh: "这些 UX 术语，你是靠亲身感受学会的，而不是死记硬背。",
-      ja: "暗記ではなく、体験で覚えた UX 用語です。",
+    kicker: {
+      th: "ไม่รู้จะทำหน้าเว็บให้ว้าวยังไง?",
+      en: "Not sure how to make your UI stand out?",
+      zh: "不知道怎样让界面更出彩？",
+      ja: "UI を魅力的にする方法、迷っていませんか？",
     },
-    touchPrompt: {
-      th: "ลองแตะปุ่ม แล้วสังเกตว่ามันตอบสนองอย่างไร",
-      en: "Tap it and watch how it responds.",
-      zh: "点一下按钮，看看它如何回应。",
-      ja: "タップして、どう反応するか見てみましょう。",
+    title: { th: "UXLab คือคำตอบ", en: "UXLab is the answer.", zh: "答案就在 UXLab。", ja: "答えは UXLab に。" },
+    cta: { th: "ดูทัวร์ 30 วินาที", en: "Take the 30-second tour", zh: "看 30 秒导览", ja: "30 秒ツアーを見る" },
+    ctaAgain: { th: "ดูทัวร์อีกครั้ง", en: "Watch the tour again", zh: "再看一次导览", ja: "もう一度ツアーを見る" },
+    ctaSub: {
+      th: "เห็นทุกอย่างที่คุณจะได้ · หยุดได้ทุกเมื่อ",
+      en: "Everything you’ll get · pause any time",
+      zh: "看看你能得到什么 · 随时可以暂停",
+      ja: "得られるものをひと目で · いつでも一時停止",
     },
-    touch: {
-      th: "บนจอสัมผัสไม่มี Hover และวงแหวน Focus จะปรากฏเมื่อใช้คีย์บอร์ดเท่านั้น อีกสองเรื่องที่นักออกแบบต้องคิดเผื่อ",
-      en: "Touch screens have no hover, and focus rings appear only with a keyboard — two more things designers plan for.",
-      zh: "触摸屏没有悬停，焦点环也只在使用键盘时出现——这又是设计师需要考虑的两件事。",
-      ja: "タッチ画面にはホバーがなく、フォーカスリングはキーボード操作のときだけ表示されます。どちらもデザイナーが考慮すること。",
-    },
-  },
-
-  /** The hero’s mind map: 22 concepts that light up as you do them (UXDR-29). */
-  map: {
-    label: { th: "แผนที่นี้คือบทเรียน", en: "This map is a lesson", zh: "这张地图就是一堂课", ja: "このマップが教材です" },
-    region: { th: "แผนที่ความรู้ UX/UI ที่เล่นได้", en: "Playable map of UX/UI concepts", zh: "可以玩的 UX/UI 概念地图", ja: "触れる UX/UI 用語マップ" },
-    mapLabel: { th: "22 คำศัพท์ UX/UI แบ่งเป็น 4 กลุ่ม", en: "22 UX/UI concepts in four groups", zh: "22 个 UX/UI 概念，分为 4 组", ja: "4 つのグループ、22 の UX/UI 用語" },
-    prompt: {
-      th: "ลองชี้ กด หรือลากปุ่ม แล้วดูแผนที่สว่างขึ้น หรือเปิดคำไหนก็ได้",
-      en: "Point at the button, press it, drag it — and watch the map light up. Or open any word.",
-      zh: "指向按钮、按下、拖动——看地图一点点亮起来。也可以打开任意一个词。",
-      ja: "ボタンに乗せる、押す、ドラッグする。マップが光っていきます。どの言葉も開けます。",
-    },
-    touchPrompt: {
-      th: "แตะหรือลากปุ่ม แล้วดูแผนที่สว่างขึ้น หรือแตะคำไหนก็ได้",
-      en: "Tap or drag the button and watch the map light up — or tap any word.",
-      zh: "点按或拖动按钮，看地图亮起来——也可以点任意一个词。",
-      ja: "ボタンをタップかドラッグしてマップを光らせよう。どの言葉もタップできます。",
-    },
-    explain: {
-      click: {
-        th: "กดแล้วปล่อย วิธีพื้นฐานที่สุดที่บอกระบบว่า “ทำสิ่งนี้”",
-        en: "Press and release: the most basic way to say “do this”.",
-        zh: "按下再松开：告诉界面“执行这个”最基本的方式。",
-        ja: "押して離す。「これを実行して」と伝える、いちばん基本の操作です。",
-      },
-      "drag-and-drop": {
-        th: "คุณจับ ลาก แล้วปล่อย แผนที่ทั้งแผ่นเลยขยับตาม",
-        en: "You grabbed it, moved it and let go — and the whole map followed.",
-        zh: "你抓住它、移动、松手——整张地图都跟着动了。",
-        ja: "つかんで、動かして、離す。マップ全体がついてきました。",
-      },
-      tooltip: {
-        th: "ป้ายสั้น ๆ ที่โผล่มาเมื่อชี้ บอกความหมายได้โดยไม่ต้องคลิก",
-        en: "A short label that appears when you point — the meaning without a click.",
-        zh: "指向时出现的简短说明——不用点击就知道意思。",
-        ja: "ポインターを乗せると出る短いラベル。クリックせずに意味が分かります。",
-      },
-      toggle: {
-        th: "สวิตช์เดียว สองสถานะ มีผลทันที ชื่อบนแผนที่เปลี่ยนไปหมดแล้ว",
-        en: "One switch, two states, instant effect: every label just changed.",
-        zh: "一个开关、两种状态、立即生效：所有标签都变了。",
-        ja: "スイッチひとつ、状態は 2 つ、すぐに反映。ラベルが全部変わりました。",
-      },
-      "success-state": {
-        th: "แถบสีเขียวนี้ยืนยันว่าคุณทำได้ดี นี่แหละ Success state",
-        en: "That green banner confirms you’ve done well — a Success state.",
-        zh: "这条绿色提示确认你做得很好——这就是成功状态。",
-        ja: "緑のバナーが「よくできました」と伝えます。これが成功状態です。",
-      },
-    } as Record<string, Localized>,
-    milestone: { th: "สัมผัสแล้ว {n} คำ เก่งมาก!", en: "{n} concepts experienced — nice work!", zh: "已体验 {n} 个概念——做得好！", ja: "{n} 個の用語を体験。いい調子！" },
-    localNames: { th: "ชื่อไทย", en: "Other names", zh: "中文名", ja: "日本語名" },
-    showMe: { th: "พาดูหน่อย", en: "Show me", zh: "演示一下", ja: "見せて" },
-    stop: { th: "หยุด", en: "Stop", zh: "停止", ja: "止める" },
-    coach: { th: "ลองกดฉันสิ", en: "Try me", zh: "试试我", ja: "押してみて" },
-    more: { th: "คลิกเพื่อดูเพิ่ม", en: "Click for more", zh: "点击查看更多", ja: "クリックで詳しく" },
-    effectLink: { th: "เอฟเฟกต์", en: "Effect", zh: "特效", ja: "エフェクト" },
-    tour: [
-      { th: "ชี้ที่ปุ่ม: นี่คือ Hover", en: "Point at the button — that’s Hover", zh: "指向按钮——这就是悬停", ja: "ボタンに乗せる。これがホバー" },
-      { th: "กดปุ่ม: Active state → Click → Feedback", en: "Press it — Active state, Click, then Feedback", zh: "按下它——按下状态、点击，然后是反馈", ja: "押す。アクティブ状態、クリック、そしてフィードバック" },
-      { th: "จับแล้วลาก แผนที่ทั้งแผ่นขยับตาม: Drag and drop", en: "Grab it and drag — the map follows: Drag and drop", zh: "抓住拖动——地图跟着动：拖放", ja: "つかんでドラッグ。マップがついてくる：ドラッグ＆ドロップ" },
-      { th: "ชี้ที่คำไหนก็ได้ เพื่อดูความหมายสั้น ๆ: Tooltip", en: "Point at any word for a quick meaning — a Tooltip", zh: "指向任意词语查看简短含义——工具提示", ja: "言葉に乗せると短い意味が出る。ツールチップ" },
-      { th: "เปิดคำนั้น เพื่อดูบทเรียนย่อและลองเล่น", en: "Open the word for a mini lesson you can play", zh: "打开它，看一堂能互动的小课", ja: "開くと、触れるミニレッスンが出てきます" },
-      { th: "ตาคุณแล้ว! สำรวจให้ครบทั้ง 22 คำ", en: "Your turn — explore all 22", zh: "轮到你了——探索全部 22 个", ja: "あなたの番。22 個ぜんぶ探検しよう" },
+    /** The journey: four steps, which are also the tour’s four parts. */
+    steps: [
+      { th: "เลือกเอฟเฟกต์", en: "Pick an effect", zh: "挑选特效", ja: "エフェクトを選ぶ" },
+      { th: "Copy prompt", en: "Copy the prompt", zh: "复制提示词", ja: "プロンプトをコピー" },
+      { th: "เรียนผ่านการลอง", en: "Learn by doing", zh: "边玩边学", ja: "試して学ぶ" },
+      { th: "รับเกียรติ\u2060บัตร", en: "Get your certificate", zh: "获得证书", ja: "修了証をもらう" }, // word joiner: keep “เกียรติบัตร” on one line
     ] as Localized[],
-    card: {
-      try: { th: "ลองเล่นตรงนี้", en: "Try it here", zh: "在这里试试", ja: "ここで試す" },
-      lesson: { th: "บทเรียนเต็ม", en: "Full lesson", zh: "完整课程", ja: "詳しいレッスン" },
-      related: { th: "เชื่อมกับ", en: "Connects to", zh: "相关概念", ja: "つながり" },
-      back: { th: "กลับไปที่แผนที่", en: "Back to the map", zh: "返回地图", ja: "マップに戻る" },
-      close: { th: "ปิด", en: "Close", zh: "关闭", ja: "閉じる" },
+    stepsLong: [
+      { th: "เลือกเอฟเฟกต์ที่ชอบ จาก {n} แบบ", en: "Pick an effect you love — {n} to choose from", zh: "从 {n} 种特效中挑一个喜欢的", ja: "{n} 種類から好きなエフェクトを選ぶ" },
+      {
+        th: "Copy prompt ไปวางใน AI ที่คุณใช้ vibe code",
+        en: "Copy its prompt into the AI you vibe-code with",
+        zh: "把提示词复制到你用来 vibe coding 的 AI",
+        ja: "プロンプトを、バイブコーディングに使う AI に貼る",
+      },
+      { th: "เข้าใจศัพท์ UX/UI ด้วยการลองเล่น", en: "Understand UX/UI terms by playing with them", zh: "通过动手玩，理解 UX/UI 术语", ja: "触って遊びながら UX/UI 用語を理解する" },
+      { th: "เรียนครบ 8 บท รับเกียรติบัตรในชื่อคุณ", en: "Finish 8 modules, get a certificate in your name", zh: "学完 8 个单元，获得写有你名字的证书", ja: "8 モジュールを終えて、名前入りの修了証を受け取る" },
+    ] as Localized[],
+    /** Two lines per part: the problem, then the answer. */
+    captions: [
+      [
+        { th: "หน้าเว็บของคุณดูเรียบไปไหม?", en: "Does your page feel a bit flat?", zh: "你的页面是不是有点平淡？", ja: "あなたのページ、ちょっと地味じゃないですか？" },
+        {
+          th: "ใส่เอฟเฟกต์ไม่กี่อัน หน้าเดิมก็มีชีวิตทันที",
+          en: "Add a few effects and the same page comes alive.",
+          zh: "加几个特效，同一个页面立刻活了起来。",
+          ja: "エフェクトを足すだけで、同じページが見違えます。",
+        },
+      ],
+      [
+        { th: "ชอบอันไหน มี Prompt ให้ก๊อปทุกอัน", en: "Like one? Every effect comes with a prompt.", zh: "喜欢哪个？每个特效都附有提示词。", ja: "気に入ったら？どのエフェクトにもプロンプト付き。" },
+        { th: "วางใน AI ที่คุณใช้ vibe code แล้วได้เลย", en: "Paste it into your AI coding tool — done.", zh: "粘贴到你的 AI 编程工具里——搞定。", ja: "AI コーディングツールに貼るだけ。完成！" },
+      ],
+      [
+        {
+          th: "งงศัพท์ UX/UI? ชี้ที่คำ แล้วลองเล่นได้ทันที",
+          en: "UX/UI jargon? Point at a word and play with it.",
+          zh: "看不懂 UX/UI 术语？指向一个词，马上动手玩。",
+          ja: "UX/UI 用語が難しい？言葉に乗せれば、すぐ試せます。",
+        },
+        { th: "เข้าใจทีละคำ จากการลองด้วยมือคุณเอง", en: "Understand each one by trying it yourself.", zh: "每个词，都靠亲手尝试来理解。", ja: "ひとつずつ、自分の手で試して理解。" },
+      ],
+      [
+        { th: "เรียนครบ 8 บทสั้น ๆ…", en: "Finish eight short modules…", zh: "学完 8 个简短的单元……", ja: "8 つの短いモジュールを終えたら…" },
+        { th: "…รับเกียรติบัตรในชื่อคุณ", en: "…and get a certificate in your name.", zh: "……获得写有你名字的证书。", ja: "…あなたの名前入りの修了証を。" },
+      ],
+    ] as [Localized, Localized][],
+    chapter: { th: "ตอนที่ {n}/{total}", en: "Part {n} of {total}", zh: "第 {n} 部分，共 {total} 部分", ja: "パート {n} / {total}" },
+    pause: { th: "หยุดทัวร์ชั่วคราว", en: "Pause the tour", zh: "暂停导览", ja: "ツアーを一時停止" },
+    play: { th: "เล่นทัวร์ต่อ", en: "Resume the tour", zh: "继续导览", ja: "ツアーを再開" },
+    close: { th: "ปิดทัวร์", en: "Close the tour", zh: "关闭导览", ja: "ツアーを閉じる" },
+    replay: { th: "ดูอีกครั้ง", en: "Watch again", zh: "再看一次", ja: "もう一度見る" },
+    paused: { th: "หยุดไว้ก่อน กดเพื่อดูต่อ", en: "Paused — press to carry on", zh: "已暂停，按一下继续", ja: "一時停止中。押すと続きます" },
+    copiedPaused: {
+      th: "ก๊อปแล้ว! หยุดทัวร์ไว้ให้ ไปวางใน AI ของคุณได้เลย",
+      en: "Copied! The tour is paused — go and paste it into your AI.",
+      zh: "已复制！导览已暂停——去粘贴到你的 AI 吧。",
+      ja: "コピーしました！ツアーは止めておくので、AI に貼ってみて。",
     },
+    goTo: { th: "ไปที่ตอน {n}: {name}", en: "Go to part {n}: {name}", zh: "跳到第 {n} 部分：{name}", ja: "パート {n} へ：{name}" },
+    mockCta: { th: "สมัครเลย", en: "Sign up", zh: "立即注册", ja: "登録する" },
+    nothing: { th: "กดแล้ว… ไม่มีอะไรเกิดขึ้น", en: "Click… nothing happens", zh: "点了……什么也没发生", ja: "押しても…何も起きない" },
+    effectsBadge: { th: "{n} เอฟเฟกต์ ลองเล่นได้ทุกอัน", en: "{n} effects, all playable", zh: "{n} 种特效，全部可以玩", ja: "{n} 種のエフェクト、全部遊べる" },
+    copied: { th: "คัดลอกแล้ว", en: "Copied", zh: "已复制", ja: "コピー済み" },
+    aiTitle: { th: "AI ที่คุณใช้ vibe code", en: "Your AI coding tool", zh: "你的 AI 编程工具", ja: "あなたの AI コーディングツール" },
+    aiPlaceholder: { th: "วาง Prompt ที่นี่…", en: "Paste a prompt…", zh: "粘贴提示词……", ja: "プロンプトを貼り付け…" },
+    aiReply: {
+      th: "เพิ่มปุ่มแม่เหล็กให้แล้ว ลองชี้ดูสิ",
+      en: "Added a magnetic button. Try pointing at it!",
+      zh: "已添加磁吸按钮，指向它试试！",
+      ja: "マグネットボタンを追加しました。近づけてみて！",
+    },
+    like: { th: "ถูกใจ", en: "Like", zh: "点赞", ja: "いいね" },
+    liked: { th: "ถูกใจแล้ว", en: "Liked", zh: "已点赞", ja: "いいね済み" },
+    doneKicker: { th: "ทัวร์จบแล้ว", en: "That’s the tour", zh: "导览结束", ja: "ツアーはここまで" },
+    doneTitle: { th: "ง่ายแค่นี้เอง", en: "It’s that easy.", zh: "就这么简单。", ja: "こんなにかんたん。" },
+    /** Effects the first part switches on, in order (names stay in English). */
+    chips: ["gooey", "glow-cards", "magnetic", "celebrate"] as const,
+    /** The effect whose prompt the second part copies. */
+    promptEffect: "magnetic" as const,
+    /** Glossary cards in the third part; the last one opens. */
+    concepts: ["hover", "tooltip", "feedback"] as const,
   },
 
   /** Promotion for the Effects library: the hero pill and the moving rail. */

@@ -7,7 +7,7 @@ import { routes } from "@/lib/routes";
 import { cn } from "@/lib/cn";
 import { Container, Eyebrow, Section, SectionHeader } from "@/components/ui/layout";
 import { ButtonLink } from "@/components/ui/button";
-import { UxMap, type MapConcept, type MapLabels } from "@/components/home/ux-map";
+import { ValueTour, type TourData, type TourLabels } from "@/components/home/value-tour";
 import { ConceptDemo } from "@/components/demos/registry";
 import { ProgressSummary } from "@/components/progress/progress-summary";
 import { LabThumb } from "@/components/lab/lab-thumb";
@@ -15,11 +15,12 @@ import { LabDoneBadge } from "@/components/lab/lab-done-badge";
 import { PlaygroundProvider } from "@/components/effects/provider";
 import { EffectsRail, type RailItem } from "@/components/effects/effects-rail";
 import { categoryOrder, conceptsIn, getConcept, glossary } from "@/content/glossary";
-import { modules, modulesForConcept } from "@/content/modules";
+import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
 import { effectCategories, effects, getEffect } from "@/content/effects";
 import { effectsCopy } from "@/content/effects-copy";
 import { home } from "@/content/home";
+import { certificate } from "@/content/certificate";
 
 /**
  * Home — the brief’s sections in order: hero, the Effects library (promoted
@@ -43,75 +44,83 @@ export default async function Home() {
       prompt: e.prompt,
     }));
 
-  // The hero map: every concept with where it leads (lesson, module, Lab, effect)
-  const shortName = (s: string) => s.split(" · ")[0].split(", ")[0].split(" or ")[0].replace(/[（(].*?[）)]/g, "").trim();
-  const mapConcepts: MapConcept[] = glossary.map((c) => {
-    const m = modulesForConcept(c.id)[0];
-    const lab = experiments.find((e) => e.concepts.includes(c.id));
-    const fx = effects.find((e) => e.related.includes(c.id));
-    const links: MapConcept["links"] = [];
-    if (m) links.push({ kind: "module", label: `${format(dict.learn.module, { n: m.number })} · ${pick(m.title, locale)}`, href: routes.module(locale, m.id) });
-    if (lab) links.push({ kind: "lab", label: `Lab ${lab.letter} · ${pick(lab.title, locale)}`, href: routes.experiment(locale, lab.id) });
-    if (fx) links.push({ kind: "effect", label: `${pick(h.map.effectLink, locale)} · ${fx.name}`, href: routes.effect(locale, fx.id) });
-    return {
-      id: c.id,
-      term: c.term,
-      local: shortName(pick(c.localTerm, locale)),
-      short: pick(c.short, locale),
-      category: c.categories[0],
-      demo: c.demo,
-      peek: pick(c.peek, locale),
-      href: routes.concept(locale, c.id),
-      related: c.related,
-      links,
-    };
-  });
-  const mapLabels: MapLabels = {
-    label: pick(h.map.label, locale),
-    region: pick(h.map.region, locale),
-    mapLabel: pick(h.map.mapLabel, locale),
-    button: pick(h.stage.button, locale),
-    done: pick(h.stage.done, locale),
-    prompt: pick(h.map.prompt, locale),
-    touchPrompt: pick(h.map.touchPrompt, locale),
-    progress: pick(h.stage.progress, locale),
-    explain: {
-      hover: pick(h.stage.explain.hover, locale),
-      "active-state": pick(h.stage.explain.active, locale),
-      "focus-state": pick(h.stage.explain.focus, locale),
-      feedback: pick(h.stage.explain.feedback, locale),
-      ...Object.fromEntries(Object.entries(h.map.explain).map(([k, v]) => [k, pick(v, locale)])),
-    },
-    milestone: pick(h.map.milestone, locale),
-    localNames: pick(h.map.localNames, locale),
-    showMe: pick(h.map.showMe, locale),
-    stop: pick(h.map.stop, locale),
-    coach: pick(h.map.coach, locale),
-    more: pick(h.map.more, locale),
-    tour: h.map.tour.map((t) => pick(t, locale)),
-    try: pick(h.map.card.try, locale),
-    lesson: pick(h.map.card.lesson, locale),
-    related: pick(h.map.card.related, locale),
-    back: pick(h.map.card.back, locale),
-    close: pick(h.map.card.close, locale),
-    experienced: dict.progress.experienced,
-    notYet: dict.progress.notYet,
-    youExperienced: dict.glossary.youExperienced,
-    categories: dict.categories,
-  };
-
+  // The hero tour (UXDR-31): what people get, as four steps of one journey
+  const tour = h.tour;
+  const promptFx = getEffect(tour.promptEffect)!;
   const stats = [
     { n: glossary.length, label: pick(h.hero.stats.concepts, locale) },
     { n: modules.length, label: pick(h.hero.stats.modules, locale) },
     { n: experiments.length, label: pick(h.hero.stats.experiments, locale) },
     { n: locales.length, label: pick(h.hero.stats.languages, locale) },
   ];
+  const tourLabels: TourLabels = {
+    region: pick(tour.region, locale),
+    kicker: pick(tour.kicker, locale),
+    title: pick(tour.title, locale),
+    cta: pick(tour.cta, locale),
+    ctaAgain: pick(tour.ctaAgain, locale),
+    ctaSub: pick(tour.ctaSub, locale),
+    steps: tour.steps.map((s) => pick(s, locale)),
+    stepsLong: tour.stepsLong.map((s) => format(pick(s, locale), { n: effects.length })),
+    captions: tour.captions.map(([a, b]) => [pick(a, locale), pick(b, locale)] as [string, string]),
+    chapter: pick(tour.chapter, locale),
+    pause: pick(tour.pause, locale),
+    play: pick(tour.play, locale),
+    close: pick(tour.close, locale),
+    replay: pick(tour.replay, locale),
+    paused: pick(tour.paused, locale),
+    copiedPaused: pick(tour.copiedPaused, locale),
+    goTo: pick(tour.goTo, locale),
+    mockCta: pick(tour.mockCta, locale),
+    nothing: pick(tour.nothing, locale),
+    effectsBadge: pick(tour.effectsBadge, locale),
+    copyPrompt: pick(effectsCopy.copyPrompt, locale),
+    copied: pick(tour.copied, locale),
+    copiedToast: pick(effectsCopy.copied, locale),
+    copyFailed: pick(effectsCopy.copyFailed, locale),
+    aiTitle: pick(tour.aiTitle, locale),
+    aiPlaceholder: pick(tour.aiPlaceholder, locale),
+    aiReply: pick(tour.aiReply, locale),
+    like: pick(tour.like, locale),
+    liked: pick(tour.liked, locale),
+    youExperienced: dict.glossary.youExperienced,
+    experienced: dict.progress.experienced,
+    tryIt: dict.glossary.peekTry,
+    cert: {
+      kicker: pick(certificate.art.kicker, locale),
+      title: pick(certificate.art.title, locale),
+      presented: pick(certificate.art.presented, locale),
+      name: pick(certificate.art.name, locale),
+      completed: pick(certificate.art.completed, locale),
+      download: pick(certificate.art.download, locale),
+      saved: pick(certificate.art.saved, locale),
+    },
+    doneKicker: pick(tour.doneKicker, locale),
+    doneTitle: pick(tour.doneTitle, locale),
+    startModule: pick(h.path.start, locale),
+    seeEffects: format(pick(h.effects.cta, locale), { n: effects.length }),
+  };
+  const tourData: TourData = {
+    chips: tour.chips.map((id) => getEffect(id)!.name),
+    effect: { name: promptFx.name, prompt: promptFx.prompt },
+    concepts: tour.concepts.map((id) => {
+      const c = getConcept(id)!;
+      return { id, term: c.term, local: pick(c.localTerm, locale), short: pick(c.short, locale) };
+    }),
+    stats: stats.slice(0, 3).map((s) => `${s.n} ${s.label}`),
+    counts: { effects: effects.length, modules: modules.length },
+    hrefs: {
+      steps: [routes.effects(locale), routes.effect(locale, promptFx.id), routes.glossary(locale), routes.certificate(locale)],
+      module1: routes.module(locale, modules[0].id),
+      effects: routes.effects(locale),
+    },
+  };
 
   return (
     <>
       {/* 1 · Hero */}
       <section aria-labelledby="hero-h">
-        <Container size="wide" className="grid items-center gap-12 pt-10 pb-12 md:pt-16 md:pb-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16 lg:pt-20 lg:pb-20">
+        <Container size="wide" className="grid grid-cols-[minmax(0,1fr)] items-center gap-12 pt-10 pb-12 md:pt-16 md:pb-16 lg:grid-cols-[minmax(0,1.08fr)_minmax(0,0.92fr)] lg:gap-16 lg:pt-20 lg:pb-20">
           <div>
             <Link
               href={routes.effects(locale)}
@@ -120,10 +129,10 @@ export default async function Home() {
               <span className="shrink-0 rounded-full bg-accent px-2 py-0.5 text-[0.6875rem] font-bold tracking-wide text-on-accent uppercase">
                 {pick(h.effects.badge, locale)}
               </span>
-              <span className="truncate">{format(pick(h.effects.announce, locale), { n: effects.length })}</span>
+              <span className="min-w-0 truncate">{format(pick(h.effects.announce, locale), { n: effects.length })}</span>
               <ArrowRight className="size-3.5 shrink-0 text-accent-ink transition-transform group-hover:translate-x-0.5 motion-reduce:transition-none" aria-hidden />
             </Link>
-            <h1 id="hero-h" className="type-display text-[clamp(2.5rem,1.5rem+3.6vw,4.75rem)]">
+            <h1 id="hero-h" className="type-display text-[clamp(2.5rem,1.5rem+3.6vw,4.75rem)] [overflow-wrap:break-word]">
               {locale === "en" ? (
                 <>
                   Learn UX by <span className="type-serif-accent text-accent-ink">experiencing</span> it.
@@ -155,7 +164,9 @@ export default async function Home() {
               ))}
             </dl>
           </div>
-          <UxMap concepts={mapConcepts} labels={mapLabels} />
+          <PlaygroundProvider>
+            <ValueTour labels={tourLabels} data={tourData} />
+          </PlaygroundProvider>
         </Container>
       </section>
 

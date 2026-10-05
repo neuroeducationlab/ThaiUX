@@ -185,7 +185,7 @@ export default async function ModulePage({ params }: PageProps<"/[locale]/learn/
             <SourceList ids={m.sources} note={dict.learn.synthesis} newTab={dict.a11y.newTab} />
           </section>
 
-          <CompleteModule moduleId={m.id} />
+          <CompleteModule moduleId={m.id} allIds={modules.map((x) => x.id)} certificateHref={routes.certificate(locale)} />
 
           <nav aria-label={dict.learn.allModules} className="grid gap-3 sm:grid-cols-2">
             {prev ? (
