@@ -218,7 +218,7 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
         ref={stageRef}
         data-mode={mode}
         data-paused={mode === "paused" || undefined}
-        className="tour-stage @container relative h-[29rem] overflow-hidden select-none sm:h-[27.5rem]"
+        className="tour-stage @container relative h-[27.5rem] overflow-hidden select-none"
         onPointerMove={(e) => {
           if (mode !== "idle" || reduced || e.pointerType !== "mouse") return;
           const r = e.currentTarget.getBoundingClientRect();
@@ -237,18 +237,32 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
         {mode === "idle" ? (
           <Poster ref={ctaRef} labels={labels} data={data} watched={watched} onStart={() => start(0)} />
         ) : mode === "done" ? (
-          <Finale ref={doneRef} labels={labels} data={data} onReplay={() => start(0)} />
+          <Finale ref={doneRef} labels={labels} data={data} onReplay={() => start(0)} onClose={close} />
         ) : (
           <div className="flex h-full flex-col">
-            <div aria-hidden className="shrink-0 px-4 pt-4 @md:px-5">
-              <p className="text-[0.75rem] font-semibold text-accent-ink">
-                {chapter} · {labels.steps[part]}
-              </p>
-              <p key={`${part}-${caption}`} className="animate-fade-up mt-1 min-h-[2.75em] text-[1.0625rem] leading-snug font-semibold text-balance text-ink [word-break:auto-phrase] @md:text-[1.1875rem]">
+            <div className="shrink-0 px-4 pt-3 @md:px-5">
+              <div className="flex items-center justify-between gap-2">
+                <p aria-hidden className="min-w-0 truncate text-[0.75rem] font-semibold text-accent-ink">
+                  {chapter} · {labels.steps[part]}
+                </p>
+                <div className="-mr-1 flex shrink-0 items-center gap-1">
+                  <ControlButton ref={pauseRef} label={mode === "playing" ? labels.pause : labels.play} onClick={() => (mode === "playing" ? pause() : resume())}>
+                    {mode === "playing" ? <Pause className="size-4" aria-hidden /> : <Play className="size-4 fill-current" aria-hidden />}
+                  </ControlButton>
+                  <ControlButton label={labels.close} onClick={close}>
+                    <X className="size-4" aria-hidden />
+                  </ControlButton>
+                </div>
+              </div>
+              <p
+                aria-hidden
+                key={`${part}-${caption}`}
+                className="animate-fade-up min-h-[2.75em] text-[1.0625rem] leading-snug font-semibold text-balance text-ink [word-break:auto-phrase] @md:text-[1.1875rem]"
+              >
                 {caption}
               </p>
             </div>
-            <div className="flex min-h-0 flex-1 flex-col px-4 pt-2 pb-4 @md:px-5 @md:pb-5">
+            <div className="relative flex min-h-0 flex-1 flex-col px-4 pt-2 pb-4 @md:px-5 @md:pb-5">
               {part === 0 ? (
                 <EffectsScene key="effects" beat={beat} labels={labels} data={data} />
               ) : part === 1 ? (
@@ -258,6 +272,14 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
               ) : (
                 <CertificateScene key="certificate" beat={beat} labels={labels} data={data} />
               )}
+              {mode === "paused" ? (
+                <div className="animate-fade-up absolute inset-0 z-[60] flex cursor-pointer flex-col items-center justify-center gap-3 bg-surface/70 px-6 text-center backdrop-blur-[2px]" onClick={resume}>
+                  <span aria-hidden className="flex size-16 items-center justify-center rounded-full bg-accent text-on-accent shadow-lg">
+                    <Play className="size-6 translate-x-0.5 fill-current" />
+                  </span>
+                  <p className="max-w-[19rem] text-[0.9375rem] font-medium text-ink">{copied ? labels.copiedPaused : labels.paused}</p>
+                </div>
+              ) : null}
             </div>
 
             <div
@@ -277,21 +299,14 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
               <span ref={rippleRef} className="absolute top-0 left-0 -mt-3 -ml-3 size-6 rounded-full border-2 border-accent opacity-0" />
             </div>
 
-            {mode === "paused" ? (
-              <div className="animate-fade-up absolute inset-0 z-[60] flex cursor-pointer flex-col items-center justify-center gap-3 bg-surface/70 px-6 text-center backdrop-blur-[2px]" onClick={resume}>
-                <span aria-hidden className="flex size-16 items-center justify-center rounded-full bg-accent text-on-accent shadow-lg">
-                  <Play className="size-6 translate-x-0.5 fill-current" />
-                </span>
-                <p className="max-w-[19rem] text-[0.9375rem] font-medium text-ink">{copied ? labels.copiedPaused : labels.paused}</p>
-              </div>
-            ) : null}
+
           </div>
         )}
       </div>
 
       {/* The journey: four steps that are also the tour’s progress */}
-      <div className="flex items-start gap-2 border-t border-line px-3 pt-2 pb-2.5 sm:px-4">
-        <ol className="grid min-w-0 flex-1 grid-cols-4 gap-2">
+      <div className="border-t border-line px-3 pt-2 pb-2.5 sm:px-4">
+        <ol className="grid grid-cols-4 gap-2">
           {labels.steps.map((name, i) => {
             const state = mode === "done" ? "past" : !running ? "idle" : i < part ? "past" : i === part ? "now" : "next";
             const inner = (
@@ -330,18 +345,6 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
             );
           })}
         </ol>
-        {mode !== "idle" ? (
-          <div className="flex shrink-0 items-center gap-1 self-center">
-            {running ? (
-              <ControlButton ref={pauseRef} label={mode === "playing" ? labels.pause : labels.play} onClick={() => (mode === "playing" ? pause() : resume())}>
-                {mode === "playing" ? <Pause className="size-4" aria-hidden /> : <Play className="size-4 fill-current" aria-hidden />}
-              </ControlButton>
-            ) : null}
-            <ControlButton label={labels.close} onClick={close}>
-              <X className="size-4" aria-hidden />
-            </ControlButton>
-          </div>
-        ) : null}
       </div>
 
       <p className="sr-only" aria-live="polite">
@@ -362,7 +365,7 @@ const ControlButton = forwardRef<HTMLButtonElement, { label: string; onClick: ()
       aria-label={label}
       title={label}
       onClick={onClick}
-      className="inline-flex size-10 items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-2"
+      className="inline-flex size-9 items-center justify-center rounded-full border border-line-strong bg-surface text-ink transition-colors hover:bg-surface-2"
     >
       {children}
     </button>
@@ -458,9 +461,12 @@ const Poster = forwardRef<HTMLButtonElement, { labels: TourLabels; data: TourDat
 /* ------------------------------------------------------------------
  * After the tour: the journey, ticked off, and where to start.
  * ---------------------------------------------------------------- */
-const Finale = forwardRef<HTMLHeadingElement, { labels: TourLabels; data: TourData; onReplay: () => void }>(function Finale({ labels, data, onReplay }, ref) {
+const Finale = forwardRef<HTMLHeadingElement, { labels: TourLabels; data: TourData; onReplay: () => void; onClose: () => void }>(function Finale(
+  { labels, data, onReplay, onClose },
+  ref,
+) {
   return (
-    <div className="tour-in flex h-full flex-col justify-center px-4 py-4 @md:px-7">
+    <div className="tour-in relative flex h-full flex-col justify-center px-4 py-4 @md:px-7">
       <p className="type-label flex items-center gap-1.5 text-accent-ink">
         <Sparkles className="size-4" aria-hidden /> {labels.doneKicker}
       </p>
@@ -496,6 +502,11 @@ const Finale = forwardRef<HTMLHeadingElement, { labels: TourLabels; data: TourDa
         >
           <RotateCcw className="size-4" aria-hidden /> {labels.replay}
         </button>
+      </div>
+      <div className="absolute top-3 right-3">
+        <ControlButton label={labels.close} onClick={onClose}>
+          <X className="size-4" aria-hidden />
+        </ControlButton>
       </div>
     </div>
   );
