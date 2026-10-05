@@ -2,13 +2,22 @@ import { expect, test, type Locator, type Page } from "@playwright/test";
 import { modules } from "@/content/modules";
 
 /**
- * Scroll a pointer target to the middle of the viewport instantly (the site scrolls smoothly), so it sits
- * still under the mouse. Centred, not just “in view”: a target tucked under the sticky header or filter bar
- * makes Playwright scroll again before a click, which moves the card out from under a resting pointer.
+ * Scroll a pointer target so it sits BELOW the sticky header + filter bar (not just "in view"),
+ * so Playwright's own scrollIntoViewIfNeeded on a later child click can't tuck that child under
+ * the sticky header — which intercepts pointer events and makes the click flaky.
  */
 async function settle(page: Page, target: Locator) {
   await page.evaluate(() => (document.documentElement.style.scrollBehavior = "auto"));
-  await target.evaluate((el) => el.scrollIntoView({ block: "center" }));
+  await target.evaluate((el) => {
+    let stickyBottom = 0;
+    for (const n of document.querySelectorAll<HTMLElement>("header, .sticky")) {
+      if (getComputedStyle(n).position === "sticky" || n.tagName === "HEADER") {
+        stickyBottom = Math.max(stickyBottom, n.getBoundingClientRect().bottom);
+      }
+    }
+    const offset = el.getBoundingClientRect().top - (stickyBottom + 24);
+    if (offset !== 0) window.scrollBy(0, offset);
+  });
   await page.waitForTimeout(300);
   return (await target.boundingBox())!;
 }
