@@ -1,10 +1,14 @@
 import { expect, test, type Locator, type Page } from "@playwright/test";
 import { modules } from "@/content/modules";
 
-/** Scroll a pointer target into view instantly (the site scrolls smoothly), so it sits still under the mouse. */
+/**
+ * Scroll a pointer target to the middle of the viewport instantly (the site scrolls smoothly), so it sits
+ * still under the mouse. Centred, not just “in view”: a target tucked under the sticky header or filter bar
+ * makes Playwright scroll again before a click, which moves the card out from under a resting pointer.
+ */
 async function settle(page: Page, target: Locator) {
   await page.evaluate(() => (document.documentElement.style.scrollBehavior = "auto"));
-  await target.scrollIntoViewIfNeeded();
+  await target.evaluate((el) => el.scrollIntoView({ block: "center" }));
   await page.waitForTimeout(300);
   return (await target.boundingBox())!;
 }
