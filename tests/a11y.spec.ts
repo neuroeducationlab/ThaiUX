@@ -42,7 +42,7 @@ for (const colorScheme of ["light", "dark"] as const) {
       expect(await scan()).toEqual([]);
       await tour.getByRole("button", { name: "Pause the tour" }).click();
       expect(await scan()).toEqual([]);
-      for (const [part, wait] of [["Go to part 2: Copy the prompt", 6500], ["Go to part 3: Learn by doing", 4500], ["Go to part 4: Get your certificate", 4000]] as const) {
+      for (const [part, wait] of [["Go to part 2: Copy the prompt", 6500], ["Go to part 3: Learn + practise", 6500], ["Go to part 4: Get your certificate", 4000]] as const) {
         await tour.getByRole("button", { name: part }).click();
         await page.waitForTimeout(wait);
         expect(await scan()).toEqual([]);

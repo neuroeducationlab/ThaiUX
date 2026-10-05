@@ -306,7 +306,7 @@ export function LearnScene({ beat, labels, data }: SceneProps) {
       <div
         className={cn(
           "grid min-h-0 grid-cols-2 gap-2 transition-[flex,opacity] duration-500 @md:grid-cols-3",
-          showLab ? "flex-[0.6] opacity-80" : "flex-1",
+          showLab ? "flex-[0.6]" : "flex-1",
         )}
       >
         {data.concepts.map((c, i) => {
@@ -327,8 +327,8 @@ export function LearnScene({ beat, labels, data }: SceneProps) {
                 <p lang="en" className="type-serif text-[1.25rem] leading-tight text-ink">
                   {c.term}
                 </p>
-                <p className="mt-0.5 truncate text-[0.6875rem] text-ink-2">{c.local}</p>
-                <p className="mt-2 line-clamp-4 text-[0.75rem] leading-snug text-ink-2">{c.short}</p>
+                <p className="mt-0.5 truncate text-[0.6875rem] font-medium text-ink">{c.local}</p>
+                <p className="mt-2 line-clamp-4 text-[0.75rem] leading-snug text-ink">{c.short}</p>
               </div>
               <span className="peek-face mt-auto inline-flex h-7 w-fit items-center gap-1 rounded-full border border-line-strong px-2.5 text-[0.6875rem] font-semibold text-ink">
                 <Play className="size-3 fill-current text-accent-ink" /> {labels.tryIt}
@@ -340,7 +340,7 @@ export function LearnScene({ beat, labels, data }: SceneProps) {
               ) : null}
               {target && beat >= 3 ? (
                 <div className="peek-live absolute inset-0 z-10 flex flex-col items-center justify-center gap-2 bg-surface p-2">
-                  <p lang="en" className="text-[0.75rem] font-semibold text-ink-2">
+                  <p lang="en" className="text-[0.75rem] font-semibold text-ink">
                     {c.term}
                   </p>
                   <span
@@ -348,12 +348,12 @@ export function LearnScene({ beat, labels, data }: SceneProps) {
                     data-press="5"
                     className={cn(
                       "relative inline-flex h-9 items-center gap-1.5 rounded-full border px-3.5 text-[0.8125rem] font-semibold transition-colors duration-200",
-                      beat >= 5 ? "border-transparent bg-[#ffe4e6] text-[#b4232f]" : "border-line-strong bg-surface text-ink",
+                      beat >= 5 ? "border-transparent bg-[#ffe4e6] text-[#1a1a1e]" : "border-line-strong bg-surface text-ink",
                     )}
                   >
-                    <Heart className={cn("size-4", beat >= 5 && "animate-pop fill-current")} />
+                    <Heart className={cn("size-4", beat >= 5 && "animate-pop fill-[#c2185b] text-[#c2185b]")} />
                     {beat >= 5 ? labels.liked : labels.like}
-                    {beat >= 5 ? <span className="tour-plus absolute -top-3.5 right-1 text-[0.75rem] font-bold text-error">+1</span> : null}
+                    {beat >= 5 ? <span className="tour-plus absolute -top-3.5 right-1 rounded-full bg-[#ffe4e6] px-1.5 py-0.5 text-[0.75rem] font-bold leading-none text-[#8a1a24]">+1</span> : null}
                   </span>
                 </div>
               ) : null}
