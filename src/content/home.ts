@@ -61,7 +61,7 @@ export const home = {
     steps: [
       { th: "เลือกเอฟเฟกต์", en: "Pick an effect", zh: "挑选特效", ja: "エフェクトを選ぶ" },
       { th: "Copy prompt", en: "Copy the prompt", zh: "复制提示词", ja: "プロンプトをコピー" },
-      { th: "เรียนผ่านการลอง", en: "Learn by doing", zh: "边玩边学", ja: "試して学ぶ" },
+      { th: "เรียน + ฝึก", en: "Learn + practise", zh: "边学边练", ja: "学ぶ + 試す" },
       { th: "รับเกียรติ\u2060บัตร", en: "Get your certificate", zh: "获得证书", ja: "修了証をもらう" }, // word joiner: keep “เกียรติบัตร” on one line
     ] as Localized[],
     stepsLong: [
@@ -72,7 +72,7 @@ export const home = {
         zh: "把提示词复制到你用来 vibe coding 的 AI",
         ja: "プロンプトを、バイブコーディングに使う AI に貼る",
       },
-      { th: "เข้าใจศัพท์ UX/UI ด้วยการลองเล่น", en: "Understand UX/UI terms by playing with them", zh: "通过动手玩，理解 UX/UI 术语", ja: "触って遊びながら UX/UI 用語を理解する" },
+      { th: "เรียนศัพท์จากการลองเล่น แล้วฝึกต่อใน Lab", en: "Learn by playing — then practise in the Lab", zh: "动手玩着学，再去实验室练手", ja: "遊んで学び、Lab で練習する" },
       { th: "เรียนครบ 8 บท รับเกียรติบัตรในชื่อคุณ", en: "Finish 8 modules, get a certificate in your name", zh: "学完 8 个单元，获得写有你名字的证书", ja: "8 モジュールを終えて、名前入りの修了証を受け取る" },
     ] as Localized[],
     /** Two lines per part: the problem, then the answer. */
@@ -97,7 +97,7 @@ export const home = {
           zh: "看不懂 UX/UI 术语？指向一个词，马上动手玩。",
           ja: "UX/UI 用語が難しい？言葉に乗せれば、すぐ試せます。",
         },
-        { th: "เข้าใจทีละคำ จากการลองด้วยมือคุณเอง", en: "Understand each one by trying it yourself.", zh: "每个词，都靠亲手尝试来理解。", ja: "ひとつずつ、自分の手で試して理解。" },
+        { th: "เข้าใจทีละคำ แล้วไปฝึกต่อใน Lab", en: "Grasp each one — then practise in the Lab.", zh: "一个个弄懂，然后进实验室练手。", ja: "ひとつずつ理解したら、Lab で練習。" },
       ],
       [
         { th: "เรียนครบ 8 บทสั้น ๆ…", en: "Finish eight short modules…", zh: "学完 8 个简短的单元……", ja: "8 つの短いモジュールを終えたら…" },
@@ -139,6 +139,13 @@ export const home = {
     promptEffect: "magnetic" as const,
     /** Glossary cards in the third part; the last one opens. */
     concepts: ["hover", "tooltip", "feedback"] as const,
+    /** Lab experiment shown at the end of part 3. */
+    lab: {
+      experiment: "build-a-button" as const,
+      badge: { th: "Lab · ฝึกจริง", en: "Lab · hands-on", zh: "Lab · 动手练", ja: "Lab · 実践" },
+      prompt: { th: "ลองประกอบปุ่มที่ใช้งานได้จริง", en: "Try building a working button", zh: "试着搭一个真能用的按钮", ja: "本物のボタンを組み立てる" },
+      done: { th: "ครบ 5/5 — เก่งมาก!", en: "5/5 complete — nice work!", zh: "5/5 完成——太棒了！", ja: "5/5 完了！" },
+    },
   },
 
   /** Promotion for the Effects library: the hero pill and the moving rail. */
@@ -291,6 +298,21 @@ export const home = {
 
   about: {
     eyebrow: { th: "เกี่ยวกับโปรเจกต์", en: "About the project", zh: "关于这个项目", ja: "このプロジェクトについて" },
+    /** Prompt below the particle headline on fine pointers (reads differently on touch). */
+    particleHint: {
+      th: "ลากเมาส์ผ่านข้อความ แล้วดูมันแตกเป็นจุด",
+      en: "Drag your mouse across the words — watch them scatter",
+      zh: "拖动鼠标掠过文字——看它们散成小点",
+      ja: "文字の上をドラッグ。粒になって散ります",
+    },
+    particleHintTouch: {
+      th: "แตะเพื่อให้ตัวหนังสือแตกเป็นจุด",
+      en: "Tap to scatter the letters",
+      zh: "点一下让文字散开",
+      ja: "タップで文字を散らす",
+    },
+    /** For the theme switcher placed next to the language picker. */
+    appearance: { th: "โหมดสี", en: "Appearance", zh: "外观", ja: "表示モード" },
     title: {
       th: "ทำในประเทศไทย เพื่อคนที่อยากเริ่มต้น",
       en: "Made in Thailand, for anyone starting out",

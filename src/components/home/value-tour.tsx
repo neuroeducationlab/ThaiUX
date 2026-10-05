@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { forwardRef, useEffect, useEffectEvent, useLayoutEffect, useRef, useState } from "react";
-import { ArrowRight, Award, Check, Pause, Play, RotateCcw, Sparkles, X } from "lucide-react";
+import { ArrowRight, Award, Check, ChevronLeft, ChevronRight, MousePointerClick, Pause, Play, RotateCcw, Sparkles, X } from "lucide-react";
 import { format } from "@/i18n/localized";
 import { cn } from "@/lib/cn";
 import { ButtonLink } from "@/components/ui/button";
@@ -23,7 +23,7 @@ export type { TourData, TourLabels } from "./tour-scenes";
 const PARTS = [
   { beats: [0, 800, 1500, 2700, 3300, 3800, 4400, 4850, 5450, 5900, 6500, 6950, 7550, 8100, 8800], end: 10400, answer: 3 },
   { beats: [0, 800, 1400, 2400, 3100, 3800, 4900, 5600], end: 8000, answer: 3 },
-  { beats: [0, 700, 1300, 2000, 2800, 3300, 4000], end: 7000, answer: 6 },
+  { beats: [0, 700, 1300, 2000, 2800, 3300, 4000, 5100, 6000, 7200], end: 8800, answer: 6 },
   { beats: [0, 1500, 2000, 2600, 3500, 4400, 4900], end: 7000, answer: 2 },
 ];
 
@@ -218,7 +218,7 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
         ref={stageRef}
         data-mode={mode}
         data-paused={mode === "paused" || undefined}
-        className="tour-stage @container relative h-[27.5rem] overflow-hidden select-none"
+        className="group/tour-stage tour-stage @container relative h-[27.5rem] overflow-hidden select-none"
         onPointerMove={(e) => {
           if (mode !== "idle" || reduced || e.pointerType !== "mouse") return;
           const r = e.currentTarget.getBoundingClientRect();
@@ -230,8 +230,15 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
           e.currentTarget.style.removeProperty("--py");
         }}
         onClick={(e) => {
-          // a tap on the picture pauses it, like a video (a click, so scrolling past never does); real buttons and links still work
-          if (mode === "playing" && !(e.target as Element).closest("button, a")) pause();
+          // IG-style tap zones on the picture only (not on real controls)
+          if (!running || (e.target as Element).closest("button, a")) return;
+          const r = e.currentTarget.getBoundingClientRect();
+          const zone = (e.clientX - r.left) / r.width; // 0 left … 1 right
+          if (zone < 0.28 && part > 0) goTo(part - 1);
+          else if (zone > 0.72 && part < PARTS.length - 1) goTo(part + 1);
+          else if (zone > 0.72 && part === PARTS.length - 1) goTo(part + 1); // last → finale
+          else if (mode === "playing") pause();
+          else resume();
         }}
       >
         {mode === "idle" ? (
@@ -272,6 +279,34 @@ export function ValueTour({ labels, data }: { labels: TourLabels; data: TourData
               ) : (
                 <CertificateScene key="certificate" beat={beat} labels={labels} data={data} />
               )}
+              {/* IG-style tap zones — subtle arrows only on hover, so people learn the gesture */}
+              {running ? (
+                <>
+                  <span
+                    aria-hidden
+                    data-active={part > 0 || undefined}
+                    className={cn(
+                      "pointer-events-none absolute inset-y-10 left-0 z-30 flex w-[18%] items-center justify-start pl-2 text-ink-2 opacity-0 transition-opacity duration-200",
+                      "data-[active]:hover:opacity-100 group-hover/tour-stage:data-[active]:opacity-70",
+                    )}
+                  >
+                    <span className="flex size-9 items-center justify-center rounded-full bg-surface/85 shadow-md backdrop-blur-sm">
+                      <ChevronLeft className="size-5" />
+                    </span>
+                  </span>
+                  <span
+                    aria-hidden
+                    className={cn(
+                      "pointer-events-none absolute inset-y-10 right-0 z-30 flex w-[18%] items-center justify-end pr-2 text-ink-2 opacity-0 transition-opacity duration-200",
+                      "hover:opacity-100 group-hover/tour-stage:opacity-70",
+                    )}
+                  >
+                    <span className="flex size-9 items-center justify-center rounded-full bg-surface/85 shadow-md backdrop-blur-sm">
+                      <ChevronRight className="size-5" />
+                    </span>
+                  </span>
+                </>
+              ) : null}
               {mode === "paused" ? (
                 <div className="animate-fade-up absolute inset-0 z-[60] flex cursor-pointer flex-col items-center justify-center gap-3 bg-surface/70 px-6 text-center backdrop-blur-[2px]" onClick={resume}>
                   <span aria-hidden className="flex size-16 items-center justify-center rounded-full bg-accent text-on-accent shadow-lg">
@@ -436,22 +471,31 @@ const Poster = forwardRef<HTMLButtonElement, { labels: TourLabels; data: TourDat
       <div className="relative max-w-[19.5rem]">
         <p className="text-[0.9375rem] font-medium text-ink-2">{labels.kicker}</p>
         <h2 className="mt-1 text-[1.875rem] leading-tight font-semibold tracking-tight text-ink @md:text-[2.125rem]">{labels.title}</h2>
-        <button
-          ref={ref}
-          type="button"
-          onClick={onStart}
-          className={cn(
-            "mt-6 inline-flex h-14 items-center gap-3 rounded-full bg-accent pr-6 pl-2 text-[1rem] font-semibold text-on-accent shadow-lg",
-            "transition-[background-color,translate,box-shadow,scale] duration-200 ease-out-soft hover:-translate-y-0.5 hover:bg-accent-hover hover:shadow-xl",
-            "focus-visible:outline-[3px] focus-visible:outline-offset-4 active:translate-y-0 active:scale-[0.98] motion-reduce:hover:translate-y-0",
-            !watched && "tour-cta",
-          )}
-        >
-          <span aria-hidden className="flex size-10 items-center justify-center rounded-full bg-on-accent/15">
-            <Play className="size-[1.125rem] translate-x-px fill-current" />
-          </span>
-          {watched ? labels.ctaAgain : labels.cta}
-        </button>
+        <div className="relative mt-6 inline-block">
+          <button
+            ref={ref}
+            type="button"
+            onClick={onStart}
+            className={cn(
+              "tour-cta-breathe relative inline-flex h-14 items-center gap-3 rounded-full bg-accent pr-6 pl-2 text-[1rem] font-semibold text-on-accent shadow-lg",
+              "transition-[background-color,translate,box-shadow,scale] duration-200 ease-out-soft hover:-translate-y-0.5 hover:scale-[1.03] hover:bg-accent-hover hover:shadow-xl",
+              "focus-visible:outline-[3px] focus-visible:outline-offset-4 active:translate-y-0 active:scale-[0.98] motion-reduce:hover:translate-y-0 motion-reduce:hover:scale-100",
+              !watched && "tour-cta",
+            )}
+          >
+            <span aria-hidden className="tour-cta-shimmer absolute inset-0 overflow-hidden rounded-full" />
+            <span aria-hidden className="flex size-10 items-center justify-center rounded-full bg-on-accent/15">
+              <Play className="size-[1.125rem] translate-x-px fill-current" />
+            </span>
+            <span className="relative">{watched ? labels.ctaAgain : labels.cta}</span>
+          </button>
+          {/* a cursor that bobs down onto the button and clicks it, so the hand copies the gesture */}
+          {!watched ? (
+            <span aria-hidden className="tour-cta-cursor pointer-events-none absolute bottom-0 right-3 flex items-center justify-center text-ink">
+              <MousePointerClick className="size-7 fill-surface stroke-ink drop-shadow-md" strokeWidth={1.75} />
+            </span>
+          ) : null}
+        </div>
         <p className="mt-3 text-[0.8125rem] text-ink-2">{labels.ctaSub}</p>
       </div>
     </div>

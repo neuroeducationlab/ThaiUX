@@ -14,6 +14,8 @@ import { LabThumb } from "@/components/lab/lab-thumb";
 import { LabDoneBadge } from "@/components/lab/lab-done-badge";
 import { PlaygroundProvider } from "@/components/effects/provider";
 import { EffectsRail, type RailItem } from "@/components/effects/effects-rail";
+import { ParticleHeadline } from "@/components/home/particle-headline";
+import { ThemeSwitcher } from "@/components/layout/theme-switcher";
 import { categoryOrder, conceptsIn, getConcept, glossary } from "@/content/glossary";
 import { modules } from "@/content/modules";
 import { experiments } from "@/content/lab";
@@ -109,10 +111,17 @@ export default async function Home() {
     }),
     stats: stats.slice(0, 3).map((s) => `${s.n} ${s.label}`),
     counts: { effects: effects.length, modules: modules.length },
+    lab: {
+      badge: pick(tour.lab.badge, locale),
+      prompt: pick(tour.lab.prompt, locale),
+      done: pick(tour.lab.done, locale),
+      href: routes.experiment(locale, tour.lab.experiment),
+    },
     hrefs: {
       steps: [routes.effects(locale), routes.effect(locale, promptFx.id), routes.glossary(locale), routes.certificate(locale)],
       module1: routes.module(locale, modules[0].id),
       effects: routes.effects(locale),
+      lab: routes.experiment(locale, tour.lab.experiment),
     },
   };
 
@@ -417,33 +426,45 @@ export default async function Home() {
       <Section aria-labelledby="about-h">
         <Container size="narrow" className="text-center">
           <Eyebrow>{pick(h.about.eyebrow, locale)}</Eyebrow>
-          <h2 id="about-h" className="type-h2">{pick(h.about.title, locale)}</h2>
-          <p className="type-lead mt-6 text-pretty">{pick(h.about.body, locale)}</p>
-          <div className="mt-9 flex flex-wrap justify-center gap-3">
-            <ButtonLink href={routes.about(locale)} variant="secondary">
-              {pick(h.about.more, locale)}
-            </ButtonLink>
-            <ButtonLink href={routes.caseStudy(locale)} variant="ghost">
-              {pick(h.about.caseStudy, locale)} <ArrowRight className="size-4" aria-hidden />
-            </ButtonLink>
-          </div>
-          <div className="mt-14 flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-[0.9375rem]">
-            <span className="mr-2 text-ink-2">{pick(h.about.languages, locale)}</span>
-            {locales.map((l) => (
-              <Link
-                key={l}
-                href={routes.home(l)}
-                lang={localeMeta[l].htmlLang}
-                hrefLang={localeMeta[l].hreflang}
-                aria-current={l === locale ? "true" : undefined}
-                className={cn(
-                  "inline-flex h-11 items-center rounded-full px-4 transition-colors",
-                  l === locale ? "bg-surface-3 font-semibold text-ink" : "text-ink-2 hover:bg-surface-2 hover:text-ink",
-                )}
-              >
-                {localeMeta[l].label}
-              </Link>
-            ))}
+          <h2 id="about-h" className="sr-only">{pick(h.about.title, locale)}</h2>
+          <ParticleHeadline
+            text={pick(h.about.title, locale)}
+            hint={pick(h.about.particleHint, locale)}
+            detail={<p className="type-lead text-pretty">{pick(h.about.body, locale)}</p>}
+            action={
+              <>
+                <ButtonLink href={routes.about(locale)} variant="secondary">
+                  {pick(h.about.more, locale)}
+                </ButtonLink>
+                <ButtonLink href={routes.caseStudy(locale)} variant="ghost">
+                  {pick(h.about.caseStudy, locale)} <ArrowRight className="size-4" aria-hidden />
+                </ButtonLink>
+              </>
+            }
+          />
+          <div className="mt-14 flex flex-col items-center gap-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-1 gap-y-2 text-[0.9375rem]">
+              <span className="mr-2 text-ink-2">{pick(h.about.languages, locale)}</span>
+              {locales.map((l) => (
+                <Link
+                  key={l}
+                  href={routes.home(l)}
+                  lang={localeMeta[l].htmlLang}
+                  hrefLang={localeMeta[l].hreflang}
+                  aria-current={l === locale ? "true" : undefined}
+                  className={cn(
+                    "inline-flex h-11 items-center rounded-full px-4 transition-colors",
+                    l === locale ? "bg-surface-3 font-semibold text-ink" : "text-ink-2 hover:bg-surface-2 hover:text-ink",
+                  )}
+                >
+                  {localeMeta[l].label}
+                </Link>
+              ))}
+            </div>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-[0.9375rem]">
+              <span className="text-ink-2">{pick(h.about.appearance, locale)}</span>
+              <ThemeSwitcher />
+            </div>
           </div>
         </Container>
       </Section>

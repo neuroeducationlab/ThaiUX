@@ -1,6 +1,6 @@
 "use client";
 
-import { Award, Bot, Check, CircleCheck, Copy, Download, Heart, Lock, Play, Send, Sparkles } from "lucide-react";
+import { Award, Bot, Check, CircleCheck, Copy, Download, FlaskConical, Heart, Lock, Play, Send, Sparkles } from "lucide-react";
 import type { PromptParts } from "@/content/effects";
 import { format } from "@/i18n/localized";
 import { cn } from "@/lib/cn";
@@ -62,8 +62,9 @@ export type TourData = {
   /** Glossary cards in part 3; the last one opens. */
   concepts: { id: string; term: string; local: string; short: string }[];
   stats: string[];
+  lab: { badge: string; prompt: string; done: string; href: string };
   counts: { effects: number; modules: number };
-  hrefs: { steps: string[]; module1: string; effects: string };
+  hrefs: { steps: string[]; module1: string; effects: string; lab: string };
 };
 
 type SceneProps = { beat: number; labels: TourLabels; data: TourData };
@@ -290,15 +291,24 @@ export function PromptScene({ beat, labels, data, copied, onCopy }: SceneProps &
 
 /* ------------------------------------------------------------------
  * Part 3 — point at a glossary card: mist, then a demo you can play.
+ * Then a Lab experiment card slides in — the glossary is where you learn,
+ * the Lab is where you practise.
  * Beats: 1 point at the card · 2 mist · 3 the demo appears · 4 point
  * 5 press (feedback) · 6 “you just experienced…” and what’s inside
+ * 7 Lab card slides in · 8 ghost moves to Lab · 9 press Lab, 5/5 complete
  * ---------------------------------------------------------------- */
 export function LearnScene({ beat, labels, data }: SceneProps) {
   const last = data.concepts.length - 1;
   const phase = beat >= 3 ? "open" : beat === 2 ? "mist" : "idle";
+  const showLab = beat >= 7;
   return (
     <div aria-hidden className="tour-in flex min-h-0 flex-1 flex-col">
-      <div className="grid min-h-0 flex-1 grid-cols-2 gap-2 @md:grid-cols-3">
+      <div
+        className={cn(
+          "grid min-h-0 grid-cols-2 gap-2 transition-[flex,opacity] duration-500 @md:grid-cols-3",
+          showLab ? "flex-[0.6] opacity-80" : "flex-1",
+        )}
+      >
         {data.concepts.map((c, i) => {
           const target = i === last;
           return (
@@ -359,11 +369,54 @@ export function LearnScene({ beat, labels, data }: SceneProps) {
       >
         <CircleCheck className="size-4 shrink-0" /> {format(labels.youExperienced, { term: data.concepts[last].term })}
       </p>
-      <div className="mt-2 flex min-h-7 flex-wrap gap-1.5">
+      {/* The Lab card slides in from below, taking over the stats slot */}
+      <div
+        className={cn(
+          "tour-lab mt-2 flex items-stretch gap-3 overflow-hidden rounded-[var(--radius-md)] border border-line-strong bg-surface p-3 shadow-sm transition-[opacity,translate,height,padding,margin] duration-500 ease-out-soft",
+          showLab ? "opacity-100 translate-y-0" : "pointer-events-none h-0 translate-y-4 border-transparent bg-transparent p-0 opacity-0 shadow-none",
+        )}
+      >
+        <div
+          data-ghost="8 9"
+          data-press="9"
+          className={cn(
+            "relative flex size-14 shrink-0 items-center justify-center rounded-[0.5rem] text-white transition-colors duration-300",
+            beat >= 9 ? "bg-success" : "bg-accent",
+          )}
+        >
+          {beat >= 9 ? <Check className="animate-pop size-7" strokeWidth={3} /> : <FlaskConical className="size-6" />}
+        </div>
+        <div className="flex min-w-0 flex-1 flex-col justify-center">
+          <p className="text-[0.6875rem] font-semibold text-accent-ink">{data.lab.badge}</p>
+          <p className="truncate text-[0.9375rem] font-semibold text-ink">{data.lab.prompt}</p>
+          {beat >= 9 ? (
+            <p className="animate-fade-up mt-0.5 flex items-center gap-1 text-[0.75rem] font-semibold text-success">
+              <CircleCheck className="size-3.5" /> {data.lab.done}
+            </p>
+          ) : (
+            <div className="mt-1 flex gap-1.5">
+              {Array.from({ length: 5 }, (_, i) => (
+                <span key={i} className="h-1 flex-1 overflow-hidden rounded-full bg-surface-3">
+                  <span
+                    className={cn("block h-full rounded-full bg-accent transition-[width] duration-500", beat >= 9 ? "w-full" : "w-0")}
+                    style={{ transitionDelay: `${80 + i * 60}ms` }}
+                  />
+                </span>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+      <div
+        className={cn(
+          "mt-2 flex min-h-7 flex-wrap gap-1.5 transition-opacity duration-300",
+          showLab ? "opacity-0" : "",
+        )}
+      >
         {data.stats.map((s, i) => (
           <span
             key={s}
-            className={cn("rounded-full bg-accent-soft px-2.5 py-1 text-[0.75rem] font-semibold text-accent-ink", beat >= 6 ? "animate-pop" : "opacity-0")}
+            className={cn("rounded-full bg-accent-soft px-2.5 py-1 text-[0.75rem] font-semibold text-accent-ink", beat >= 6 && !showLab ? "animate-pop" : "opacity-0")}
             style={{ animationDelay: `${i * 90}ms` }}
           >
             {s}
